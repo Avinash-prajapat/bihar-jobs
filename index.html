@@ -27,235 +27,83 @@
     <link rel="canonical" href="https://latestjob.live/">
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
     
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* ========== CSS VARIABLES FOR EASY CUSTOMIZATION ========== */
-        :root {
-            /* Colors */
-            --primary-start: #ff6b35;
-            --primary-end: #f43f5e;
-            --primary-gradient: linear-gradient(135deg, var(--primary-start), var(--primary-end));
-            --secondary-gradient: linear-gradient(135deg, #667eea, #764ba2);
-            --dark-gradient: linear-gradient(135deg, #1a1a2e, #0f0f23);
-            
-            --bg-primary: #f5f7fb;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #f8f9fa;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --border-color: #e2e8f0;
-            
-            /* Spacing */
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            
-            /* Border Radius */
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-full: 50px;
-            
-            /* Shadows */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
-            --shadow-glow: 0 0 20px rgba(255,107,53,0.3);
-            
-            /* Animation Settings */
-            --anim-fast: 0.2s ease;
-            --anim-normal: 0.3s ease;
-            --anim-slow: 0.5s ease;
-            --anim-slower: 0.6s ease-out;
-            --anim-bounce: cubic-bezier(0.34, 1.2, 0.64, 1);
-            
-            /* Typography */
-            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            --text-xs: clamp(0.65rem, 0.6rem + 0.25vw, 0.75rem);
-            --text-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-            --text-base: clamp(0.875rem, 0.8rem + 0.5vw, 1rem);
-            --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-            --text-xl: clamp(1.125rem, 1rem + 1vw, 1.3rem);
-            --text-2xl: clamp(1.3rem, 1.1rem + 1.5vw, 1.8rem);
-            --text-3xl: clamp(1.8rem, 1.5rem + 2vw, 2.5rem);
-            
-            /* Z-Index Layers */
-            --z-dropdown: 100;
-            --z-sticky: 200;
-            --z-modal: 1000;
-            --z-toast: 1100;
-        }
-
-        /* ========== DARK MODE SUPPORT ========== */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-primary: #0f172a;
-                --bg-secondary: #1e293b;
-                --bg-tertiary: #334155;
-                --text-primary: #f1f5f9;
-                --text-secondary: #94a3b8;
-                --text-muted: #64748b;
-                --border-color: #475569;
-            }
-        }
-
-        /* ========== RESET & BASE ========== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-family);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            /* ✅ ORIGINAL BACKGROUND RESTORED */
+            background: linear-gradient(135deg, #f5f7fb 0%, #eef2ff 100%);
             overflow-x: hidden;
-            transition: background var(--anim-normal), color var(--anim-normal);
+            transition: background 0.3s ease;
         }
 
-        /* ========== ANIMATIONS - FULLY CUSTOMIZABLE ========== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Dark Mode Support */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #f1f5f9;
         }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(2rem); }
-            to { opacity: 1; transform: translateY(0); }
+        body.dark-mode .main-header,
+        body.dark-mode .sidebar-card,
+        body.dark-mode .stat-card,
+        body.dark-mode .search-wrapper,
+        body.dark-mode .job-card,
+        body.dark-mode .modal-container {
+            background: rgba(30, 41, 59, 0.95);
+            border-color: #475569;
         }
-        
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-2rem); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-2rem); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(2rem); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-0.5rem); }
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes modalEnter {
-            from { opacity: 0; transform: scale(0.95) translateY(1rem); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        
-        @keyframes overlayEnter {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes skeleton {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
+        body.dark-mode .top-bar { background: linear-gradient(135deg, #0f0f23, #1a1a2e); }
+        body.dark-mode .state-section,
+        body.dark-mode .category-section { background: #1e293b; border-color: #475569; }
+        body.dark-mode .footer { background: linear-gradient(135deg, #0f0f23, #1a1a2e); }
 
-        /* Animation Utility Classes */
-        .animate { animation-fill-mode: both; }
-        .animate-fade { animation-name: fadeIn; animation-duration: var(--anim-slower); }
-        .animate-up { animation-name: slideUp; animation-duration: var(--anim-slower); }
-        .animate-down { animation-name: slideDown; animation-duration: var(--anim-slower); }
-        .animate-left { animation-name: slideInLeft; animation-duration: var(--anim-slower); }
-        .animate-right { animation-name: slideInRight; animation-duration: var(--anim-slower); }
-        .animate-modal { animation-name: modalEnter; animation-duration: 0.4s; animation-timing-function: var(--anim-bounce); }
-        .animate-overlay { animation-name: overlayEnter; animation-duration: var(--anim-normal); }
-        .animate-pulse { animation-name: pulse; animation-duration: 2s; animation-iteration-count: infinite; }
-        .animate-float { animation-name: float; animation-duration: 4s; animation-iteration-count: infinite; ease-in-out; }
-        
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes modalPopIn { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes modalOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.1); } 28% { transform: scale(1); } 42% { transform: scale(1.1); } 70% { transform: scale(1); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+        .animate-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .animate-down { animation: fadeInDown 0.6s ease-out forwards; }
+        .animate-left { animation: fadeInLeft 0.6s ease-out forwards; }
+        .animate-right { animation: fadeInRight 0.6s ease-out forwards; }
+        .animate-modal { animation: modalPopIn 0.4s cubic-bezier(0.34, 1.2, 0.64, 1); }
+        .animate-overlay { animation: modalOverlayIn 0.3s ease-out; }
+        .animate-heart { animation: heartbeat 1.5s ease-in-out infinite; }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
 
-        /* Scroll Reveal - Intersection Observer */
-        .reveal {
-            opacity: 0;
-            transform: translateY(2rem);
-            transition: opacity var(--anim-slower), transform var(--anim-slower);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ========== CUSTOM SCROLLBAR ========== */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-gradient);
-            border-radius: var(--radius-full);
-            transition: background var(--anim-fast);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-end);
-        }
-
-        /* ========== SKIP LINK FOR ACCESSIBILITY ========== */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--primary-gradient);
-            color: white;
-            padding: var(--spacing-sm) var(--spacing-md);
-            z-index: var(--z-modal);
-            transition: top var(--anim-fast);
-        }
-        .skip-link:focus {
-            top: 0;
-        }
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #ff6b35, #f43f5e); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff6b35; }
+        body.dark-mode ::-webkit-scrollbar-track { background: #334155; }
 
         /* ========== TOP BAR ========== */
         .top-bar {
-            background: var(--dark-gradient);
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%);
             color: white;
-            padding: var(--spacing-xs) var(--spacing-xl);
-            font-size: var(--text-xs);
+            padding: 0.5rem 2rem;
+            font-size: 0.75rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -263,38 +111,24 @@
         .top-bar::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
             animation: shimmer 3s infinite;
         }
-        .top-bar a {
-            color: var(--primary-start);
-            text-decoration: none;
-            font-weight: 600;
-        }
+        .top-bar a { color: #ff6b35; text-decoration: none; font-weight: 600; }
 
         /* ========== HEADER ========== */
         .main-header {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: var(--spacing-md) var(--spacing-xl);
-            box-shadow: var(--shadow-md);
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: var(--z-sticky);
-            transition: background var(--anim-normal), box-shadow var(--anim-normal);
+            z-index: 1000;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        @media (prefers-color-scheme: dark) {
-            .main-header {
-                background: rgba(30,41,59,0.95);
-            }
-        }
-
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -302,374 +136,313 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: var(--spacing-md);
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
+            gap: 1rem;
         }
         .logo h1 {
-            font-size: var(--text-xl);
+            font-size: 1.6rem;
             font-weight: 800;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #1a1a2e, #ff6b35);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
         }
-        .logo p {
-            font-size: var(--text-xs);
-            color: var(--text-secondary);
-            letter-spacing: 0.3px;
-        }
-
-        /* Navigation */
-        .nav-menu {
-            display: flex;
-            gap: var(--spacing-lg);
-            flex-wrap: wrap;
-            align-items: center;
-        }
+        .logo p { font-size: 0.65rem; color: #666; letter-spacing: 0.5px; }
+        
+        .nav-menu { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
         .nav-menu a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: #333;
             font-weight: 500;
-            font-size: var(--text-sm);
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-sm);
-            transition: all var(--anim-fast);
+            transition: all 0.3s;
             position: relative;
+            font-size: 0.9rem;
         }
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: all var(--anim-normal);
-            transform: translateX(-50%);
-            border-radius: var(--radius-full);
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #f43f5e);
+            transition: width 0.3s;
         }
-        .nav-menu a:hover,
-        .nav-menu a:focus {
-            color: var(--primary-start);
-            background: rgba(255,107,53,0.08);
+        .nav-menu a:hover::after { width: 100%; }
+        .nav-menu a:hover { color: #ff6b35; }
+
+        .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            background: #f0f2f5;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #333;
+            transition: all 0.3s;
         }
-        .nav-menu a:hover::after,
-        .nav-menu a:focus::after {
-            width: 80%;
+        .theme-toggle:hover {
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        /* Notification Bell */
+        .notification-bell {
+            position: relative;
+            background: #f0f2f5;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #333;
+            transition: all 0.3s;
+        }
+        .notification-bell:hover {
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
+            color: white;
+        }
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #dc2626;
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+            animation: pulse 2s infinite;
         }
 
         .app-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: var(--radius-full);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: var(--text-sm);
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
             display: inline-flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            transition: all var(--anim-normal);
-            animation: pulse 2s infinite;
-            box-shadow: var(--shadow-glow);
+            gap: 0.4rem;
         }
-        .app-btn:hover,
-        .app-btn:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
-            outline: none;
-        }
+        .app-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--text-primary);
             font-size: 1.5rem;
+            color: #333;
             cursor: pointer;
-            padding: var(--spacing-sm);
-            border-radius: var(--radius-sm);
-            transition: background var(--anim-fast);
-        }
-        .menu-toggle:hover,
-        .menu-toggle:focus {
-            background: rgba(0,0,0,0.05);
-            outline: none;
+            padding: 0.5rem;
         }
 
         /* ========== STATE SHORTCUTS ========== */
         .state-section {
-            background: var(--bg-secondary);
-            padding: var(--spacing-sm) var(--spacing-xl);
-            border-bottom: 1px solid var(--border-color);
+            background: white;
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 72px;
-            z-index: calc(var(--z-sticky) - 1);
+            z-index: 99;
             overflow-x: auto;
-            scrollbar-width: thin;
         }
-        .state-section::-webkit-scrollbar {
-            height: 4px;
-        }
-        
         .state-container {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
             flex-wrap: nowrap;
-            gap: var(--spacing-sm);
+            gap: 0.5rem;
             justify-content: flex-start;
-            padding: var(--spacing-xs) 0;
         }
-        
         .state-btn {
-            background: var(--bg-tertiary);
-            padding: var(--spacing-xs) var(--spacing-md);
-            border-radius: var(--radius-full);
+            background: #f0f2f5;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
             text-decoration: none;
-            color: var(--text-primary);
+            color: #333;
             font-weight: 500;
-            font-size: var(--text-xs);
+            font-size: 0.75rem;
             white-space: nowrap;
-            transition: all var(--anim-normal);
-            border: 1px solid transparent;
+            transition: all 0.3s;
         }
-        .state-btn:hover,
-        .state-btn:focus {
-            background: var(--primary-gradient);
+        .state-btn:hover, .state-btn.active {
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
             color: white;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-            border-color: transparent;
-            outline: none;
-        }
-        .state-btn.active {
-            background: var(--primary-gradient);
-            color: white;
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
         }
 
         /* ========== CATEGORY MENU ========== */
         .category-section {
-            background: var(--bg-tertiary);
-            padding: var(--spacing-md) var(--spacing-xl);
-            border-bottom: 1px solid var(--border-color);
+            background: #f8f9fa;
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid #e9ecef;
         }
         .category-container {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            gap: var(--spacing-lg);
+            gap: 1.2rem;
             justify-content: center;
         }
         .category-link {
             text-decoration: none;
-            color: var(--text-secondary);
+            color: #495057;
             font-weight: 500;
-            font-size: var(--text-sm);
-            padding: var(--spacing-xs) var(--spacing-sm);
+            font-size: 0.85rem;
+            padding: 0.3rem 0;
             position: relative;
-            transition: all var(--anim-fast);
-            border-radius: var(--radius-sm);
+            transition: all 0.3s;
         }
         .category-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width var(--anim-normal);
-            transform: translateX(-50%);
-            border-radius: var(--radius-full);
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s;
         }
-        .category-link:hover,
-        .category-link:focus {
-            color: var(--primary-start);
-            background: rgba(255,107,53,0.08);
-            outline: none;
-        }
-        .category-link:hover::after,
-        .category-link:focus::after {
-            width: 70%;
-        }
-        .category-link.active {
-            color: var(--primary-start);
-            font-weight: 600;
-        }
-        .category-link.active::after {
-            width: 70%;
-        }
+        .category-link:hover::after, .category-link.active::after { width: 100%; }
+        .category-link:hover, .category-link.active { color: #ff6b35; }
 
         /* ========== HERO BANNER ========== */
         .hero-banner {
-            background: var(--secondary-gradient);
-            margin: var(--spacing-lg) var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-2xl) var(--spacing-xl);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 1.5rem 2rem;
+            border-radius: 24px;
+            padding: 3rem 2rem;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
-            isolation: isolate;
         }
         .hero-banner::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: float 8s ease-in-out infinite;
-            z-index: -1;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite;
         }
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(102,126,234,0.9) 0%, rgba(118,75,162,0.9) 100%);
-            z-index: -1;
-        }
-        .hero-banner h2 {
-            font-size: var(--text-2xl);
-            margin-bottom: var(--spacing-md);
-            position: relative;
-            z-index: 1;
-            font-weight: 800;
-        }
-        .hero-banner p {
-            position: relative;
-            z-index: 1;
-            opacity: 0.95;
-            font-size: var(--text-base);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .hero-banner h2 { font-size: 2rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .hero-banner p { position: relative; z-index: 1; opacity: 0.9; font-size: 1rem; }
         .warning-text {
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
-            margin-top: var(--spacing-md);
-            border: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            margin-top: 1rem;
         }
 
         /* ========== MAIN LAYOUT ========== */
         .main-container {
             max-width: 1400px;
-            margin: var(--spacing-xl) auto;
-            padding: 0 var(--spacing-xl);
+            margin: 2rem auto;
+            padding: 0 2rem;
             display: grid;
             grid-template-columns: 280px 1fr;
-            gap: var(--spacing-xl);
+            gap: 2rem;
         }
 
         /* Sidebar */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-lg);
-        }
+        .sidebar { animation: fadeInLeft 0.6s ease-out; }
         .sidebar-card {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            box-shadow: var(--shadow-md);
-            transition: all var(--anim-normal);
-            border: 1px solid var(--border-color);
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
         }
-        .sidebar-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-start);
-        }
+        .sidebar-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .sidebar-title {
-            font-size: var(--text-lg);
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: var(--spacing-md);
-            padding-bottom: var(--spacing-sm);
-            border-bottom: 2px solid var(--primary-start);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff6b35;
+            display: inline-block;
         }
-        .education-list,
-        .quick-links {
-            list-style: none;
-        }
-        .education-list li,
-        .quick-links li {
-            margin-bottom: var(--spacing-sm);
-        }
-        .education-list a,
-        .quick-links a {
+        .education-list, .quick-links { list-style: none; }
+        .education-list li, .quick-links li { margin-bottom: 0.8rem; }
+        .education-list a, .quick-links a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: #333;
             display: flex;
             justify-content: space-between;
+            transition: all 0.3s;
+            font-size: 0.9rem;
             align-items: center;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-sm);
-            transition: all var(--anim-fast);
-            font-size: var(--text-sm);
         }
-        .education-list a:hover,
-        .education-list a:focus,
-        .quick-links a:hover,
-        .quick-links a:focus {
-            color: var(--primary-start);
-            background: rgba(255,107,53,0.08);
-            transform: translateX(4px);
-            outline: none;
+        .education-list a:hover, .quick-links a:hover {
+            color: #ff6b35;
+            transform: translateX(5px);
         }
         .job-count {
-            background: var(--primary-gradient);
+            background: #ff6b35;
             color: white;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
-            font-weight: 600;
-            min-width: 28px;
-            text-align: center;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
         }
 
-        /* Content Area */
-        .content-area {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-lg);
+        /* Recently Viewed */
+        .recently-viewed {
+            max-height: 200px;
+            overflow-y: auto;
         }
+        .recent-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .recent-item:hover { color: #ff6b35; padding-left: 5px; }
+        .recent-item:last-child { border-bottom: none; }
+
+        /* Content Area */
+        .content-area { animation: fadeInRight 0.6s ease-out; }
 
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: var(--spacing-md);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
         .stat-card {
-            background: var(--bg-secondary);
-            padding: var(--spacing-lg);
-            border-radius: var(--radius-lg);
+            background: white;
+            padding: 1.2rem;
+            border-radius: 20px;
             text-align: center;
-            transition: all var(--anim-normal);
+            transition: all 0.3s;
             cursor: pointer;
-            border: 1px solid var(--border-color);
+            border: 1px solid #e9ecef;
             position: relative;
             overflow: hidden;
         }
@@ -677,1853 +450,1522 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
             opacity: 0;
-            transition: opacity var(--anim-normal);
-            z-index: -1;
+            transition: opacity 0.3s;
         }
-        .stat-card:hover,
-        .stat-card:focus {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-start);
-            outline: none;
-        }
-        .stat-card:hover::before,
-        .stat-card:focus::before {
-            opacity: 0.05;
-        }
+        .stat-card:hover::before { opacity: 0.05; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: #ff6b35; }
         .stat-number {
-            font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            font-size: 1.8rem;
             font-weight: 800;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            line-height: 1;
+            position: relative;
+            z-index: 1;
         }
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: var(--text-xs);
-            margin-top: var(--spacing-xs);
-            display: block;
-            font-weight: 500;
-        }
+        .stat-label { color: #666; font-size: 0.75rem; margin-top: 0.3rem; display: block; position: relative; z-index: 1; }
 
         /* Jobs Header */
         .jobs-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
-            gap: var(--spacing-md);
-            padding-bottom: var(--spacing-sm);
-            border-bottom: 1px solid var(--border-color);
+            gap: 1rem;
         }
         .jobs-header h3 {
-            font-size: var(--text-lg);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
+            font-size: 1.3rem;
+            position: relative;
+            padding-left: 15px;
         }
-        .jobs-header h3 i {
-            color: var(--primary-start);
-            animation: pulse 2s infinite;
-        }
-        #resultCount {
-            color: var(--text-secondary);
-            font-size: var(--text-sm);
-            font-weight: 500;
-            background: var(--bg-tertiary);
-            padding: var(--spacing-xs) var(--spacing-md);
-            border-radius: var(--radius-full);
+        .jobs-header h3::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%;
+            transform: translateY(-50%);
+            width: 4px; height: 20px;
+            background: #ff6b35;
+            border-radius: 2px;
         }
 
-        /* Search & Filter */
+        /* Sort & Filter Bar */
+        .sort-bar {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .sort-label { font-size: 0.85rem; color: #666; font-weight: 500; }
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        /* Search Bar */
         .search-wrapper {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .search-input-group {
             position: relative;
-            margin-bottom: var(--spacing-md);
+            margin-bottom: 1rem;
         }
         .search-input-group i {
             position: absolute;
-            left: var(--spacing-md);
-            top: 50%;
+            left: 15px; top: 50%;
             transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: var(--text-base);
-            pointer-events: none;
+            color: #94a3b8;
         }
         .search-input-group input {
             width: 100%;
-            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.75rem;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            font-size: var(--text-sm);
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            transition: all var(--anim-fast);
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
         }
         .search-input-group input:focus {
             outline: none;
-            border-color: var(--primary-start);
-            box-shadow: 0 0 0 4px rgba(255,107,53,0.15);
-            background: var(--bg-secondary);
-        }
-        .search-input-group input::placeholder {
-            color: var(--text-muted);
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
         }
         .filter-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--spacing-md);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         .filter-select {
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            font-size: var(--text-sm);
+            flex: 1;
+            min-width: 140px;
+            padding: 0.7rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all var(--anim-fast);
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-            padding-right: 2.5rem;
         }
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--primary-start);
-            box-shadow: 0 0 0 4px rgba(255,107,53,0.15);
+
+        /* Salary Range Slider */
+        .salary-filter {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
         }
-        .filter-select option {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+        .salary-filter label { font-size: 0.85rem; color: #666; font-weight: 500; }
+        .salary-range {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .salary-range input[type="range"] {
+            flex: 1;
+            accent-color: #ff6b35;
+        }
+        .salary-value {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ff6b35;
+            min-width: 80px;
         }
 
         /* Quick Filters */
         .quick-filters {
             display: flex;
-            gap: var(--spacing-sm);
+            gap: 0.8rem;
             flex-wrap: wrap;
-            padding: var(--spacing-sm) 0;
+            margin-bottom: 1.5rem;
         }
         .quick-filter-btn {
-            background: var(--bg-secondary);
-            padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: var(--radius-full);
-            border: 2px solid var(--border-color);
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
             cursor: pointer;
-            transition: all var(--anim-normal);
-            font-size: var(--text-xs);
+            transition: all 0.3s;
+            font-size: 0.8rem;
             font-weight: 500;
-            color: var(--text-primary);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
         }
-        .quick-filter-btn:hover,
-        .quick-filter-btn:focus {
-            border-color: var(--primary-start);
-            color: var(--primary-start);
+        .quick-filter-btn:hover {
+            border-color: #ff6b35;
+            color: #ff6b35;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-            outline: none;
         }
         .quick-filter-btn.active {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
             color: white;
             border-color: transparent;
-            box-shadow: var(--shadow-glow);
-            transform: translateY(-2px);
         }
 
         /* Jobs Grid */
         .jobs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: var(--spacing-lg);
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.5rem;
         }
 
-        /* Job Card - Enhanced */
+        /* Job Card */
         .job-card {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            transition: all var(--anim-normal);
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s;
             cursor: pointer;
-            border: 2px solid var(--border-color);
+            border: 1px solid #e9ecef;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
+            animation: fadeInUp 0.5s ease-out;
         }
-        .job-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--anim-normal);
+        .job-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+            border-color: #ff6b35;
         }
-        .job-card:hover,
-        .job-card:focus {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-start);
-            outline: none;
-        }
-        .job-card:hover::before,
-        .job-card:focus::before {
-            transform: scaleX(1);
-        }
-        .job-card.urgent {
-            border-left: 4px solid #dc2626;
-        }
-        .job-card.urgent::after {
-            content: '🔥 Urgent';
-            position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            background: #fee2e2;
-            color: #dc2626;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
-            font-weight: 600;
-        }
+        .job-card.urgent { border-left: 4px solid #dc2626; }
         
-        .job-card-header {
+        /* Card Actions */
+        .card-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: var(--spacing-md);
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        .job-card-title {
-            font-size: var(--text-lg);
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .job-card-company {
-            color: var(--primary-start);
-            font-size: var(--text-sm);
+        .job-card:hover .card-actions { opacity: 1; }
+        .card-action-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            font-weight: 500;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #666;
+            transition: all 0.2s;
         }
+        .card-action-btn:hover {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+            transform: scale(1.1);
+        }
+        .card-action-btn.saved {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+
+        .job-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; padding-right: 2.5rem; }
+        .job-card-title { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 0.3rem; }
+        .job-card-company { color: #ff6b35; font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem; }
         .job-category-badge {
-            padding: var(--spacing-xs) var(--spacing-md);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
         }
-        .category-govt {
-            background: #dcfce7;
-            color: #15803d;
-            border: 1px solid #86efac;
-        }
-        .category-private {
-            background: #dbeafe;
-            color: #1d4ed8;
-            border: 1px solid #93c5fd;
-        }
+        .category-govt { background: #dcfce7; color: #15803d; }
+        .category-private { background: #dbeafe; color: #1d4ed8; }
         
-        .job-card-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-        }
-        .job-card-detail {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            font-size: var(--text-xs);
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        .job-card-detail i {
-            color: var(--primary-start);
-            width: 16px;
-            text-align: center;
-        }
+        .job-card-details { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+        .job-card-detail { display: flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: #64748b; }
         
-        .job-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-xs);
-        }
+        .job-card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
         .job-card-tag {
-            background: var(--bg-tertiary);
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
-            color: var(--text-secondary);
+            background: #f1f5f9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            color: #475569;
+        }
+        
+        /* Countdown Timer */
+        .countdown {
             display: inline-flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            font-weight: 500;
+            gap: 0.3rem;
+            background: #fff7ed;
+            color: #ea580c;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
         
         .job-card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
-            padding-top: var(--spacing-md);
-            border-top: 1px solid var(--border-color);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
             flex-wrap: wrap;
-            gap: var(--spacing-sm);
+            gap: 0.5rem;
         }
-        .deadline-normal {
-            color: var(--text-secondary);
-            font-size: var(--text-xs);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-        .deadline-urgent {
-            background: #fee2e2;
-            color: #dc2626;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
+        .deadline-normal { color: #64748b; font-size: 0.7rem; }
+        .deadline-urgent { 
+            background: #fee2e2; 
+            color: #dc2626; 
+            padding: 0.2rem 0.6rem; 
+            border-radius: 50px; 
+            font-size: 0.65rem; 
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            animation: pulse 2s infinite;
+            gap: 0.3rem;
         }
         .apply-btn {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
             color: white;
-            padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: var(--radius-full);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: var(--text-xs);
-            font-weight: 600;
-            transition: all var(--anim-normal);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            box-shadow: var(--shadow-glow);
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.3s;
         }
-        .apply-btn:hover,
-        .apply-btn:focus {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
-            outline: none;
-        }
+        .apply-btn:hover { transform: scale(1.05); }
 
-        /* Loading Skeleton */
-        .skeleton {
-            background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--border-color) 50%, var(--bg-tertiary) 75%);
-            background-size: 200% 100%;
-            animation: skeleton 1.5s infinite;
-            border-radius: var(--radius-sm);
-        }
-        .skeleton-card {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
-        }
-        .skeleton-title {
-            height: 1.2rem;
-            width: 70%;
-        }
-        .skeleton-text {
-            height: 0.8rem;
-            width: 90%;
-        }
-        .skeleton-text.short {
-            width: 50%;
-        }
-        .skeleton-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: auto;
-            padding-top: var(--spacing-md);
-            border-top: 1px solid var(--border-color);
-        }
-        .skeleton-btn {
-            height: 2rem;
-            width: 6rem;
-            border-radius: var(--radius-full);
-        }
-
-        /* Loading Container */
-        .loading-container {
-            text-align: center;
-            padding: var(--spacing-2xl);
-            grid-column: 1 / -1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--spacing-md);
-        }
+        /* Loading */
+        .loading-container { text-align: center; padding: 3rem; grid-column: 1 / -1; }
         .spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--border-color);
-            border-top-color: var(--primary-start);
+            width: 50px; height: 50px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #ff6b35;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-        }
-        .loading-text {
-            color: var(--text-secondary);
-            font-size: var(--text-sm);
+            margin: 0 auto 1rem;
         }
 
         /* No Results */
         .no-results {
             text-align: center;
-            padding: var(--spacing-2xl);
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
             grid-column: 1 / -1;
-            border: 1px solid var(--border-color);
         }
-        .no-results i {
-            font-size: 3rem;
-            color: var(--text-muted);
-            margin-bottom: var(--spacing-md);
-            opacity: 0.6;
-        }
-        .no-results h3 {
-            font-size: var(--text-lg);
-            margin-bottom: var(--spacing-sm);
-            color: var(--text-primary);
-        }
-        .no-results p {
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-lg);
-            font-size: var(--text-sm);
-        }
+        .no-results i { font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem; }
         .reset-btn {
-            background: var(--primary-gradient);
+            background: #ff6b35;
             color: white;
             border: none;
-            padding: var(--spacing-sm) var(--spacing-xl);
-            border-radius: var(--radius-full);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: var(--text-sm);
-            transition: all var(--anim-normal);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            box-shadow: var(--shadow-glow);
+            margin-top: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
         }
-        .reset-btn:hover,
-        .reset-btn:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
-            outline: none;
-        }
+        .reset-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,107,53,0.3); }
 
-        /* ========== MODAL POPUP - ENHANCED ========== */
+        /* ========== MODAL POPUP ========== */
         .modal-overlay {
             position: fixed;
-            inset: 0;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: var(--z-modal);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--spacing-lg);
-            animation: overlayEnter var(--anim-normal);
+            animation: modalOverlayIn 0.3s ease-out;
+            padding: 1rem;
         }
         .modal-container {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            max-width: 600px;
+            background: white;
+            border-radius: 28px;
+            max-width: 550px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            animation: modalEnter 0.4s var(--anim-bounce);
-            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
-            border: 1px solid var(--border-color);
+            animation: modalPopIn 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
         }
         .modal-header {
-            background: var(--dark-gradient);
+            background: linear-gradient(135deg, #1a1a2e, #0f0f23);
             color: white;
-            padding: var(--spacing-lg);
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            padding: 1.5rem;
+            border-radius: 28px 28px 0 0;
             position: sticky;
             top: 0;
             z-index: 1;
         }
-        .modal-header h2 {
-            font-size: var(--text-lg);
-            margin-bottom: var(--spacing-xs);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            font-weight: 700;
-        }
-        .modal-header p {
-            font-size: var(--text-xs);
-            opacity: 0.9;
-        }
+        .modal-header h2 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+        .modal-header p { font-size: 0.8rem; opacity: 0.8; }
         .modal-close {
             position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            background: rgba(255,255,255,0.15);
+            top: 1rem; right: 1.2rem;
+            background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-full);
+            width: 32px; height: 32px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: all var(--anim-fast);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
         }
-        .modal-close:hover,
-        .modal-close:focus {
-            background: rgba(255,255,255,0.25);
-            transform: rotate(90deg);
-            outline: none;
-        }
-        .modal-body {
-            padding: var(--spacing-lg);
-        }
-        .modal-job-title {
-            font-size: var(--text-xl);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-xs);
-            line-height: 1.3;
-        }
-        .modal-job-company {
-            color: var(--primary-start);
-            margin-bottom: var(--spacing-lg);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            font-weight: 500;
-            font-size: var(--text-sm);
-        }
+        .modal-close:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg); }
+        
+        .modal-body { padding: 1.5rem; }
+        .modal-job-title { font-size: 1.4rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .modal-job-company { color: #ff6b35; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        
         .modal-info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-md);
-            margin: var(--spacing-lg) 0;
-            background: var(--bg-tertiary);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 16px;
         }
-        .modal-info-item {
+        .modal-info-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #334155; }
+        .modal-info-item i { width: 20px; color: #ff6b35; }
+        
+        .modal-description { margin: 1rem 0; line-height: 1.6; color: #475569; }
+        
+        .modal-actions {
             display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-sm);
-            font-size: var(--text-sm);
-            color: var(--text-secondary);
-        }
-        .modal-info-item i {
-            width: 20px;
-            color: var(--primary-start);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .modal-info-item strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-        .modal-description {
-            margin: var(--spacing-lg) 0;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            font-size: var(--text-sm);
-        }
-        .modal-description strong {
-            color: var(--text-primary);
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            font-weight: 600;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
         .modal-apply-btn {
-            display: block;
-            background: var(--primary-gradient);
+            flex: 1;
+            min-width: 150px;
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
             color: white;
             text-align: center;
-            padding: var(--spacing-md) var(--spacing-xl);
-            border-radius: var(--radius-full);
+            padding: 0.9rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: var(--text-sm);
-            margin-top: var(--spacing-lg);
-            transition: all var(--anim-normal);
-            box-shadow: var(--shadow-glow);
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: var(--spacing-xs);
-            width: 100%;
+            gap: 0.5rem;
         }
-        .modal-apply-btn:hover,
-        .modal-apply-btn:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(255,107,53,0.4);
-            outline: none;
+        .modal-apply-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,107,53,0.3); }
+        
+        .modal-share-btn {
+            background: #f1f5f9;
+            color: #333;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: 120px;
         }
+        .modal-share-btn:hover { background: #e2e8f0; transform: translateY(-2px); }
+        
+        .modal-save-btn {
+            background: white;
+            color: #333;
+            border: 2px solid #ff6b35;
+            padding: 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: 120px;
+        }
+        .modal-save-btn:hover, .modal-save-btn.saved {
+            background: #ff6b35;
+            color: white;
+        }
+        .modal-save-btn.saved i { animation: heartbeat 0.5s ease; }
+
         .modal-footer-note {
             text-align: center;
-            font-size: var(--text-xs);
-            color: var(--text-muted);
-            margin-top: var(--spacing-md);
-            padding-top: var(--spacing-md);
-            border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
         }
 
-        /* ========== FOOTER ========== */
-        .footer {
-            background: var(--dark-gradient);
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: #1a1a2e;
             color: white;
-            padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-lg);
-            margin-top: var(--spacing-2xl);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease;
+            max-width: 350px;
+        }
+        .toast.success { border-left: 4px solid #22c55e; }
+        .toast.error { border-left: 4px solid #ef4444; }
+        .toast.info { border-left: 4px solid #3b82f6; }
+        .toast-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
         }
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-xl);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
         }
-        .footer-section h4 {
-            margin-bottom: var(--spacing-md);
-            font-size: var(--text-base);
-            font-weight: 700;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
+        .footer-section h4 { margin-bottom: 1rem; font-size: 1rem; position: relative; display: inline-block; }
         .footer-section h4::after {
             content: '';
             position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--primary-start);
-            border-radius: var(--radius-full);
-        }
-        .footer-section p {
-            color: #aaa;
-            font-size: var(--text-sm);
-            line-height: 1.6;
+            bottom: -5px; left: 0;
+            width: 40px; height: 2px;
+            background: #ff6b35;
         }
         .footer-section a {
             color: #aaa;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            margin-bottom: var(--spacing-sm);
-            font-size: var(--text-sm);
-            transition: all var(--anim-fast);
-            padding: var(--spacing-xs) 0;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            transition: all 0.3s;
         }
-        .footer-section a i {
-            width: 18px;
-            text-align: center;
-            color: var(--primary-start);
-        }
-        .footer-section a:hover,
-        .footer-section a:focus {
-            color: var(--primary-start);
-            transform: translateX(4px);
-            outline: none;
-        }
+        .footer-section a:hover { color: #ff6b35; transform: translateX(5px); }
         .footer-bottom {
             text-align: center;
-            padding-top: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: var(--text-xs);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.75rem;
             color: #aaa;
-            line-height: 1.6;
-        }
-        .footer-bottom a {
-            color: var(--primary-start);
-            text-decoration: none;
         }
 
-        /* ========== WHATSAPP FLOAT BUTTON ========== */
+        /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
-            bottom: var(--spacing-lg);
-            right: var(--spacing-lg);
+            bottom: 20px;
+            right: 20px;
             background: #25D366;
             color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-full);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.25), var(--shadow-glow);
-            z-index: var(--z-dropdown);
-            transition: all var(--anim-normal);
+            font-size: 28px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s;
             animation: pulse 2s infinite;
             text-decoration: none;
-            border: 3px solid white;
         }
-        .whatsapp-float:hover,
-        .whatsapp-float:focus {
-            transform: scale(1.1) translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3), 0 0 30px rgba(37,211,102,0.5);
-            outline: none;
-        }
-        .whatsapp-float:active {
-            transform: scale(1);
-        }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* ========== RESPONSIVE DESIGN - ALL SCREENS ========== */
-        
-        /* Large Desktop */
-        @media (min-width: 1400px) {
-            .main-container {
-                max-width: 1600px;
-            }
-        }
-        
-        /* Desktop */
-        @media (max-width: 1200px) {
-            .main-container {
-                grid-template-columns: 240px 1fr;
-            }
-            .jobs-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-        
-        /* Tablet Landscape */
-        @media (max-width: 992px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: var(--spacing-md);
-            }
-            .sidebar-card {
-                flex: 1;
-                min-width: 280px;
-            }
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: var(--spacing-md);
-            }
-            .nav-menu {
-                justify-content: center;
-            }
-            .logo {
-                align-items: center;
-            }
-            .modal-info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Tablet Portrait */
-        @media (max-width: 768px) {
-            :root {
-                --spacing-xl: 1.5rem;
-                --spacing-2xl: 2rem;
-            }
-            .top-bar {
-                font-size: clamp(0.6rem, 0.55rem + 0.25vw, 0.7rem);
-                padding: var(--spacing-xs) var(--spacing-lg);
-            }
-            .main-header {
-                padding: var(--spacing-md) var(--spacing-lg);
-            }
-            .menu-toggle {
-                display: flex;
-                position: absolute;
-                right: var(--spacing-md);
-                top: 50%;
-                transform: translateY(-50%);
-            }
-            .nav-menu {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: var(--spacing-sm);
-                padding: var(--spacing-md) 0;
-                border-top: 1px solid var(--border-color);
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .nav-menu a {
-                padding: var(--spacing-sm);
-                justify-content: center;
-            }
-            .app-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .hero-banner {
-                margin: var(--spacing-md) var(--spacing-lg);
-                padding: var(--spacing-xl) var(--spacing-lg);
-            }
-            .hero-banner h2 {
-                font-size: var(--text-xl);
-            }
-            .state-section {
-                top: auto;
-                position: relative;
-            }
-            .state-container {
-                justify-content: center;
-            }
-            .category-container {
-                gap: var(--spacing-md);
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .jobs-grid {
-                grid-template-columns: 1fr;
-            }
-            .job-card-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .job-card-footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--spacing-md);
-            }
-            .apply-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .filter-group {
-                grid-template-columns: 1fr;
-            }
-            .quick-filters {
-                justify-content: center;
-            }
-            .modal-info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Mobile Small */
-        @media (max-width: 480px) {
-            :root {
-                --spacing-lg: 1.25rem;
-                --spacing-md: 0.875rem;
-                --spacing-sm: 0.625rem;
-            }
-            .logo h1 {
-                font-size: var(--text-lg);
-            }
-            .hero-banner {
-                margin: var(--spacing-md);
-                padding: var(--spacing-lg);
-                border-radius: var(--radius-md);
-            }
-            .hero-banner h2 {
-                font-size: var(--text-lg);
-            }
-            .hero-banner p {
-                font-size: var(--text-sm);
-            }
-            .jobs-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .search-wrapper {
-                padding: var(--spacing-md);
-            }
-            .job-card {
-                padding: var(--spacing-md);
-                border-radius: var(--radius-md);
-            }
-            .job-card-title {
-                font-size: var(--text-base);
-            }
-            .stat-card {
-                padding: var(--spacing-md);
-            }
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-section h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .footer-section a {
-                justify-content: center;
-            }
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: var(--spacing-md);
-                right: var(--spacing-md);
-            }
-        }
-        
-        /* Extra Small Mobile */
-        @media (max-width: 360px) {
-            .quick-filter-btn {
-                padding: var(--spacing-xs) var(--spacing-md);
-                font-size: 0.7rem;
-            }
-            .state-btn {
-                padding: var(--spacing-xs) var(--spacing-sm);
-                font-size: 0.65rem;
-            }
-        }
-
-        /* ========== PRINT STYLES ========== */
+        /* Print Styles */
         @media print {
-            .top-bar, .main-header, .state-section, .category-section, 
+            .top-bar, .main-header, .state-section, .category-section,
             .hero-banner, .sidebar, .search-wrapper, .quick-filters,
-            .footer, .whatsapp-float {
+            .footer, .whatsapp-float, .card-actions {
                 display: none !important;
             }
-            .main-container {
-                display: block;
-                padding: 0;
-            }
-            .job-card {
-                break-inside: avoid;
+            .main-container { display: block; padding: 0; }
+            .job-card { 
+                break-inside: avoid; 
                 page-break-inside: avoid;
                 border: 1px solid #000;
                 box-shadow: none;
             }
         }
 
-        /* ========== REDUCED MOTION ========== */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            html {
-                scroll-behavior: auto;
-            }
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-container { grid-template-columns: 1fr; }
+            .header-container { flex-direction: column; text-align: center; }
+            .nav-menu { justify-content: center; }
+            .sidebar { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+            .sidebar-card { flex: 1; min-width: 250px; }
         }
-
-        /* ========== HIGH CONTRAST MODE ========== */
-        @media (prefers-contrast: high) {
-            :root {
-                --border-color: #000;
-                --text-secondary: #333;
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu { 
+                display: none; 
+                width: 100%; 
+                flex-direction: column; 
+                padding: 1rem 0;
+                border-top: 1px solid #eee;
             }
-            .job-card, .sidebar-card, .stat-card, .search-wrapper {
-                border-width: 2px;
-            }
+            .nav-menu.active { display: flex; }
+            .header-actions { width: 100%; justify-content: center; }
+            .hero-banner { margin: 1rem; padding: 2rem 1rem; }
+            .hero-banner h2 { font-size: 1.3rem; }
+            .state-section { top: 120px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .jobs-grid { grid-template-columns: 1fr; }
+            .modal-info-grid { grid-template-columns: 1fr; }
+            .job-card-header { padding-right: 0; }
+            .card-actions { position: static; opacity: 1; margin-bottom: 1rem; }
+            .sort-bar { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .filter-group { flex-direction: column; }
+            .quick-filters { justify-content: center; }
+            .modal-actions { flex-direction: column; }
+            .modal-apply-btn, .modal-share-btn, .modal-save-btn { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Top Bar -->
-    <div class="top-bar" role="banner">
-        ⚠️ Always type <strong>.live</strong> after LatestJob. Beware of fake websites! | 
-        <a href="https://wa.me/919876543210" target="_blank" rel="noopener">📱 Daily Job Alerts on WhatsApp</a>
-    </div>
+<!-- Top Bar -->
+<div class="top-bar">
+    ⚠️ Always type <strong>.live</strong> after LatestJob. Beware of fake websites! | 
+    <a href="https://wa.me/919876543210" target="_blank">📱 Daily Job Alerts on WhatsApp</a>
+</div>
 
-    <!-- Main Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
-                <i class="fas fa-bars"></i>
+<!-- Main Header -->
+<div class="main-header">
+    <div class="header-container">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <h1>🔥 Latest<span style="color:#ff6b35">Job</span>.live</h1>
+            <p>Government Jobs | Private Jobs | Daily Updates</p>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <a href="#">🏠 Home</a>
+            <a href="#">🏛️ Government Jobs</a>
+            <a href="#">💼 Private Jobs</a>
+            <a href="#">🎫 Admit Cards</a>
+            <a href="#">📊 Results</a>
+        </nav>
+        <div class="header-actions">
+            <!-- ✨ NEW: Theme Toggle -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
             </button>
-            <div class="logo">
-                <h1>🔥 Latest<span style="color:var(--primary-start)">Job</span>.live</h1>
-                <p>Government Jobs | Private Jobs | Daily Updates</p>
-            </div>
-            <nav class="nav-menu" id="navMenu" role="navigation">
-                <a href="#" aria-current="page">🏠 Home</a>
-                <a href="#">🏛️ Government Jobs</a>
-                <a href="#">💼 Private Jobs</a>
-                <a href="#">🎫 Admit Cards</a>
-                <a href="#">📊 Results</a>
-            </nav>
-            <a href="https://wa.me/919876543210?text=Hi! I want daily job alerts" 
-               class="app-btn" 
-               target="_blank" 
-               rel="noopener"
-               aria-label="Join WhatsApp for job alerts">
+            <!-- ✨ NEW: Notification Bell -->
+            <button class="notification-bell" id="notificationBell" aria-label="View notifications" title="New Jobs">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge" id="newJobsCount">0</span>
+            </button>
+            <a href="https://wa.me/919876543210?text=Hi! I want daily job alerts" class="app-btn" target="_blank">
                 <i class="fab fa-whatsapp"></i> Join WhatsApp
             </a>
         </div>
-    </header>
+    </div>
+</div>
 
-    <!-- State Shortcuts -->
-    <div class="state-section" role="navigation" aria-label="State filters">
-        <div class="state-container">
-            <a href="#" class="state-btn active" data-state="All India" tabindex="0">🇮🇳 All India</a>
-            <a href="#" class="state-btn" data-state="Bihar" tabindex="0">BR Bihar</a>
-            <a href="#" class="state-btn" data-state="Uttar Pradesh" tabindex="0">UP</a>
-            <a href="#" class="state-btn" data-state="Delhi" tabindex="0">DL Delhi</a>
-            <a href="#" class="state-btn" data-state="Maharashtra" tabindex="0">MH</a>
-            <a href="#" class="state-btn" data-state="Karnataka" tabindex="0">KA</a>
-            <a href="#" class="state-btn" data-state="Gujarat" tabindex="0">GJ</a>
-            <a href="#" class="state-btn" data-state="Tamil Nadu" tabindex="0">TN</a>
-            <a href="#" class="state-btn" data-state="Rajasthan" tabindex="0">RJ</a>
-            <a href="#" class="state-btn" data-state="Madhya Pradesh" tabindex="0">MP</a>
-            <a href="#" class="state-btn" data-state="West Bengal" tabindex="0">WB</a>
-            <a href="#" class="state-btn" data-state="Punjab" tabindex="0">PB</a>
-            <a href="#" class="state-btn" data-state="Haryana" tabindex="0">HR</a>
+<!-- State Shortcuts -->
+<div class="state-section">
+    <div class="state-container">
+        <a href="#" class="state-btn active" data-state="All India">🇮🇳 All India</a>
+        <a href="#" class="state-btn" data-state="Bihar">BR</a>
+        <a href="#" class="state-btn" data-state="Uttar Pradesh">UP</a>
+        <a href="#" class="state-btn" data-state="Delhi">DL</a>
+        <a href="#" class="state-btn" data-state="Maharashtra">MH</a>
+        <a href="#" class="state-btn" data-state="Karnataka">KA</a>
+        <a href="#" class="state-btn" data-state="Gujarat">GJ</a>
+        <a href="#" class="state-btn" data-state="Tamil Nadu">TN</a>
+        <a href="#" class="state-btn" data-state="Rajasthan">RJ</a>
+        <a href="#" class="state-btn" data-state="Madhya Pradesh">MP</a>
+        <a href="#" class="state-btn" data-state="West Bengal">WB</a>
+        <a href="#" class="state-btn" data-state="Punjab">PB</a>
+        <a href="#" class="state-btn" data-state="Haryana">HR</a>
+    </div>
+</div>
+
+<!-- Category Menu -->
+<div class="category-section">
+    <div class="category-container">
+        <a href="#" class="category-link active" data-category="all">🔥 All Jobs</a>
+        <a href="#" class="category-link" data-category="Government">🏛️ Government</a>
+        <a href="#" class="category-link" data-category="Private">💼 Private</a>
+        <a href="#" class="category-link" data-category="Bank">🏦 Bank</a>
+        <a href="#" class="category-link" data-category="Railway">🚂 Railway</a>
+        <a href="#" class="category-link" data-category="Teaching">📚 Teaching</a>
+        <a href="#" class="category-link" data-category="Police">👮 Police/Defence</a>
+        <a href="#" class="category-link" data-category="Engineering">⚙️ Engineering</a>
+    </div>
+</div>
+
+<!-- Hero Banner -->
+<div class="hero-banner animate-up">
+    <h2>🇮🇳 Sarkari Naukri ka No.1 Platform 🇮🇳</h2>
+    <p>10th, 12th, Graduate, Diploma, ITI - All India Government & Private Jobs</p>
+    <div class="warning-text animate-up delay-1">📢 Daily 50+ New Job Updates | Free Job Alert on WhatsApp</div>
+</div>
+
+<!-- Main Container -->
+<div class="main-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-graduation-cap"></i> Jobs by Education</div>
+            <ul class="education-list">
+                <li><a href="#" data-education="10th"><span>📘 10th Pass Jobs</span> <span class="job-count" id="count10th">0</span></a></li>
+                <li><a href="#" data-education="12th"><span>📗 12th Pass Jobs</span> <span class="job-count" id="count12th">0</span></a></li>
+                <li><a href="#" data-education="Graduate"><span>🎓 Graduate Jobs</span> <span class="job-count" id="countGraduate">0</span></a></li>
+                <li><a href="#" data-education="Diploma"><span>📐 Diploma Jobs</span> <span class="job-count" id="countDiploma">0</span></a></li>
+                <li><a href="#" data-education="ITI"><span>🔧 ITI Jobs</span> <span class="job-count" id="countITI">0</span></a></li>
+                <li><a href="#" data-education="B.Tech"><span>💻 B.Tech/B.E Jobs</span> <span class="job-count" id="countBtech">0</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-bolt"></i> Quick Links</div>
+            <ul class="quick-links">
+                <li><a href="#"><i class="fas fa-ticket-alt"></i> Admit Cards 2026</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Latest Results</a></li>
+                <li><a href="#"><i class="fas fa-key"></i> Answer Keys</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Syllabus PDF</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Previous Papers</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Last Date Reminder</a></li>
+            </ul>
+        </div>
+        <!-- ✨ NEW: Recently Viewed Jobs -->
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-history"></i> Recently Viewed</div>
+            <div class="recently-viewed" id="recentlyViewed">
+                <p style="color:#666;font-size:0.8rem;">No recently viewed jobs</p>
+            </div>
         </div>
     </div>
 
-    <!-- Category Menu -->
-    <div class="category-section" role="navigation" aria-label="Job categories">
-        <div class="category-container">
-            <a href="#" class="category-link active" data-category="all">🔥 All Jobs</a>
-            <a href="#" class="category-link" data-category="Government">🏛️ Government</a>
-            <a href="#" class="category-link" data-category="Private">💼 Private</a>
-            <a href="#" class="category-link" data-category="Bank">🏦 Bank</a>
-            <a href="#" class="category-link" data-category="Railway">🚂 Railway</a>
-            <a href="#" class="category-link" data-category="Teaching">📚 Teaching</a>
-            <a href="#" class="category-link" data-category="Police">👮 Police/Defence</a>
-            <a href="#" class="category-link" data-category="Engineering">⚙️ Engineering</a>
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number" id="totalJobsStat">0</div><span class="stat-label">Total Jobs</span></div>
+            <div class="stat-card"><div class="stat-number" id="govtJobsStat">0</div><span class="stat-label">Government Jobs</span></div>
+            <div class="stat-card"><div class="stat-number" id="privateJobsStat">0</div><span class="stat-label">Private Jobs</span></div>
+            <div class="stat-card"><div class="stat-number" id="urgentJobsStat">0</div><span class="stat-label">Urgent (7 Days)</span></div>
+        </div>
+
+        <!-- Jobs Section Header -->
+        <div class="jobs-header">
+            <h3><i class="fas fa-fire" style="color:#ff6b35"></i> Latest Job Notifications</h3>
+            <div id="resultCount" style="color:#666; font-size:0.85rem;"></div>
+        </div>
+
+        <!-- ✨ NEW: Sort Options -->
+        <div class="sort-bar">
+            <span class="sort-label">Sort by:</span>
+            <select id="sortSelect" class="sort-select">
+                <option value="newest">🆕 Newest First</option>
+                <option value="urgent">⚡ Most Urgent</option>
+                <option value="salary-high">💰 Salary: High to Low</option>
+                <option value="salary-low">💰 Salary: Low to High</option>
+                <option value="deadline">📅 Ending Soon</option>
+            </select>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="search-wrapper">
+            <div class="search-input-group">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by job title, company, or location...">
+            </div>
+            <div class="filter-group">
+                <select id="stateFilter" class="filter-select">
+                    <option value="">All States</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="Government">Government Jobs</option>
+                    <option value="Private">Private Jobs</option>
+                </select>
+                <select id="educationFilter" class="filter-select">
+                    <option value="">All Qualifications</option>
+                    <option value="10th">10th Pass</option>
+                    <option value="12th">12th Pass</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="ITI">ITI</option>
+                    <option value="B.Tech">B.Tech/B.E</option>
+                </select>
+            </div>
+            <!-- ✨ NEW: Salary Range Filter -->
+            <div class="salary-filter">
+                <label>💰 Min Salary:</label>
+                <div class="salary-range">
+                    <input type="range" id="salaryRange" min="0" max="100000" step="5000" value="0">
+                    <span class="salary-value" id="salaryValue">₹0+</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Filters -->
+        <div class="quick-filters">
+            <button class="quick-filter-btn active" data-quick="all">🔥 All Jobs</button>
+            <button class="quick-filter-btn" data-quick="government">🏛️ Government</button>
+            <button class="quick-filter-btn" data-quick="private">💼 Private</button>
+            <button class="quick-filter-btn" data-quick="urgent">⏰ Urgent (7 Days)</button>
+            <button class="quick-filter-btn" data-quick="saved">🔖 Saved Jobs</button>
+        </div>
+
+        <!-- Jobs Grid -->
+        <div id="jobsGrid" class="jobs-grid">
+            <div class="loading-container"><div class="spinner"></div><p>Loading latest jobs...</p></div>
         </div>
     </div>
+</div>
 
-    <!-- Hero Banner -->
-    <section class="hero-banner animate-up" aria-labelledby="hero-title">
-        <h2 id="hero-title">🇮🇳 Sarkari Naukri ka No.1 Platform 🇮🇳</h2>
-        <p>10th, 12th, Graduate, Diploma, ITI - All India Government & Private Jobs</p>
-        <div class="warning-text animate-up delay-1">
-            <i class="fas fa-bell"></i> Daily 50+ New Job Updates | Free Job Alert on WhatsApp
+<!-- Footer -->
+<div class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>🔥 LatestJob.live</h4>
+            <p style="color:#aaa; margin-top: 0.5rem; font-size:0.8rem;">India's No.1 job portal for government and private jobs. Daily updates, free job alerts.</p>
         </div>
-    </section>
-
-    <!-- Main Container -->
-    <div class="main-container" id="main-content">
-        <!-- Sidebar -->
-        <aside class="sidebar" role="complementary">
-            <div class="sidebar-card reveal">
-                <div class="sidebar-title">
-                    <i class="fas fa-graduation-cap"></i> Jobs by Education
-                </div>
-                <ul class="education-list">
-                    <li><a href="#" data-education="10th" tabindex="0"><span>📘 10th Pass Jobs</span> <span class="job-count" id="count10th">0</span></a></li>
-                    <li><a href="#" data-education="12th" tabindex="0"><span>📗 12th Pass Jobs</span> <span class="job-count" id="count12th">0</span></a></li>
-                    <li><a href="#" data-education="Graduate" tabindex="0"><span>🎓 Graduate Jobs</span> <span class="job-count" id="countGraduate">0</span></a></li>
-                    <li><a href="#" data-education="Diploma" tabindex="0"><span>📐 Diploma Jobs</span> <span class="job-count" id="countDiploma">0</span></a></li>
-                    <li><a href="#" data-education="ITI" tabindex="0"><span>🔧 ITI Jobs</span> <span class="job-count" id="countITI">0</span></a></li>
-                    <li><a href="#" data-education="B.Tech" tabindex="0"><span>💻 B.Tech/B.E Jobs</span> <span class="job-count" id="countBtech">0</span></a></li>
-                </ul>
-            </div>
-            <div class="sidebar-card reveal delay-1">
-                <div class="sidebar-title">
-                    <i class="fas fa-bolt"></i> Quick Links
-                </div>
-                <ul class="quick-links">
-                    <li><a href="#" tabindex="0"><i class="fas fa-ticket-alt"></i> Admit Cards 2026</a></li>
-                    <li><a href="#" tabindex="0"><i class="fas fa-chart-line"></i> Latest Results</a></li>
-                    <li><a href="#" tabindex="0"><i class="fas fa-key"></i> Answer Keys</a></li>
-                    <li><a href="#" tabindex="0"><i class="fas fa-book"></i> Syllabus PDF</a></li>
-                    <li><a href="#" tabindex="0"><i class="fas fa-file-alt"></i> Previous Papers</a></li>
-                    <li><a href="#" tabindex="0"><i class="fas fa-calendar-alt"></i> Last Date Reminder</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Content Area -->
-        <main class="content-area" role="main">
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-card reveal" tabindex="0" role="status" aria-live="polite">
-                    <div class="stat-number" id="totalJobsStat">0</div>
-                    <span class="stat-label">Total Jobs</span>
-                </div>
-                <div class="stat-card reveal delay-1" tabindex="0">
-                    <div class="stat-number" id="govtJobsStat">0</div>
-                    <span class="stat-label">Government Jobs</span>
-                </div>
-                <div class="stat-card reveal delay-2" tabindex="0">
-                    <div class="stat-number" id="privateJobsStat">0</div>
-                    <span class="stat-label">Private Jobs</span>
-                </div>
-                <div class="stat-card reveal delay-3" tabindex="0">
-                    <div class="stat-number" id="urgentJobsStat">0</div>
-                    <span class="stat-label">Urgent (7 Days)</span>
-                </div>
-            </div>
-
-            <!-- Jobs Section Header -->
-            <div class="jobs-header">
-                <h3><i class="fas fa-fire"></i> Latest Job Notifications</h3>
-                <div id="resultCount" aria-live="polite">Loading jobs...</div>
-            </div>
-
-            <!-- Search & Filter -->
-            <div class="search-wrapper reveal">
-                <div class="search-input-group">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <label for="searchInput" class="visually-hidden">Search jobs</label>
-                    <input type="search" 
-                           id="searchInput" 
-                           placeholder="Search by job title, company, or location..."
-                           aria-label="Search jobs">
-                </div>
-                <div class="filter-group">
-                    <label for="stateFilter" class="visually-hidden">Filter by state</label>
-                    <select id="stateFilter" class="filter-select" aria-label="Filter by state">
-                        <option value="">All States</option>
-                        <option value="Bihar">Bihar</option>
-                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                        <option value="Delhi">Delhi</option>
-                        <option value="Maharashtra">Maharashtra</option>
-                        <option value="Karnataka">Karnataka</option>
-                        <option value="Gujarat">Gujarat</option>
-                        <option value="Tamil Nadu">Tamil Nadu</option>
-                        <option value="Rajasthan">Rajasthan</option>
-                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                        <option value="West Bengal">West Bengal</option>
-                    </select>
-                    <label for="categoryFilter" class="visually-hidden">Filter by category</label>
-                    <select id="categoryFilter" class="filter-select" aria-label="Filter by category">
-                        <option value="">All Categories</option>
-                        <option value="Government">Government Jobs</option>
-                        <option value="Private">Private Jobs</option>
-                    </select>
-                    <label for="educationFilter" class="visually-hidden">Filter by qualification</label>
-                    <select id="educationFilter" class="filter-select" aria-label="Filter by qualification">
-                        <option value="">All Qualifications</option>
-                        <option value="10th">10th Pass</option>
-                        <option value="12th">12th Pass</option>
-                        <option value="Graduate">Graduate</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="ITI">ITI</option>
-                        <option value="B.Tech">B.Tech/B.E</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Quick Filters -->
-            <div class="quick-filters reveal" role="group" aria-label="Quick filters">
-                <button class="quick-filter-btn active" data-quick="all" tabindex="0">🔥 All Jobs</button>
-                <button class="quick-filter-btn" data-quick="government" tabindex="0">🏛️ Government</button>
-                <button class="quick-filter-btn" data-quick="private" tabindex="0">💼 Private</button>
-                <button class="quick-filter-btn" data-quick="urgent" tabindex="0">⏰ Urgent (7 Days)</button>
-            </div>
-
-            <!-- Jobs Grid -->
-            <div id="jobsGrid" class="jobs-grid" aria-live="polite">
-                <!-- Loading Skeletons -->
-                <div class="skeleton-card"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text short"></div><div class="skeleton-footer"><div class="skeleton skeleton-btn"></div></div></div>
-                <div class="skeleton-card"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text short"></div><div class="skeleton-footer"><div class="skeleton skeleton-btn"></div></div></div>
-                <div class="skeleton-card"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text short"></div><div class="skeleton-footer"><div class="skeleton skeleton-btn"></div></div></div>
-            </div>
-        </main>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="#">Latest Jobs</a>
+            <a href="#">Government Jobs</a>
+            <a href="#">Private Jobs</a>
+            <a href="#">Work From Home</a>
+            <a href="#">Part Time Jobs</a>
+        </div>
+        <div class="footer-section">
+            <h4>Resources</h4>
+            <a href="#">Admit Cards</a>
+            <a href="#">Exam Results</a>
+            <a href="#">Answer Keys</a>
+            <a href="#">Syllabus</a>
+            <a href="#">Previous Papers</a>
+        </div>
+        <div class="footer-section">
+            <h4>Connect With Us</h4>
+            <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+            <a href="#"><i class="fab fa-telegram"></i> Telegram Group</a>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook Page</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fas fa-envelope"></i> support@latestjob.live</a>
+        </div>
     </div>
+    <div class="footer-bottom">
+        <p>© 2026 LatestJob.live | All Rights Reserved | Always type .live after LatestJob</p>
+        <p style="margin-top: 0.5rem;">Disclaimer: This is not the official government website. We only provide job information from official sources.</p>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>🔥 LatestJob.live</h4>
-                <p>India's No.1 job portal for government and private jobs. Daily updates, free job alerts on WhatsApp & Telegram.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#">📋 Latest Jobs</a>
-                <a href="#">🏛️ Government Jobs</a>
-                <a href="#">💼 Private Jobs</a>
-                <a href="#">🏠 Work From Home</a>
-                <a href="#">⏰ Part Time Jobs</a>
-            </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <a href="#">🎫 Admit Cards</a>
-                <a href="#">📊 Exam Results</a>
-                <a href="#">🔑 Answer Keys</a>
-                <a href="#">📚 Syllabus PDF</a>
-                <a href="#">📄 Previous Papers</a>
-            </div>
-            <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
-                <a href="#" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram Group</a>
-                <a href="#" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Facebook Page</a>
-                <a href="#" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="mailto:support@latestjob.live"><i class="fas fa-envelope"></i> support@latestjob.live</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 <a href="https://latestjob.live">LatestJob.live</a> | All Rights Reserved</p>
-            <p>⚠️ Always type <strong>.live</strong> after LatestJob. Beware of fake websites!</p>
-            <p style="margin-top: 0.5rem; opacity: 0.8;">Disclaimer: This is not the official government website. We only provide job information from official sources. Please verify details on the official website before applying.</p>
-        </div>
-    </footer>
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/919876543210?text=Hi! I want daily job alerts" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/919876543210?text=Hi! I want daily job alerts on LatestJob.live" 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener"
-       aria-label="Chat on WhatsApp for job alerts">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<!-- Toast Container -->
+<div id="toastContainer"></div>
 
-    <!-- Visually Hidden Utility -->
-    <style>
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
+<script>
+    // 🔴 API URL - CONNECTED TO YOUR GOOGLE SCRIPT 🔴
+    const API_URL = "https://script.google.com/macros/s/AKfycbx6AQ3owbhHywZ5fvt4wg8MIV2Hnm69M0lblT0nW_wKNbQWx5w_dEJ2hCzhuIXJKQAMBw/exec";
+    
+    let allJobs = [];
+    let savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]');
+    let recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+    let currentFilters = {
+        search: '',
+        state: '',
+        category: '',
+        education: '',
+        quick: 'all',
+        salary: 0,
+        sort: 'newest'
+    };
 
-    <script>
-        // 🔴 API URL - Connected to your Google Script 🔴
-        const API_URL = "https://script.google.com/macros/s/AKfycbx6AQ3owbhHywZ5fvt4wg8MIV2Hnm69M0lblT0nW_wKNbQWx5w_dEJ2hCzhuIXJKQAMBw/exec";
-        
-        let allJobs = [];
-        let currentFilters = {
-            search: '',
-            state: '',
-            category: '',
-            education: '',
-            quick: 'all'
-        };
+    // ========== HELPER FUNCTIONS ==========
+    function formatDate(dateStr) {
+        if(!dateStr) return 'N/A';
+        const date = new Date(dateStr);
+        if(isNaN(date.getTime())) return 'N/A';
+        return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
 
-        // ========== HELPER FUNCTIONS ==========
-        function formatDate(dateStr) {
-            if(!dateStr) return 'N/A';
-            const date = new Date(dateStr);
-            if(isNaN(date.getTime())) return 'N/A';
-            return date.toLocaleDateString('en-IN', { 
-                day: 'numeric', 
-                month: 'short', 
-                year: 'numeric' 
-            });
-        }
+    function isUrgent(lastDate) {
+        if(!lastDate) return false;
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const deadline = new Date(lastDate);
+        deadline.setHours(0,0,0,0);
+        const diffDays = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+        return diffDays <= 7 && diffDays >= 0;
+    }
 
-        function isUrgent(lastDate) {
-            if(!lastDate) return false;
-            const today = new Date();
-            today.setHours(0,0,0,0);
-            const deadline = new Date(lastDate);
-            deadline.setHours(0,0,0,0);
-            const diffDays = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
-            return diffDays <= 7 && diffDays >= 0;
-        }
+    function getCountdown(lastDate) {
+        if(!lastDate) return null;
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const deadline = new Date(lastDate);
+        deadline.setHours(23,59,59,999);
+        const diffMs = deadline - today;
+        if(diffMs <= 0) return null;
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        return { days, hours, total: Math.ceil(diffMs / (1000 * 60 * 60)) };
+    }
 
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
+    function formatSalary(salaryStr) {
+        if(!salaryStr) return 0;
+        const num = parseFloat(salaryStr.toString().replace(/[^0-9.]/g, ''));
+        return isNaN(num) ? 0 : num;
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
                 clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+                func(...args);
             };
-        }
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 
-        // ========== REVEAL ON SCROLL ==========
-        function initScrollReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
+    // ========== TOAST NOTIFICATIONS ==========
+    function showToast(message, type = 'info', duration = 3000) {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+            <span>${message}</span>
+            <button class="toast-close" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+        `;
+        container.appendChild(toast);
+        setTimeout(() => toast.remove(), duration);
+    }
+
+    // ========== SAVE/UNSAVE JOB ==========
+    function toggleSaveJob(jobId, jobTitle) {
+        const index = savedJobs.indexOf(jobId);
+        if(index === -1) {
+            savedJobs.push(jobId);
+            localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
+            showToast(`"${jobTitle}" saved!`, 'success');
+        } else {
+            savedJobs.splice(index, 1);
+            localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
+            showToast(`"${jobTitle}" removed from saved`, 'info');
+        }
+        // Update UI
+        document.querySelectorAll(`[data-job-id="${jobId}"]`).forEach(btn => {
+            btn.classList.toggle('saved');
+            btn.innerHTML = btn.classList.contains('saved') ? 
+                '<i class="fas fa-bookmark"></i> Saved' : '<i class="far fa-bookmark"></i> Save';
+        });
+        if(currentFilters.quick === 'saved') filterAndDisplayJobs();
+    }
+
+    function isJobSaved(jobId) {
+        return savedJobs.includes(jobId);
+    }
+
+    // ========== RECENTLY VIEWED ==========
+    function addRecentlyViewed(job) {
+        if(!job?.id) return;
+        recentlyViewed = recentlyViewed.filter(j => j.id !== job.id);
+        recentlyViewed.unshift({ id: job.id, title: job.title, company: job.company, timestamp: Date.now() });
+        recentlyViewed = recentlyViewed.slice(0, 5); // Keep only last 5
+        localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
+        updateRecentlyViewedUI();
+    }
+
+    function updateRecentlyViewedUI() {
+        const container = document.getElementById('recentlyViewed');
+        if(recentlyViewed.length === 0) {
+            container.innerHTML = '<p style="color:#666;font-size:0.8rem;">No recently viewed jobs</p>';
+            return;
+        }
+        container.innerHTML = recentlyViewed.map(job => `
+            <div class="recent-item" onclick="scrollToJob('${job.id}')">
+                🔹 ${job.title} <small style="color:#999">(${job.company})</small>
+            </div>
+        `).join('');
+    }
+
+    function scrollToJob(jobId) {
+        const card = document.querySelector(`[data-job-id="${jobId}"]`)?.closest('.job-card');
+        if(card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.style.animation = 'heartbeat 0.5s ease';
+            setTimeout(() => card.style.animation = '', 500);
+        }
+    }
+
+    // ========== SHARE JOB ==========
+    async function shareJob(job) {
+        const shareData = {
+            title: job.title,
+            text: `Check out this job: ${job.title} at ${job.company}`,
+            url: window.location.href + '#job-' + job.id
+        };
+        try {
+            if(navigator.share) {
+                await navigator.share(shareData);
+                showToast('Job shared successfully!', 'success');
+            } else {
+                await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+                showToast('Link copied to clipboard!', 'success');
+            }
+        } catch(err) {
+            if(err.name !== 'AbortError') {
+                await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+                showToast('Link copied to clipboard!', 'success');
+            }
+        }
+    }
+
+    // ========== QUICK WHATSAPP APPLY ==========
+    function quickWhatsAppApply(job) {
+        const message = `Hi, I'm interested in the job: ${job.title} at ${job.company}. Please share more details. Source: LatestJob.live`;
+        const url = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+        showToast('Opening WhatsApp...', 'info');
+    }
+
+    // ========== LOAD JOBS FROM API ==========
+    async function loadJobs() {
+        const container = document.getElementById('jobsGrid');
+        try {
+            const response = await fetch(API_URL, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                cache: 'no-store'
             });
-        }
-
-        // ========== LOAD JOBS FROM API ==========
-        async function loadJobs() {
-            const container = document.getElementById('jobsGrid');
+            if(!response.ok) throw new Error(`HTTP ${response.status}`);
             
-            try {
-                // Show loading state
-                container.innerHTML = `
-                    <div class="skeleton-card"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text short"></div><div class="skeleton-footer"><div class="skeleton skeleton-btn"></div></div></div>
-                    <div class="skeleton-card"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text short"></div><div class="skeleton-footer"><div class="skeleton skeleton-btn"></div></div></div>
-                    <div class="skeleton-card"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text short"></div><div class="skeleton-footer"><div class="skeleton skeleton-btn"></div></div></div>
-                `;
-                
-                const response = await fetch(API_URL, {
-                    method: 'GET',
-                    headers: { 'Content-Type': 'application/json' },
-                    cache: 'no-store'
-                });
-                
-                if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                
-                allJobs = await response.json();
-                
-                // Auto-expiry filter - remove past jobs
-                const today = new Date().toISOString().split('T')[0];
-                allJobs = allJobs.filter(job => {
-                    if(!job.last_date) return true;
-                    return job.last_date >= today;
-                });
-                
-                // Sort by posted date (newest first)
-                allJobs.sort((a, b) => new Date(b.posted_date || 0) - new Date(a.posted_date || 0));
-                
-                updateStats();
-                updateEducationCounts();
-                filterAndDisplayJobs();
-                
-            } catch(error) {
-                console.error('Error loading jobs:', error);
-                container.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h3>Unable to load jobs</h3>
-                        <p>${error.message || 'Please check your internet connection'}</p>
-                        <button class="reset-btn" onclick="loadJobs()">
-                            <i class="fas fa-redo"></i> Retry
-                        </button>
-                    </div>
-                `;
-            }
-        }
-
-        // ========== UPDATE STATISTICS ==========
-        function updateStats() {
-            const total = allJobs.length;
-            const govt = allJobs.filter(j => j.category === 'Government').length;
-            const priv = allJobs.filter(j => j.category === 'Private').length;
-            const urgent = allJobs.filter(j => isUrgent(j.last_date)).length;
+            allJobs = await response.json();
             
-            animateNumber('totalJobsStat', total);
-            animateNumber('govtJobsStat', govt);
-            animateNumber('privateJobsStat', priv);
-            animateNumber('urgentJobsStat', urgent);
-        }
-
-        function animateNumber(elementId, target) {
-            const element = document.getElementById(elementId);
-            if(!element) return;
+            // Add unique IDs if not present
+            allJobs = allJobs.map((job, index) => ({
+                ...job,
+                id: job.id || `job_${Date.now()}_${index}`
+            }));
             
-            const duration = 500;
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
+            // Filter expired jobs
+            const today = new Date().toISOString().split('T')[0];
+            allJobs = allJobs.filter(job => !job.last_date || job.last_date >= today);
             
-            const animate = () => {
-                current += increment;
-                if(current < target) {
-                    element.textContent = Math.floor(current);
-                    requestAnimationFrame(animate);
-                } else {
-                    element.textContent = target;
-                }
-            };
-            animate();
-        }
-
-        // ========== UPDATE EDUCATION COUNTS ==========
-        function updateEducationCounts() {
-            const counts = {
-                '10th': allJobs.filter(j => j.education?.toLowerCase() === '10th').length,
-                '12th': allJobs.filter(j => j.education?.toLowerCase() === '12th').length,
-                'Graduate': allJobs.filter(j => j.education?.toLowerCase() === 'graduate').length,
-                'Diploma': allJobs.filter(j => j.education?.toLowerCase() === 'diploma').length,
-                'ITI': allJobs.filter(j => j.education?.toLowerCase() === 'iti').length,
-                'B.Tech': allJobs.filter(j => j.education?.toLowerCase() === 'b.tech' || j.education?.toLowerCase() === 'b.e').length
-            };
+            // Sort by posted date
+            allJobs.sort((a, b) => new Date(b.posted_date || 0) - new Date(a.posted_date || 0));
             
-            document.getElementById('count10th').innerText = counts['10th'] || 0;
-            document.getElementById('count12th').innerText = counts['12th'] || 0;
-            document.getElementById('countGraduate').innerText = counts['Graduate'] || 0;
-            document.getElementById('countDiploma').innerText = counts['Diploma'] || 0;
-            document.getElementById('countITI').innerText = counts['ITI'] || 0;
-            document.getElementById('countBtech').innerText = counts['B.Tech'] || 0;
-        }
-
-        // ========== FILTER AND DISPLAY JOBS ==========
-        function filterAndDisplayJobs() {
-            let filtered = [...allJobs];
+            // Update new jobs count for notification
+            const newJobs = allJobs.filter(j => {
+                const posted = new Date(j.posted_date);
+                const now = new Date();
+                return (now - posted) < 24 * 60 * 60 * 1000; // Last 24 hours
+            }).length;
+            document.getElementById('newJobsCount').textContent = newJobs;
+            if(newJobs > 0) document.getElementById('newJobsCount').style.display = 'block';
             
-            // Search filter (debounced)
-            if(currentFilters.search) {
-                const searchLower = currentFilters.search.toLowerCase();
-                filtered = filtered.filter(job => 
-                    (job.title && job.title.toLowerCase().includes(searchLower)) ||
-                    (job.company && job.company.toLowerCase().includes(searchLower)) ||
-                    (job.state && job.state.toLowerCase().includes(searchLower)) ||
-                    (job.city && job.city.toLowerCase().includes(searchLower))
-                );
-            }
+            updateStats();
+            updateEducationCounts();
+            updateRecentlyViewedUI();
+            filterAndDisplayJobs();
             
-            // State filter
-            if(currentFilters.state && currentFilters.state !== 'All India') {
-                filtered = filtered.filter(job => job.state === currentFilters.state);
-            }
-            
-            // Category filter
-            if(currentFilters.category) {
-                filtered = filtered.filter(job => job.category === currentFilters.category);
-            }
-            
-            // Education filter
-            if(currentFilters.education) {
-                filtered = filtered.filter(job => {
-                    const jobEdu = job.education?.toLowerCase();
-                    const filterEdu = currentFilters.education.toLowerCase();
-                    return jobEdu === filterEdu;
-                });
-            }
-            
-            // Quick filter
-            if(currentFilters.quick === 'government') {
-                filtered = filtered.filter(job => job.category === 'Government');
-            } else if(currentFilters.quick === 'private') {
-                filtered = filtered.filter(job => job.category === 'Private');
-            } else if(currentFilters.quick === 'urgent') {
-                filtered = filtered.filter(job => isUrgent(job.last_date));
-            }
-            
-            displayJobs(filtered);
-            document.getElementById('resultCount').textContent = 
-                `${filtered.length} job${filtered.length !== 1 ? 's' : ''} found`;
-        }
-
-        // ========== DISPLAY JOBS IN GRID ==========
-        function displayJobs(jobs) {
-            const container = document.getElementById('jobsGrid');
-            
-            if(!jobs || jobs.length === 0) {
-                container.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <h3>No jobs found</h3>
-                        <p>Try adjusting your filters or search terms</p>
-                        <button class="reset-btn" onclick="resetAllFilters()">
-                            <i class="fas fa-undo"></i> Reset Filters
-                        </button>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = jobs.map((job, index) => {
-                const urgent = isUrgent(job.last_date);
-                const categoryClass = job.category === 'Government' ? 'category-govt' : 'category-private';
-                const delay = (index % 5) + 1;
-                
-                // Safe access to job properties
-                const title = job.title || 'Job Title Not Available';
-                const company = job.company || 'Company Not Specified';
-                const state = job.state || 'Location Not Specified';
-                const city = job.city ? ` - ${job.city}` : '';
-                const salary = job.salary || 'Not Disclosed';
-                const education = job.education || 'Any Qualification';
-                const postedDate = formatDate(job.posted_date);
-                const lastDate = formatDate(job.last_date);
-                const applyLink = job.apply_link || '#';
-                
-                return `
-                    <article class="job-card ${urgent ? 'urgent' : ''} animate-up delay-${delay} reveal" 
-                             tabindex="0"
-                             role="button"
-                             aria-label="${title} at ${company}. Apply by ${lastDate}"
-                             onclick="openJobModal(${JSON.stringify(job).replace(/"/g, '&quot;')})"
-                             onkeypress="if(event.key==='Enter'){openJobModal(${JSON.stringify(job).replace(/"/g, '&quot;')})}">
-                        
-                        <div class="job-card-header">
-                            <div>
-                                <h3 class="job-card-title">${title}</h3>
-                                <div class="job-card-company">
-                                    <i class="fas fa-building"></i> ${company}
-                                </div>
-                            </div>
-                            <span class="job-category-badge ${categoryClass}">${job.category || 'Job'}</span>
-                        </div>
-                        
-                        <div class="job-card-details">
-                            <span class="job-card-detail">
-                                <i class="fas fa-map-marker-alt"></i> ${state}${city}
-                            </span>
-                            <span class="job-card-detail">
-                                <i class="fas fa-rupee-sign"></i> ${salary}
-                            </span>
-                        </div>
-                        
-                        <div class="job-card-tags">
-                            <span class="job-card-tag">
-                                <i class="fas fa-graduation-cap"></i> ${education}
-                            </span>
-                            <span class="job-card-tag">
-                                <i class="fas fa-clock"></i> Posted: ${postedDate}
-                            </span>
-                        </div>
-                        
-                        <div class="job-card-footer">
-                            <span class="${urgent ? 'deadline-urgent' : 'deadline-normal'}">
-                                <i class="fas fa-calendar-alt"></i> Apply by: ${lastDate}
-                                ${urgent ? ' ⚡ Hurry!' : ''}
-                            </span>
-                            <a href="${applyLink}" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="apply-btn" 
-                               onclick="event.stopPropagation()"
-                               aria-label="Apply for ${title}">
-                                Apply Now <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </article>
-                `;
-            }).join('');
-            
-            // Re-initialize scroll reveal for new elements
-            setTimeout(initScrollReveal, 100);
-        }
-
-        // ========== MODAL POPUP ==========
-        function openJobModal(job) {
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
-            
-            const urgent = isUrgent(job.last_date);
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.id = 'jobModal';
-            modal.setAttribute('role', 'dialog');
-            modal.setAttribute('aria-modal', 'true');
-            modal.setAttribute('aria-labelledby', 'modal-title');
-            
-            modal.innerHTML = `
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <h2 id="modal-title"><i class="fas fa-briefcase"></i> Job Details</h2>
-                        <p>Apply before ${formatDate(job.last_date)}</p>
-                        <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h1 class="modal-job-title">${job.title || 'N/A'}</h1>
-                        <div class="modal-job-company">
-                            <i class="fas fa-building"></i> ${job.company || 'N/A'}
-                        </div>
-                        
-                        <div class="modal-info-grid">
-                            <div class="modal-info-item">
-                                <i class="fas fa-map-marker-alt"></i> 
-                                <div><strong>Location:</strong><br>${job.state || 'N/A'}${job.city ? ' - ' + job.city : ''}</div>
-                            </div>
-                            <div class="modal-info-item">
-                                <i class="fas fa-rupee-sign"></i> 
-                                <div><strong>Salary:</strong><br>${job.salary || 'Not Disclosed'}</div>
-                            </div>
-                            <div class="modal-info-item">
-                                <i class="fas fa-graduation-cap"></i> 
-                                <div><strong>Qualification:</strong><br>${job.education || 'Any'}</div>
-                            </div>
-                            <div class="modal-info-item">
-                                <i class="fas fa-briefcase"></i> 
-                                <div><strong>Job Type:</strong><br>${job.category || 'N/A'}</div>
-                            </div>
-                            <div class="modal-info-item">
-                                <i class="fas fa-calendar-alt"></i> 
-                                <div><strong>Posted:</strong><br>${formatDate(job.posted_date)}</div>
-                            </div>
-                            <div class="modal-info-item">
-                                <i class="fas fa-hourglass-half"></i> 
-                                <div><strong>Last Date:</strong><br>${formatDate(job.last_date)} ${urgent ? '<span style="color:#dc2626;font-weight:600"> (Urgent!)</span>' : ''}</div>
-                            </div>
-                        </div>
-                        
-                        ${job.description ? `
-                        <div class="modal-description">
-                            <strong>📝 Job Description:</strong>
-                            <p style="margin-top: 0.5rem;">${job.description}</p>
-                        </div>` : ''}
-                        
-                        <a href="${job.apply_link || '#'}" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="modal-apply-btn">
-                            <i class="fas fa-arrow-right"></i> Apply Now on Official Website
-                        </a>
-                        
-                        <p class="modal-footer-note">
-                            ⚠️ Always verify details on the official government/organization website before applying. LatestJob.live is an aggregator, not the official source.
-                        </p>
-                    </div>
+        } catch(error) {
+            console.error('Error loading jobs:', error);
+            container.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Unable to load jobs</h3>
+                    <p>${error.message || 'Please check your internet connection'}</p>
+                    <button class="reset-btn" onclick="loadJobs()">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
                 </div>
             `;
-            
-            document.body.appendChild(modal);
-            
-            // Close on Escape key
-            const handleEscape = (e) => {
-                if(e.key === 'Escape') closeModal();
-            };
-            document.addEventListener('keydown', handleEscape);
-            modal.dataset.escapeHandler = 'true';
-            
-            // Focus trap for accessibility
-            const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            const firstFocusable = focusableElements[0];
-            const lastFocusable = focusableElements[focusableElements.length - 1];
-            
-            firstFocusable?.focus();
-            
-            modal.addEventListener('keydown', (e) => {
-                if(e.key === 'Tab') {
-                    if(e.shiftKey) {
-                        if(document.activeElement === firstFocusable) {
-                            e.preventDefault();
-                            lastFocusable.focus();
-                        }
-                    } else {
-                        if(document.activeElement === lastFocusable) {
-                            e.preventDefault();
-                            firstFocusable.focus();
-                        }
-                    }
-                }
-            });
+            showToast('Failed to load jobs. Please retry.', 'error');
         }
+    }
 
-        function closeModal() {
-            const modal = document.getElementById('jobModal');
-            if(modal) {
-                // Remove escape handler
-                if(modal.dataset.escapeHandler === 'true') {
-                    document.removeEventListener('keydown', (e) => e.key === 'Escape');
-                }
-                modal.remove();
-                document.body.style.overflow = '';
+    // ========== UPDATE STATISTICS ==========
+    function updateStats() {
+        const total = allJobs.length;
+        const govt = allJobs.filter(j => j.category === 'Government').length;
+        const priv = allJobs.filter(j => j.category === 'Private').length;
+        const urgent = allJobs.filter(j => isUrgent(j.last_date)).length;
+        
+        animateNumber('totalJobsStat', total);
+        animateNumber('govtJobsStat', govt);
+        animateNumber('privateJobsStat', priv);
+        animateNumber('urgentJobsStat', urgent);
+    }
+
+    function animateNumber(elementId, target) {
+        const element = document.getElementById(elementId);
+        if(!element) return;
+        const duration = 500;
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        const animate = () => {
+            current += increment;
+            if(current < target) {
+                element.textContent = Math.floor(current);
+                requestAnimationFrame(animate);
+            } else {
+                element.textContent = target;
             }
+        };
+        animate();
+    }
+
+    // ========== UPDATE EDUCATION COUNTS ==========
+    function updateEducationCounts() {
+        const counts = {
+            '10th': allJobs.filter(j => j.education?.toLowerCase() === '10th').length,
+            '12th': allJobs.filter(j => j.education?.toLowerCase() === '12th').length,
+            'Graduate': allJobs.filter(j => j.education?.toLowerCase() === 'graduate').length,
+            'Diploma': allJobs.filter(j => j.education?.toLowerCase() === 'diploma').length,
+            'ITI': allJobs.filter(j => j.education?.toLowerCase() === 'iti').length,
+            'B.Tech': allJobs.filter(j => j.education?.toLowerCase() === 'b.tech' || j.education?.toLowerCase() === 'b.e').length
+        };
+        document.getElementById('count10th').innerText = counts['10th'] || 0;
+        document.getElementById('count12th').innerText = counts['12th'] || 0;
+        document.getElementById('countGraduate').innerText = counts['Graduate'] || 0;
+        document.getElementById('countDiploma').innerText = counts['Diploma'] || 0;
+        document.getElementById('countITI').innerText = counts['ITI'] || 0;
+        document.getElementById('countBtech').innerText = counts['B.Tech'] || 0;
+    }
+
+    // ========== SORT JOBS ==========
+    function sortJobs(jobs) {
+        switch(currentFilters.sort) {
+            case 'urgent':
+                return jobs.sort((a, b) => (isUrgent(b.last_date) ? 1 : 0) - (isUrgent(a.last_date) ? 1 : 0));
+            case 'salary-high':
+                return jobs.sort((a, b) => formatSalary(b.salary) - formatSalary(a.salary));
+            case 'salary-low':
+                return jobs.sort((a, b) => formatSalary(a.salary) - formatSalary(b.salary));
+            case 'deadline':
+                return jobs.sort((a, b) => new Date(a.last_date || '9999-12-31') - new Date(b.last_date || '9999-12-31'));
+            case 'newest':
+            default:
+                return jobs.sort((a, b) => new Date(b.posted_date || 0) - new Date(a.posted_date || 0));
         }
+    }
 
-        // Close modal when clicking overlay
-        document.addEventListener('click', (e) => {
-            if(e.target.classList.contains('modal-overlay')) {
-                closeModal();
-            }
-        });
-
-        // ========== RESET FILTERS ==========
-        function resetAllFilters() {
-            currentFilters = {
-                search: '',
-                state: '',
-                category: '',
-                education: '',
-                quick: 'all'
-            };
-            
-            // Reset UI
-            document.getElementById('searchInput').value = '';
-            document.getElementById('stateFilter').value = '';
-            document.getElementById('categoryFilter').value = '';
-            document.getElementById('educationFilter').value = '';
-            
-            document.querySelectorAll('.quick-filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.getAttribute('data-quick') === 'all') {
-                    btn.classList.add('active');
-                }
-            });
-            
-            document.querySelectorAll('.state-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.state-btn[data-state="All India"]')?.classList.add('active');
-            
-            document.querySelectorAll('.category-link').forEach(link => link.classList.remove('active'));
-            document.querySelector('.category-link[data-category="all"]')?.classList.add('active');
-            
-            filterAndDisplayJobs();
+    // ========== FILTER AND DISPLAY JOBS ==========
+    function filterAndDisplayJobs() {
+        let filtered = [...allJobs];
+        
+        // Search filter
+        if(currentFilters.search) {
+            const s = currentFilters.search.toLowerCase();
+            filtered = filtered.filter(job => 
+                (job.title && job.title.toLowerCase().includes(s)) ||
+                (job.company && job.company.toLowerCase().includes(s)) ||
+                (job.state && job.state.toLowerCase().includes(s)) ||
+                (job.city && job.city.toLowerCase().includes(s))
+            );
         }
-
-        // ========== MOBILE MENU TOGGLE ==========
-        function initMobileMenu() {
-            const toggle = document.getElementById('menuToggle');
-            const nav = document.getElementById('navMenu');
-            
-            toggle?.addEventListener('click', () => {
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                toggle.setAttribute('aria-expanded', !isExpanded);
-                nav.classList.toggle('active');
-                toggle.innerHTML = isExpanded ? 
-                    '<i class="fas fa-bars"></i>' : 
-                    '<i class="fas fa-times"></i>';
-            });
-            
-            // Close menu when clicking a link
-            nav?.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('active');
-                    toggle.setAttribute('aria-expanded', 'false');
-                    toggle.innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
+        // State filter
+        if(currentFilters.state && currentFilters.state !== 'All India') {
+            filtered = filtered.filter(job => job.state === currentFilters.state);
         }
+        // Category filter
+        if(currentFilters.category) {
+            filtered = filtered.filter(job => job.category === currentFilters.category);
+        }
+        // Education filter
+        if(currentFilters.education) {
+            filtered = filtered.filter(job => job.education?.toLowerCase() === currentFilters.education.toLowerCase());
+        }
+        // Salary filter
+        if(currentFilters.salary > 0) {
+            filtered = filtered.filter(job => formatSalary(job.salary) >= currentFilters.salary);
+        }
+        // Quick filters
+        if(currentFilters.quick === 'government') {
+            filtered = filtered.filter(job => job.category === 'Government');
+        } else if(currentFilters.quick === 'private') {
+            filtered = filtered.filter(job => job.category === 'Private');
+        } else if(currentFilters.quick === 'urgent') {
+            filtered = filtered.filter(job => isUrgent(job.last_date));
+        } else if(currentFilters.quick === 'saved') {
+            filtered = filtered.filter(job => savedJobs.includes(job.id));
+        }
+        
+        // Sort
+        filtered = sortJobs(filtered);
+        
+        displayJobs(filtered);
+        document.getElementById('resultCount').textContent = `${filtered.length} job${filtered.length !== 1 ? 's' : ''} found`;
+    }
 
-        // ========== EVENT LISTENERS ==========
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize features
-            initScrollReveal();
-            initMobileMenu();
+    // ========== DISPLAY JOBS ==========
+    function displayJobs(jobs) {
+        const container = document.getElementById('jobsGrid');
+        
+        if(!jobs || jobs.length === 0) {
+            container.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>No jobs found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                    <button class="reset-btn" onclick="resetAllFilters()">
+                        <i class="fas fa-undo"></i> Reset Filters
+                    </button>
+                </div>
+            `;
+            return;
+        }
+        
+        container.innerHTML = jobs.map((job, index) => {
+            const urgent = isUrgent(job.last_date);
+            const countdown = getCountdown(job.last_date);
+            const categoryClass = job.category === 'Government' ? 'category-govt' : 'category-private';
+            const delay = (index % 5) + 1;
+            const saved = isJobSaved(job.id);
             
-            // Load jobs
-            loadJobs();
-            
-            // Search with debounce
-            const debouncedSearch = debounce((e) => {
-                currentFilters.search = e.target.value;
-                filterAndDisplayJobs();
-            }, 300);
-            
-            document.getElementById('searchInput')?.addEventListener('input', debouncedSearch);
-            
-            // Filter changes
-            document.getElementById('stateFilter')?.addEventListener('change', (e) => {
-                currentFilters.state = e.target.value;
-                filterAndDisplayJobs();
-            });
-            
-            document.getElementById('categoryFilter')?.addEventListener('change', (e) => {
-                currentFilters.category = e.target.value;
-                filterAndDisplayJobs();
-            });
-            
-            document.getElementById('educationFilter')?.addEventListener('change', (e) => {
-                currentFilters.education = e.target.value;
-                filterAndDisplayJobs();
-            });
-            
-            // Quick filter buttons
-            document.querySelectorAll('.quick-filter-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.quick-filter-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentFilters.quick = btn.getAttribute('data-quick');
-                    filterAndDisplayJobs();
-                });
-            });
-            
-            // State buttons
-            document.querySelectorAll('.state-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    document.querySelectorAll('.state-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentFilters.state = btn.getAttribute('data-state');
-                    document.getElementById('stateFilter').value = currentFilters.state;
-                    filterAndDisplayJobs();
-                });
-            });
-            
-            // Category links
-            document.querySelectorAll('.category-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    document.querySelectorAll('.category-link').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+            return `
+                <article class="job-card ${urgent ? 'urgent' : ''} animate-up delay-${delay} reveal" 
+                         id="job-${job.id}"
+                         data-job-id="${job.id}"
+                         onclick="openJobModal(${JSON.stringify(job).replace(/"/g, '&quot;')}); addRecentlyViewed(${JSON.stringify(job).replace(/"/g, '&quot;')})"
+                         tabindex="0"
+                         onkeypress="if(event.key==='Enter'){openJobModal(${JSON.stringify(job).replace(/"/g, '&quot;')}); addRecentlyViewed(${JSON.stringify(job).replace(/"/g, '&quot;')})}">
                     
-                    const category = link.getAttribute('data-category');
-                    if(category === 'all') {
-                        currentFilters.category = '';
-                        currentFilters.quick = 'all';
-                        document.querySelectorAll('.quick-filter-btn').forEach(b => b.classList.remove('active'));
-                        document.querySelector('.quick-filter-btn[data-quick="all"]')?.classList.add('active');
-                    } else {
-                        currentFilters.category = category;
-                    }
-                    document.getElementById('categoryFilter').value = currentFilters.category || '';
-                    filterAndDisplayJobs();
-                });
+                    <!-- ✨ NEW: Card Actions -->
+                    <div class="card-actions">
+                        <button class="card-action-btn ${saved ? 'saved' : ''}" 
+                                data-job-id="${job.id}"
+                                onclick="event.stopPropagation(); toggleSaveJob('${job.id}', '${(job.title||'').replace(/'/g, "\\'")}')"
+                                title="${saved ? 'Remove from saved' : 'Save job'}">
+                            <i class="${saved ? 'fas' : 'far'} fa-bookmark"></i>
+                        </button>
+                        <button class="card-action-btn" 
+                                onclick="event.stopPropagation(); shareJob(${JSON.stringify(job).replace(/"/g, '&quot;')})"
+                                title="Share job">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="job-card-header">
+                        <div>
+                            <h3 class="job-card-title">${job.title || 'N/A'}</h3>
+                            <div class="job-card-company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</div>
+                        </div>
+                        <span class="job-category-badge ${categoryClass}">${job.category || 'Job'}</span>
+                    </div>
+                    
+                    <div class="job-card-details">
+                        <span class="job-card-detail"><i class="fas fa-map-marker-alt"></i> ${job.state || 'N/A'}${job.city ? ' - ' + job.city : ''}</span>
+                        <span class="job-card-detail"><i class="fas fa-rupee-sign"></i> ${job.salary || 'Not Disclosed'}</span>
+                    </div>
+                    
+                    <div class="job-card-tags">
+                        <span class="job-card-tag"><i class="fas fa-graduation-cap"></i> ${job.education || 'Any'}</span>
+                        <span class="job-card-tag"><i class="fas fa-clock"></i> Posted: ${formatDate(job.posted_date)}</span>
+                        ${countdown ? `<span class="countdown"><i class="fas fa-hourglass-half"></i> ${countdown.days}d ${countdown.hours}h left</span>` : ''}
+                    </div>
+                    
+                    <div class="job-card-footer">
+                        <span class="${urgent ? 'deadline-urgent' : 'deadline-normal'}">
+                            <i class="fas fa-calendar-alt"></i> Apply by: ${formatDate(job.last_date)}
+                            ${urgent ? ' ⚡ Hurry!' : ''}
+                        </span>
+                        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                            <a href="${job.apply_link || '#'}" target="_blank" rel="noopener" 
+                               class="apply-btn" onclick="event.stopPropagation()">
+                                Apply Now →
+                            </a>
+                            <button class="apply-btn" style="background:#25D366" 
+                                    onclick="event.stopPropagation(); quickWhatsAppApply(${JSON.stringify(job).replace(/"/g, '&quot;')})"
+                                    title="Quick Apply via WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }).join('');
+        
+        // Re-initialize reveal animations
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if(isElementInViewport(el)) el.classList.add('active');
             });
-            
-            // Education links
-            document.querySelectorAll('.education-list a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentFilters.education = link.getAttribute('data-education');
-                    document.getElementById('educationFilter').value = currentFilters.education;
-                    filterAndDisplayJobs();
-                });
-            });
-            
-            // Keyboard navigation for job cards
-            document.addEventListener('keydown', (e) => {
-                if(e.key === 'Enter' && e.target.classList.contains('job-card')) {
-                    e.target.click();
+        }, 100);
+    }
+
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // ========== SCROLL REVEAL ==========
+    function initScrollReveal() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
             });
-        });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
 
-        // ========== SERVICE WORKER FOR PWA (Optional) ==========
-        // Uncomment to enable offline support
-        /*
-        if('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
+    // ========== MODAL POPUP ==========
+    function openJobModal(job) {
+        document.body.style.overflow = 'hidden';
+        const urgent = isUrgent(job.last_date);
+        const countdown = getCountdown(job.last_date);
+        const saved = isJobSaved(job.id);
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.id = 'jobModal';
+        modal.innerHTML = `
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2><i class="fas fa-briefcase"></i> Job Details</h2>
+                    <p>Apply before ${formatDate(job.last_date)}</p>
+                    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <h1 class="modal-job-title">${job.title || 'N/A'}</h1>
+                    <div class="modal-job-company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</div>
+                    
+                    <div class="modal-info-grid">
+                        <div class="modal-info-item"><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> ${job.state || 'N/A'}${job.city ? ' - ' + job.city : ''}</div>
+                        <div class="modal-info-item"><i class="fas fa-rupee-sign"></i> <strong>Salary:</strong> ${job.salary || 'Not Disclosed'}</div>
+                        <div class="modal-info-item"><i class="fas fa-graduation-cap"></i> <strong>Qualification:</strong> ${job.education || 'Any'}</div>
+                        <div class="modal-info-item"><i class="fas fa-briefcase"></i> <strong>Job Type:</strong> ${job.category || 'N/A'}</div>
+                        <div class="modal-info-item"><i class="fas fa-calendar-alt"></i> <strong>Posted:</strong> ${formatDate(job.posted_date)}</div>
+                        <div class="modal-info-item"><i class="fas fa-hourglass-half"></i> <strong>Last Date:</strong> ${formatDate(job.last_date)} ${urgent ? '<span style="color:#dc2626;font-weight:600"> (Urgent!)</span>' : ''}</div>
+                    </div>
+                    
+                    ${countdown ? `<div style="background:#fff7ed;padding:1rem;border-radius:12px;margin:1rem 0;text-align:center;color:#ea580c;font-weight:600"><i class="fas fa-clock"></i> Time Remaining: ${countdown.days} days, ${countdown.hours} hours</div>` : ''}
+                    
+                    ${job.description ? `<div class="modal-description"><strong>📝 Job Description:</strong><p style="margin-top:0.5rem">${job.description}</p></div>` : ''}
+                    
+                    <div class="modal-actions">
+                        <a href="${job.apply_link || '#'}" target="_blank" rel="noopener" class="modal-apply-btn">
+                            <i class="fas fa-arrow-right"></i> Apply Now
+                        </a>
+                        <button class="modal-share-btn" onclick="shareJob(${JSON.stringify(job).replace(/"/g, '&quot;')})">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                        <button class="modal-save-btn ${saved ? 'saved' : ''}" 
+                                onclick="toggleSaveJob('${job.id}', '${(job.title||'').replace(/'/g, "\\'")}'); this.classList.toggle('saved'); this.innerHTML = this.classList.contains('saved') ? '<i class=\'fas fa-bookmark animate-heart\'></i> Saved' : '<i class=\'far fa-bookmark\'></i> Save'">
+                            <i class="${saved ? 'fas fa-bookmark animate-heart' : 'far fa-bookmark'}"></i> ${saved ? 'Saved' : 'Save'}
+                        </button>
+                    </div>
+                    
+                    <p class="modal-footer-note">⚠️ Always verify details on the official website before applying. LatestJob.live is an aggregator, not the official source.</p>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Close on overlay click or Escape
+        modal.onclick = (e) => { if(e.target === modal) closeModal(); };
+        document.onkeydown = (e) => { if(e.key === 'Escape') closeModal(); };
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('jobModal');
+        if(modal) { modal.remove(); document.body.style.overflow = ''; }
+        document.onkeydown = null;
+    }
+
+    // ========== RESET FILTERS ==========
+    function resetAllFilters() {
+        currentFilters = { search:'', state:'', category:'', education:'', quick:'all', salary:0, sort:'newest' };
+        document.getElementById('searchInput').value = '';
+        document.getElementById('stateFilter').value = '';
+        document.getElementById('categoryFilter').value = '';
+        document.getElementById('educationFilter').value = '';
+        document.getElementById('salaryRange').value = 0;
+        document.getElementById('salaryValue').textContent = '₹0+';
+        document.getElementById('sortSelect').value = 'newest';
+        document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.dataset.quick === 'all') btn.classList.add('active');
+        });
+        document.querySelectorAll('.state-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.state-btn[data-state="All India"]')?.classList.add('active');
+        document.querySelectorAll('.category-link').forEach(link => link.classList.remove('active'));
+        document.querySelector('.category-link[data-category="all"]')?.classList.add('active');
+        filterAndDisplayJobs();
+    }
+
+    // ========== THEME TOGGLE ==========
+    function initThemeToggle() {
+        const toggle = document.getElementById('themeToggle');
+        const icon = toggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
+        
+        if(savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            icon.className = 'fas fa-sun';
         }
-        */
-    </script>
+        
+        toggle.onclick = () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            showToast(`${isDark ? 'Dark' : 'Light'} mode enabled`, 'info', 1500);
+        };
+    }
+
+    // ========== MOBILE MENU ==========
+    function initMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('navMenu');
+        toggle?.onclick = () => {
+            nav.classList.toggle('active');
+            toggle.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        };
+        nav?.querySelectorAll('a').forEach(link => {
+            link.onclick = () => { nav.classList.remove('active'); toggle.innerHTML = '<i class="fas fa-bars"></i>'; };
+        });
+    }
+
+    // ========== NOTIFICATION BELL ==========
+    function initNotificationBell() {
+        document.getElementById('notificationBell')?.onclick = () => {
+            showToast(`🎉 ${document.getElementById('newJobsCount').textContent} new jobs posted today!`, 'success');
+            document.getElementById('newJobsCount').style.display = 'none';
+        };
+    }
+
+    // ========== EVENT LISTENERS ==========
+    document.addEventListener('DOMContentLoaded', () => {
+        initScrollReveal();
+        initThemeToggle();
+        initMobileMenu();
+        initNotificationBell();
+        loadJobs();
+        
+        // Search
+        document.getElementById('searchInput')?.addEventListener('input', debounce((e) => {
+            currentFilters.search = e.target.value;
+            filterAndDisplayJobs();
+        }, 300));
+        
+        // Filters
+        document.getElementById('stateFilter')?.addEventListener('change', (e) => { currentFilters.state = e.target.value; filterAndDisplayJobs(); });
+        document.getElementById('categoryFilter')?.addEventListener('change', (e) => { currentFilters.category = e.target.value; filterAndDisplayJobs(); });
+        document.getElementById('educationFilter')?.addEventListener('change', (e) => { currentFilters.education = e.target.value; filterAndDisplayJobs(); });
+        document.getElementById('sortSelect')?.addEventListener('change', (e) => { currentFilters.sort = e.target.value; filterAndDisplayJobs(); });
+        
+        // Salary Range
+        document.getElementById('salaryRange')?.addEventListener('input', (e) => {
+            currentFilters.salary = parseInt(e.target.value);
+            document.getElementById('salaryValue').textContent = `₹${currentFilters.salary.toLocaleString()}+`;
+            filterAndDisplayJobs();
+        });
+        
+        // Quick Filters
+        document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.quick-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilters.quick = btn.dataset.quick;
+                filterAndDisplayJobs();
+            };
+        });
+        
+        // State Buttons
+        document.querySelectorAll('.state-btn').forEach(btn => {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.state-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilters.state = btn.dataset.state;
+                document.getElementById('stateFilter').value = currentFilters.state;
+                filterAndDisplayJobs();
+            };
+        });
+        
+        // Category Links
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.onclick = (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.category-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                const cat = link.dataset.category;
+                currentFilters.category = cat === 'all' ? '' : cat;
+                currentFilters.quick = cat === 'all' ? 'all' : currentFilters.quick;
+                document.getElementById('categoryFilter').value = currentFilters.category;
+                filterAndDisplayJobs();
+            };
+        });
+        
+        // Education Links
+        document.querySelectorAll('.education-list a').forEach(link => {
+            link.onclick = (e) => {
+                e.preventDefault();
+                currentFilters.education = link.dataset.education;
+                document.getElementById('educationFilter').value = currentFilters.education;
+                filterAndDisplayJobs();
+            };
+        });
+    });
+</script>
 </body>
 </html>
