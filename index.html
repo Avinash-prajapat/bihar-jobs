@@ -2,238 +2,797 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiharAIJobs - Latest Jobs in Bihar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- SEO Meta Tags -->
+    <title>FreeJobAlert | Latest Government Jobs in India 2026 | Sarkari Naukri</title>
+    <meta name="description" content="Find latest government jobs, private jobs, admit cards, results, answer keys for 10th, 12th, graduate, diploma, ITI in Bihar, UP, Delhi, all India. Daily job alerts free.">
+    <meta name="keywords" content="government jobs, sarkari naukri, free job alert, latest jobs, railway jobs, bank jobs, teaching jobs, police jobs, defence jobs, engineering jobs, 10th pass jobs, 12th pass jobs, graduate jobs, diploma jobs, ITI jobs, Bihar jobs, UP jobs, Delhi jobs, Maharashtra jobs, admit card, exam results, answer key, syllabus">
+    <meta name="author" content="FreeJobAlert">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="geo.region" content="IN-BR">
+    <meta name="geo.placename" content="Bihar">
+    <meta name="language" content="Hindi, English">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://latestjob.live/">
+    <meta property="og:title" content="FreeJobAlert | Latest Government Jobs in India 2026">
+    <meta property="og:description" content="Find latest government jobs, private jobs, admit cards, results for 10th, 12th, graduate, diploma, ITI. Daily job alerts free.">
+    <meta property="og:image" content="https://latestjob.live/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://latestjob.live/">
+    <meta name="twitter:title" content="FreeJobAlert | Latest Government Jobs in India 2026">
+    <meta name="twitter:description" content="Find latest government jobs, private jobs, admit cards, results for 10th, 12th, graduate, diploma, ITI. Daily job alerts free.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://latestjob.live/">
+    
+    <!-- Hreflang for Hindi -->
+    <link rel="alternate" hreflang="hi" href="https://latestjob.live/hi/">
+    <link rel="alternate" hreflang="en" href="https://latestjob.live/">
+    
+    <!-- Schema.org / JSON-LD for Google Jobs -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FreeJobAlert",
+        "url": "https://latestjob.live/",
+        "description": "India's No.1 job portal for government and private jobs. Get daily job alerts, admit cards, results, answer keys.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://latestjob.live/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
-        
-        /* Navbar */
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { font-size: 1.5rem; font-weight: bold; }
-        .logo span { background: linear-gradient(135deg, #6366f1, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; }
-        .nav-links a:hover { color: #6366f1; }
-        
-        /* Hero */
-        .hero { text-align: center; padding: 4rem 2rem; color: white; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; }
-        
-        /* Search */
-        .search-section { max-width: 1200px; margin: -2rem auto 2rem; padding: 0 2rem; }
-        .search-card { background: rgba(255,255,255,0.95); border-radius: 20px; padding: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .search-filters { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .filter-group { flex: 1; min-width: 150px; }
-        .filter-group input, .filter-group select { width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 1rem; }
-        .btn-primary { background: linear-gradient(135deg, #6366f1, #ec4899); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
-        
-        /* Jobs */
-        .jobs-section { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; }
-        .section-header h2 { color: white; }
-        .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; }
-        .job-card { background: white; border-radius: 15px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
-        .job-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        .job-title { font-size: 1.2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
-        .job-company { color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .job-details { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
-        .job-detail-item { font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 0.3rem; }
-        .job-tag { background: #eef2ff; color: #6366f1; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; display: inline-block; }
-        .ai-score { background: linear-gradient(135deg, #6366f1, #ec4899); color: white; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-top: 0.5rem; }
-        
-        /* AI Card */
-        .ai-match-section { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
-        .ai-card { background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(236,72,153,0.9)); border-radius: 20px; padding: 2rem; text-align: center; color: white; }
-        .upload-area { border: 2px dashed rgba(255,255,255,0.5); border-radius: 15px; padding: 2rem; margin: 1rem 0; cursor: pointer; }
-        .btn-gradient { background: white; color: #6366f1; padding: 0.8rem 2rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; }
-        
-        /* Footer */
-        .footer { background: #1a1a2e; color: white; padding: 3rem 2rem 1rem; margin-top: 3rem; text-align: center; }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .jobs-grid { grid-template-columns: 1fr; }
-            .search-filters { flex-direction: column; }
+        body { font-family: 'Inter', sans-serif; background: #f5f7fb; overflow-x: hidden; }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .loading { text-align: center; padding: 2rem; color: white; }
-        .hidden { display: none; }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .animate-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .animate-left { animation: fadeInLeft 0.6s ease-out forwards; }
+        .animate-right { animation: fadeInRight 0.6s ease-out forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        /* ========== HEADER ========== */
+        .top-bar {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%);
+            color: white;
+            padding: 0.5rem 2rem;
+            font-size: 0.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .top-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        .main-header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a1a2e, #ff6b35);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo p { font-size: 0.7rem; color: #666; letter-spacing: 1px; }
+        .nav-menu { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #f43f5e);
+            transition: width 0.3s;
+        }
+        .nav-menu a:hover::after { width: 100%; }
+        .nav-menu a:hover { color: #ff6b35; }
+        .app-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .app-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
+
+        /* ========== STATE SHORTCUTS ========== */
+        .state-section {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+        }
+        .state-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .state-btn {
+            background: #f0f2f5;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .state-btn:hover {
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ========== CATEGORY MENU ========== */
+        .category-section {
+            background: #f8f9fa;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .category-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .category-link {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+            padding: 0.3rem 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .category-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s;
+        }
+        .category-link:hover::after { width: 100%; }
+        .category-link:hover { color: #ff6b35; }
+
+        /* ========== HERO BANNER ========== */
+        .hero-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 1rem 2rem;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .hero-banner h2 { font-size: 2rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .hero-banner p { position: relative; z-index: 1; opacity: 0.9; }
+        .warning-text {
+            background: #ff6b35;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .main-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        .sidebar { animation: fadeInLeft 0.6s ease-out; }
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .sidebar-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff6b35;
+            display: inline-block;
+        }
+        .education-list, .quick-links { list-style: none; }
+        .education-list li, .quick-links li { margin-bottom: 0.8rem; }
+        .education-list a, .quick-links a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.3s;
+        }
+        .education-list a:hover, .quick-links a:hover {
+            color: #ff6b35;
+            transform: translateX(5px);
+        }
+        .job-count {
+            background: #ff6b35;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+        .content-area { animation: fadeInRight 0.6s ease-out; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b35, #f43f5e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .stat-label { color: #666; font-size: 0.8rem; }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .section-header h3 {
+            font-size: 1.3rem;
+            position: relative;
+            padding-left: 15px;
+        }
+        .section-header h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background: #ff6b35;
+            border-radius: 2px;
+        }
+        .view-all { color: #ff6b35; text-decoration: none; font-weight: 500; }
+        .jobs-grid { display: grid; gap: 1.5rem; }
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #ff6b35;
+        }
+        .job-title { font-size: 1.2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .job-company { color: #ff6b35; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .job-meta { display: flex; gap: 1rem; margin: 0.8rem 0; flex-wrap: wrap; }
+        .job-meta span { font-size: 0.8rem; color: #666; display: flex; align-items: center; gap: 0.3rem; }
+        .job-tags { display: flex; gap: 0.5rem; margin: 0.8rem 0; flex-wrap: wrap; }
+        .job-tag {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .deadline { color: #dc2626; font-weight: 600; }
+        .deadline.urgent {
+            background: #fee2e2;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+        }
+        .loading { text-align: center; padding: 3rem; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #e9ecef;
+            border-top-color: #ff6b35;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff6b35;
+        }
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+        .footer-section a:hover {
+            color: #ff6b35;
+            transform: translateX(5px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        @media (max-width: 992px) {
+            .main-container { grid-template-columns: 1fr; }
+            .header-container { flex-direction: column; text-align: center; }
+            .nav-menu { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .hero-banner { margin: 1rem; padding: 2rem 1rem; }
+            .hero-banner h2 { font-size: 1.5rem; }
+            .state-section { top: 120px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Bihar<span>AIJobs</span></div>
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#jobs">Jobs</a>
-                <a href="#ai-match">AI Match</a>
-            </div>
+
+<div class="top-bar">
+    ⚠️ Always type .Com after FreeJobAlert. Beware of duplicate websites!
+</div>
+
+<div class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            <h1>🚀 FreeJob<span style="color:#ff6b35">Alert</span></h1>
+            <p>Government Jobs | Results | Admit Cards</p>
         </div>
-    </nav>
-
-    <section class="hero">
-        <h1>Find Your Dream Job in <span style="color:#ffd700">Bihar</span></h1>
-        <p>AI-Powered Job Matching • Latest Government & Private Jobs</p>
-    </section>
-
-    <section class="search-section">
-        <div class="search-card">
-            <div class="search-filters">
-                <div class="filter-group">
-                    <input type="text" id="searchInput" placeholder="Search jobs...">
-                </div>
-                <div class="filter-group">
-                    <select id="categoryFilter">
-                        <option value="">All Categories</option>
-                        <option value="government">Government</option>
-                        <option value="private">Private</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select id="cityFilter">
-                        <option value="">All Cities</option>
-                        <option value="patna">Patna</option>
-                        <option value="gaya">Gaya</option>
-                        <option value="muzaffarpur">Muzaffarpur</option>
-                    </select>
-                </div>
-                <button class="btn-primary" id="searchBtn">Search →</button>
-            </div>
+        <div class="nav-menu">
+            <a href="#">Home</a>
+            <a href="#">All India Govt Jobs</a>
+            <a href="#">State Govt Jobs</a>
+            <a href="#">Bank Jobs</a>
+            <a href="#">Railway Jobs</a>
+            <a href="#">Teaching Jobs</a>
+            <a href="#">Police/Defence</a>
         </div>
-    </section>
+        <a href="#" class="app-btn"><i class="fab fa-android"></i> Download App</a>
+    </div>
+</div>
 
-    <section id="ai-match" class="ai-match-section">
-        <div class="ai-card">
-            <h2>🤖 AI Compatibility Score</h2>
-            <p>Upload your resume and get matched with best jobs</p>
-            <div class="upload-area" id="uploadArea">
-                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem;"></i>
-                <p>Click or drag resume here</p>
-                <input type="file" id="resumeUpload" hidden>
-            </div>
-            <button class="btn-gradient" id="analyzeBtn">Analyze My Profile →</button>
-            <div id="aiResult" class="hidden" style="margin-top: 1rem;"></div>
+<div class="state-section">
+    <div class="state-container">
+        <a href="#" class="state-btn" data-state="Andhra Pradesh">AP</a>
+        <a href="#" class="state-btn" data-state="Assam">AS</a>
+        <a href="#" class="state-btn" data-state="Bihar">BR</a>
+        <a href="#" class="state-btn" data-state="Chhattisgarh">CG</a>
+        <a href="#" class="state-btn" data-state="Delhi">DL</a>
+        <a href="#" class="state-btn" data-state="Gujarat">GJ</a>
+        <a href="#" class="state-btn" data-state="Himachal Pradesh">HP</a>
+        <a href="#" class="state-btn" data-state="Haryana">HR</a>
+        <a href="#" class="state-btn" data-state="Jharkhand">JH</a>
+        <a href="#" class="state-btn" data-state="Karnataka">KA</a>
+        <a href="#" class="state-btn" data-state="Kerala">KL</a>
+        <a href="#" class="state-btn" data-state="Maharashtra">MH</a>
+        <a href="#" class="state-btn" data-state="Madhya Pradesh">MP</a>
+        <a href="#" class="state-btn" data-state="Odisha">OD</a>
+        <a href="#" class="state-btn" data-state="Punjab">PB</a>
+        <a href="#" class="state-btn" data-state="Rajasthan">RJ</a>
+        <a href="#" class="state-btn" data-state="Tamil Nadu">TN</a>
+        <a href="#" class="state-btn" data-state="Telangana">TS</a>
+        <a href="#" class="state-btn" data-state="Uttarakhand">UK</a>
+        <a href="#" class="state-btn" data-state="Uttar Pradesh">UP</a>
+        <a href="#" class="state-btn" data-state="West Bengal">WB</a>
+    </div>
+</div>
+
+<div class="category-section">
+    <div class="category-container">
+        <a href="#" class="category-link" data-category="all">All Jobs</a>
+        <a href="#" class="category-link" data-category="Government">Government Jobs</a>
+        <a href="#" class="category-link" data-category="Private">Private Jobs</a>
+        <a href="#" class="category-link" data-category="Bank">Bank Jobs</a>
+        <a href="#" class="category-link" data-category="Railway">Railway Jobs</a>
+        <a href="#" class="category-link" data-category="Teaching">Teaching Jobs</a>
+        <a href="#" class="category-link" data-category="Police">Police/Defence</a>
+        <a href="#" class="category-link" data-category="Engineering">Engineering Jobs</a>
+    </div>
+</div>
+
+<div class="hero-banner">
+    <h2 class="animate-up">🇮🇳 Sarkari Naukri ka No.1 Platform 🇮🇳</h2>
+    <p class="animate-up delay-1">10th, 12th, Graduate, Diploma, ITI - All India Government & Private Jobs</p>
+    <div class="warning-text animate-up delay-2">📢 Daily 50+ New Job Updates | Free Job Alert</div>
+</div>
+
+<div class="main-container">
+    <div class="sidebar">
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-graduation-cap"></i> Jobs by Education</div>
+            <ul class="education-list">
+                <li><a href="#" data-education="10th"><span>10th Pass Jobs</span> <span class="job-count" id="count10th">0</span></a></li>
+                <li><a href="#" data-education="12th"><span>12th Pass Jobs</span> <span class="job-count" id="count12th">0</span></a></li>
+                <li><a href="#" data-education="Graduate"><span>Graduate Jobs</span> <span class="job-count" id="countGraduate">0</span></a></li>
+                <li><a href="#" data-education="Diploma"><span>Diploma Jobs</span> <span class="job-count" id="countDiploma">0</span></a></li>
+                <li><a href="#" data-education="ITI"><span>ITI Jobs</span> <span class="job-count" id="countITI">0</span></a></li>
+                <li><a href="#" data-education="B.Tech"><span>B.Tech/B.E Jobs</span> <span class="job-count" id="countBtech">0</span></a></li>
+            </ul>
         </div>
-    </section>
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-bolt"></i> Quick Links</div>
+            <ul class="quick-links">
+                <li><a href="#"><i class="fas fa-ticket-alt"></i> Admit Cards</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Exam Results</a></li>
+                <li><a href="#"><i class="fas fa-key"></i> Answer Keys</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Syllabus</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Previous Papers</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Last Date Reminder</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <section id="jobs" class="jobs-section">
+    <div class="content-area">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number" id="totalJobsStat">0</div><div class="stat-label">Total Jobs</div></div>
+            <div class="stat-card"><div class="stat-number" id="govtJobsStat">0</div><div class="stat-label">Government Jobs</div></div>
+            <div class="stat-card"><div class="stat-number" id="privateJobsStat">0</div><div class="stat-label">Private Jobs</div></div>
+            <div class="stat-card"><div class="stat-number" id="todayJobsStat">0</div><div class="stat-label">Today's Updates</div></div>
+        </div>
+
         <div class="section-header">
-            <h2>🔥 Latest Jobs in Bihar</h2>
-            <div id="jobsCount" style="color: white;"></div>
+            <h3><i class="fas fa-fire" style="color:#ff6b35"></i> Latest Job Notifications</h3>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
         </div>
+
+        <div style="margin-bottom: 1.5rem;">
+            <input type="text" id="searchInput" placeholder="🔍 Search jobs by title, company, or location..." style="width: 100%; padding: 1rem; border: 1px solid #e9ecef; border-radius: 15px; font-size: 1rem;">
+        </div>
+
         <div id="jobsContainer" class="jobs-grid">
-            <div class="loading">Loading jobs...</div>
+            <div class="loading"><div class="spinner"></div><p>Loading latest jobs...</p></div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <footer class="footer">
-        <p>© 2026 BiharAIJobs | Made with ❤️ for Bihar</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Get alerts on WhatsApp: +91 XXXXX XXXXX</p>
-    </footer>
+<div class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>FreeJobAlert</h4>
+            <p style="color:#aaa; margin-top: 0.5rem;">India's No.1 job portal for government and private jobs. Get daily job alerts, admit cards, results, and more.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="#">Latest Jobs</a>
+            <a href="#">Admit Cards</a>
+            <a href="#">Results</a>
+            <a href="#">Answer Keys</a>
+            <a href="#">Syllabus</a>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <a href="#"><i class="fas fa-envelope"></i> support@freejobalert.com</a>
+            <a href="#"><i class="fas fa-phone"></i> +91 98765 43210</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 FreeJobAlert.Com | All Rights Reserved | Always type .Com after FreeJobAlert</p>
+        <p style="margin-top: 0.5rem;">Disclaimer: This is not the official government website. We only provide job information.</p>
+    </div>
+</div>
 
-    <script>
-        // YOUR GOOGLE SHEETS API URL - YAHAN PASTE KARO
-        const API_URL = "https://script.google.com/macros/s/AKfycbx6AQ3owbhHywZ5fvt4wg8MIV2Hnm69M0lblT0nW_wKNbQWx5w_dEJ2hCzhuIXJKQAMBw/exec";
+<script>
+    // 🔴 YAHAN APNI GOOGLE SHEETS API URL LAGAO 🔴
+    const API_URL = "https://script.google.com/macros/s/YOUR_API_URL_HERE/exec";
+    
+    let allJobs = [];
+    let currentFilter = {
+        state: '',
+        category: 'all',
+        education: '',
+        search: ''
+    };
+
+    function formatDate(dateStr) {
+        if(!dateStr) return "Not specified";
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    function isUrgent(lastDate) {
+        if(!lastDate) return false;
+        const today = new Date();
+        const deadline = new Date(lastDate);
+        const diffDays = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+        return diffDays <= 7 && diffDays >= 0;
+    }
+
+    async function loadJobs() {
+        try {
+            const response = await fetch(API_URL);
+            if(!response.ok) throw new Error('Network error');
+            allJobs = await response.json();
+            
+            const today = new Date().toISOString().split('T')[0];
+            allJobs = allJobs.filter(job => job.last_date >= today);
+            
+            updateStats();
+            updateEducationCounts();
+            displayJobs(allJobs);
+        } catch(error) {
+            document.getElementById('jobsContainer').innerHTML = `<div class="loading"><p style="color:red">❌ Error loading jobs. Please check API URL.</p></div>`;
+        }
+    }
+
+    function updateStats() {
+        const total = allJobs.length;
+        const govt = allJobs.filter(j => j.category === 'Government').length;
+        const priv = allJobs.filter(j => j.category === 'Private').length;
+        const today = new Date().toISOString().split('T')[0];
+        const todayJobs = allJobs.filter(j => j.posted_date === today).length;
         
-        let jobsData = [];
+        document.getElementById('totalJobsStat').innerText = total;
+        document.getElementById('govtJobsStat').innerText = govt;
+        document.getElementById('privateJobsStat').innerText = priv;
+        document.getElementById('todayJobsStat').innerText = todayJobs;
+    }
+
+    function updateEducationCounts() {
+        const counts = {
+            '10th': allJobs.filter(j => j.education === '10th').length,
+            '12th': allJobs.filter(j => j.education === '12th').length,
+            'Graduate': allJobs.filter(j => j.education === 'Graduate').length,
+            'Diploma': allJobs.filter(j => j.education === 'Diploma').length,
+            'ITI': allJobs.filter(j => j.education === 'ITI').length,
+            'B.Tech': allJobs.filter(j => j.education === 'B.Tech').length
+        };
         
-        async function loadJobsFromSheet() {
-            try {
-                const response = await fetch(API_URL);
-                jobsData = await response.json();
-                displayJobs(jobsData);
-            } catch(error) {
-                document.getElementById('jobsContainer').innerHTML = `<div class="loading">Error loading jobs: ${error.message}</div>`;
-            }
+        document.getElementById('count10th').innerText = counts['10th'] || 0;
+        document.getElementById('count12th').innerText = counts['12th'] || 0;
+        document.getElementById('countGraduate').innerText = counts['Graduate'] || 0;
+        document.getElementById('countDiploma').innerText = counts['Diploma'] || 0;
+        document.getElementById('countITI').innerText = counts['ITI'] || 0;
+        document.getElementById('countBtech').innerText = counts['B.Tech'] || 0;
+    }
+
+    function displayJobs(jobs) {
+        const container = document.getElementById('jobsContainer');
+        
+        if(!jobs || jobs.length === 0) {
+            container.innerHTML = '<div class="loading"><p>😞 No jobs found. Try different filters.</p></div>';
+            return;
         }
         
-        function displayJobs(jobs) {
-            const container = document.getElementById('jobsContainer');
-            const countSpan = document.getElementById('jobsCount');
-            
-            if(!jobs || jobs.length === 0) {
-                container.innerHTML = '<div class="loading">No jobs found</div>';
-                countSpan.innerHTML = '0 jobs';
-                return;
-            }
-            
-            countSpan.innerHTML = `${jobs.length} jobs available`;
-            
-            container.innerHTML = jobs.map(job => `
-                <div class="job-card" onclick="viewJobDetails(${JSON.stringify(job).replace(/"/g, '&quot;')})">
-                    <h3 class="job-title">${job.title || 'N/A'}</h3>
+        container.innerHTML = jobs.map((job, index) => {
+            const urgent = isUrgent(job.last_date);
+            const delayClass = `delay-${(index % 5) + 1}`;
+            return `
+                <div class="job-card animate-up ${delayClass}" onclick="showJobDetails(${JSON.stringify(job).replace(/"/g, '&quot;')})">
+                    <div class="job-title">${job.title || 'N/A'}</div>
                     <div class="job-company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</div>
-                    <div class="job-details">
-                        <span class="job-detail-item"><i class="fas fa-map-marker-alt"></i> ${job.location || 'N/A'}</span>
-                        <span class="job-detail-item"><i class="fas fa-rupee-sign"></i> ${job.salary || 'N/A'}</span>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> ${job.state || 'N/A'}${job.city ? ' - ' + job.city : ''}</span>
+                        <span><i class="fas fa-rupee-sign"></i> ${job.salary || 'Not Disclosed'}</span>
                     </div>
-                    <p style="color: #64748b; font-size: 0.9rem; margin: 0.5rem 0;">${(job.description || '').substring(0, 100)}...</p>
-                    <span class="ai-score">🤖 AI Match: ${Math.floor(Math.random() * 30) + 65}%</span>
+                    <div class="job-tags">
+                        <span class="job-tag"><i class="fas fa-graduation-cap"></i> ${job.education || 'Any'}</span>
+                        <span class="job-tag"><i class="fas fa-briefcase"></i> ${job.category || 'N/A'}</span>
+                    </div>
+                    <div class="job-meta">
+                        <span class="${urgent ? 'deadline urgent' : 'deadline'}">
+                            <i class="fas fa-calendar-alt"></i> Apply by: ${formatDate(job.last_date)} ${urgent ? '⚠️ Apply Soon!' : ''}
+                        </span>
+                    </div>
+                    <div class="job-tags">
+                        ${(job.description || '').substring(0, 120)}${(job.description || '').length > 120 ? '...' : ''}
+                    </div>
                 </div>
-            `).join('');
+            `;
+        }).join('');
+    }
+
+    function filterJobs() {
+        let filtered = [...allJobs];
+        
+        if(currentFilter.state) {
+            filtered = filtered.filter(job => job.state === currentFilter.state);
+        }
+        if(currentFilter.category && currentFilter.category !== 'all') {
+            filtered = filtered.filter(job => job.category === currentFilter.category);
+        }
+        if(currentFilter.education) {
+            filtered = filtered.filter(job => job.education === currentFilter.education);
+        }
+        if(currentFilter.search) {
+            const searchLower = currentFilter.search.toLowerCase();
+            filtered = filtered.filter(job => 
+                (job.title && job.title.toLowerCase().includes(searchLower)) ||
+                (job.company && job.company.toLowerCase().includes(searchLower)) ||
+                (job.description && job.description.toLowerCase().includes(searchLower))
+            );
         }
         
-        function viewJobDetails(job) {
-            alert(`📌 ${job.title}\n\n🏢 ${job.company}\n📍 ${job.location}\n💰 ${job.salary}\n\n📝 ${job.description}`);
-        }
-        
-        function filterJobs() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value;
-            const city = document.getElementById('cityFilter').value;
-            
-            const filtered = jobsData.filter(job => {
-                const matchSearch = searchTerm === '' || (job.title && job.title.toLowerCase().includes(searchTerm));
-                const matchCategory = category === '' || job.category === category;
-                const matchCity = city === '' || job.location === city;
-                return matchSearch && matchCategory && matchCity;
-            });
-            displayJobs(filtered);
-        }
-        
-        // AI Feature
-        document.getElementById('uploadArea')?.addEventListener('click', () => {
-            document.getElementById('resumeUpload').click();
+        displayJobs(filtered);
+    }
+
+    window.showJobDetails = function(job) {
+        const urgent = isUrgent(job.last_date);
+        alert(`📌 ${job.title}\n\n🏢 ${job.company}\n📍 ${job.state} - ${job.city || 'N/A'}\n🎓 ${job.education}\n💰 ${job.salary}\n📅 Apply by: ${formatDate(job.last_date)}${urgent ? ' (URGENT - Apply soon!)' : ''}\n\n📝 Description:\n${job.description}\n\n🔗 Apply Link: ${job.apply_link || 'Check official website'}`);
+    };
+
+    document.querySelectorAll('.state-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentFilter.state = btn.getAttribute('data-state');
+            filterJobs();
         });
-        
-        document.getElementById('analyzeBtn')?.addEventListener('click', () => {
-            const fileInput = document.getElementById('resumeUpload');
-            const aiResult = document.getElementById('aiResult');
-            
-            if(!fileInput.files[0]) {
-                alert('Please upload your resume first');
-                return;
-            }
-            
-            aiResult.classList.remove('hidden');
-            aiResult.innerHTML = '<div class="loading">AI analyzing your profile...</div>';
-            
-            setTimeout(() => {
-                const topMatches = jobsData.slice(0, 3);
-                aiResult.innerHTML = `
-                    <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
-                        <h3>✅ Top Matches For You:</h3>
-                        ${topMatches.map(job => `<p><strong>${job.title}</strong> at ${job.company} - ${Math.floor(Math.random() * 30) + 65}% match</p>`).join('')}
-                        <button class="btn-gradient" style="margin-top: 1rem;" onclick="alert('Apply link will be shared soon!')">Apply Now</button>
-                    </div>
-                `;
-            }, 1500);
+    });
+    
+    document.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentFilter.category = link.getAttribute('data-category');
+            filterJobs();
         });
-        
-        document.getElementById('searchBtn')?.addEventListener('click', filterJobs);
-        document.getElementById('searchInput')?.addEventListener('keyup', (e) => { if(e.key === 'Enter') filterJobs(); });
-        document.getElementById('categoryFilter')?.addEventListener('change', filterJobs);
-        document.getElementById('cityFilter')?.addEventListener('change', filterJobs);
-        
-        loadJobsFromSheet();
-    </script>
+    });
+    
+    document.querySelectorAll('.education-list a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentFilter.education = link.getAttribute('data-education');
+            filterJobs();
+        });
+    });
+    
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentFilter.search = e.target.value;
+        filterJobs();
+    });
+    
+    loadJobs();
+</script>
 </body>
 </html>
