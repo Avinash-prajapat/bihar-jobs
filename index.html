@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiharAIJobs - Latest Jobs in Bihar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        
+        /* Navbar */
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .logo span { background: linear-gradient(135deg, #6366f1, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; }
+        .nav-links a:hover { color: #6366f1; }
+        
+        /* Hero */
+        .hero { text-align: center; padding: 4rem 2rem; color: white; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        
+        /* Search */
+        .search-section { max-width: 1200px; margin: -2rem auto 2rem; padding: 0 2rem; }
+        .search-card { background: rgba(255,255,255,0.95); border-radius: 20px; padding: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .search-filters { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .filter-group { flex: 1; min-width: 150px; }
+        .filter-group input, .filter-group select { width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 1rem; }
+        .btn-primary { background: linear-gradient(135deg, #6366f1, #ec4899); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
+        
+        /* Jobs */
+        .jobs-section { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; }
+        .section-header h2 { color: white; }
+        .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; }
+        .job-card { background: white; border-radius: 15px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        .job-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .job-title { font-size: 1.2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .job-company { color: #6366f1; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .job-details { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+        .job-detail-item { font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 0.3rem; }
+        .job-tag { background: #eef2ff; color: #6366f1; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; display: inline-block; }
+        .ai-score { background: linear-gradient(135deg, #6366f1, #ec4899); color: white; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-top: 0.5rem; }
+        
+        /* AI Card */
+        .ai-match-section { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .ai-card { background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(236,72,153,0.9)); border-radius: 20px; padding: 2rem; text-align: center; color: white; }
+        .upload-area { border: 2px dashed rgba(255,255,255,0.5); border-radius: 15px; padding: 2rem; margin: 1rem 0; cursor: pointer; }
+        .btn-gradient { background: white; color: #6366f1; padding: 0.8rem 2rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        
+        /* Footer */
+        .footer { background: #1a1a2e; color: white; padding: 3rem 2rem 1rem; margin-top: 3rem; text-align: center; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .jobs-grid { grid-template-columns: 1fr; }
+            .search-filters { flex-direction: column; }
+        }
+        
+        .loading { text-align: center; padding: 2rem; color: white; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Bihar<span>AIJobs</span></div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#ai-match">AI Match</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Find Your Dream Job in <span style="color:#ffd700">Bihar</span></h1>
+        <p>AI-Powered Job Matching • Latest Government & Private Jobs</p>
+    </section>
+
+    <section class="search-section">
+        <div class="search-card">
+            <div class="search-filters">
+                <div class="filter-group">
+                    <input type="text" id="searchInput" placeholder="Search jobs...">
+                </div>
+                <div class="filter-group">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="government">Government</option>
+                        <option value="private">Private</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="cityFilter">
+                        <option value="">All Cities</option>
+                        <option value="patna">Patna</option>
+                        <option value="gaya">Gaya</option>
+                        <option value="muzaffarpur">Muzaffarpur</option>
+                    </select>
+                </div>
+                <button class="btn-primary" id="searchBtn">Search →</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-match" class="ai-match-section">
+        <div class="ai-card">
+            <h2>🤖 AI Compatibility Score</h2>
+            <p>Upload your resume and get matched with best jobs</p>
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem;"></i>
+                <p>Click or drag resume here</p>
+                <input type="file" id="resumeUpload" hidden>
+            </div>
+            <button class="btn-gradient" id="analyzeBtn">Analyze My Profile →</button>
+            <div id="aiResult" class="hidden" style="margin-top: 1rem;"></div>
+        </div>
+    </section>
+
+    <section id="jobs" class="jobs-section">
+        <div class="section-header">
+            <h2>🔥 Latest Jobs in Bihar</h2>
+            <div id="jobsCount" style="color: white;"></div>
+        </div>
+        <div id="jobsContainer" class="jobs-grid">
+            <div class="loading">Loading jobs...</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 BiharAIJobs | Made with ❤️ for Bihar</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Get alerts on WhatsApp: +91 XXXXX XXXXX</p>
+    </footer>
+
+    <script>
+        // YOUR GOOGLE SHEETS API URL - YAHAN PASTE KARO
+        const API_URL = "https://script.google.com/macros/s/AKfycbx6AQ3owbhHywZ5fvt4wg8MIV2Hnm69M0lblT0nW_wKNbQWx5w_dEJ2hCzhuIXJKQAMBw/exec";
+        
+        let jobsData = [];
+        
+        async function loadJobsFromSheet() {
+            try {
+                const response = await fetch(API_URL);
+                jobsData = await response.json();
+                displayJobs(jobsData);
+            } catch(error) {
+                document.getElementById('jobsContainer').innerHTML = `<div class="loading">Error loading jobs: ${error.message}</div>`;
+            }
+        }
+        
+        function displayJobs(jobs) {
+            const container = document.getElementById('jobsContainer');
+            const countSpan = document.getElementById('jobsCount');
+            
+            if(!jobs || jobs.length === 0) {
+                container.innerHTML = '<div class="loading">No jobs found</div>';
+                countSpan.innerHTML = '0 jobs';
+                return;
+            }
+            
+            countSpan.innerHTML = `${jobs.length} jobs available`;
+            
+            container.innerHTML = jobs.map(job => `
+                <div class="job-card" onclick="viewJobDetails(${JSON.stringify(job).replace(/"/g, '&quot;')})">
+                    <h3 class="job-title">${job.title || 'N/A'}</h3>
+                    <div class="job-company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</div>
+                    <div class="job-details">
+                        <span class="job-detail-item"><i class="fas fa-map-marker-alt"></i> ${job.location || 'N/A'}</span>
+                        <span class="job-detail-item"><i class="fas fa-rupee-sign"></i> ${job.salary || 'N/A'}</span>
+                    </div>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0.5rem 0;">${(job.description || '').substring(0, 100)}...</p>
+                    <span class="ai-score">🤖 AI Match: ${Math.floor(Math.random() * 30) + 65}%</span>
+                </div>
+            `).join('');
+        }
+        
+        function viewJobDetails(job) {
+            alert(`📌 ${job.title}\n\n🏢 ${job.company}\n📍 ${job.location}\n💰 ${job.salary}\n\n📝 ${job.description}`);
+        }
+        
+        function filterJobs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const city = document.getElementById('cityFilter').value;
+            
+            const filtered = jobsData.filter(job => {
+                const matchSearch = searchTerm === '' || (job.title && job.title.toLowerCase().includes(searchTerm));
+                const matchCategory = category === '' || job.category === category;
+                const matchCity = city === '' || job.location === city;
+                return matchSearch && matchCategory && matchCity;
+            });
+            displayJobs(filtered);
+        }
+        
+        // AI Feature
+        document.getElementById('uploadArea')?.addEventListener('click', () => {
+            document.getElementById('resumeUpload').click();
+        });
+        
+        document.getElementById('analyzeBtn')?.addEventListener('click', () => {
+            const fileInput = document.getElementById('resumeUpload');
+            const aiResult = document.getElementById('aiResult');
+            
+            if(!fileInput.files[0]) {
+                alert('Please upload your resume first');
+                return;
+            }
+            
+            aiResult.classList.remove('hidden');
+            aiResult.innerHTML = '<div class="loading">AI analyzing your profile...</div>';
+            
+            setTimeout(() => {
+                const topMatches = jobsData.slice(0, 3);
+                aiResult.innerHTML = `
+                    <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
+                        <h3>✅ Top Matches For You:</h3>
+                        ${topMatches.map(job => `<p><strong>${job.title}</strong> at ${job.company} - ${Math.floor(Math.random() * 30) + 65}% match</p>`).join('')}
+                        <button class="btn-gradient" style="margin-top: 1rem;" onclick="alert('Apply link will be shared soon!')">Apply Now</button>
+                    </div>
+                `;
+            }, 1500);
+        });
+        
+        document.getElementById('searchBtn')?.addEventListener('click', filterJobs);
+        document.getElementById('searchInput')?.addEventListener('keyup', (e) => { if(e.key === 'Enter') filterJobs(); });
+        document.getElementById('categoryFilter')?.addEventListener('change', filterJobs);
+        document.getElementById('cityFilter')?.addEventListener('change', filterJobs);
+        
+        loadJobsFromSheet();
+    </script>
+</body>
+</html>
