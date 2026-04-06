@@ -1455,7 +1455,7 @@
     // ========== SHARE JOB ==========
     async function shareJob(job) {
         const shareData = {
-            title: job.title,
+            let title = job.title,
             text: `Check out this job: ${job.title} at ${job.company}`,
             url: window.location.href + '#job-' + job.id
         };
