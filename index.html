@@ -2,43 +2,290 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LatestJob.live | India's No.1 Job Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>LatestJob.Tech | India's Fastest Govt Jobs Portal | Sarkari Naukri 2026</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="LatestJob.live - Find latest government jobs, private jobs. Daily updates for 10th, 12th, graduate, diploma, ITI.">
-    <meta name="keywords" content="government jobs, sarkari naukri, free job alert, latest jobs, railway jobs, bank jobs, 10th pass jobs, 12th pass jobs, graduate jobs">
-    <meta name="author" content="LatestJob.live">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="LatestJob.Tech - India's Fastest Growing Job Portal. Get instant alerts for Sarkari Naukri, Admit Cards, Results, Answer Keys. 10th/12th/Graduate/Diploma/ITI Jobs.">
+    <meta name="keywords" content="latestjob.tech, sarkari result, government jobs, sarkari naukri, admit card, exam results, answer key, railway jobs, bank jobs, up police, ssc, upsc, rrb">
+    <meta name="author" content="LatestJob.Tech">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://latestjob.live/">
-    <meta property="og:title" content="LatestJob.live | India's No.1 Job Portal">
-    <meta property="og:description" content="Find latest government and private jobs. Daily updates.">
+    <meta property="og:url" content="https://latestjob.tech/">
+    <meta property="og:title" content="LatestJob.Tech | India's Fastest Govt Jobs Portal">
+    <meta property="og:description" content="Get instant alerts for Sarkari Naukri, Admit Cards, Results. Daily verified updates.">
+    <meta property="og:image" content="https://latestjob.tech/og-image.jpg">
+    <meta property="og:site_name" content="LatestJob.Tech">
     
-    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://latestjob.tech/">
+    <meta name="twitter:title" content="LatestJob.Tech | Sarkari Jobs Portal">
+    <meta name="twitter:description" content="Instant job alerts • Admit Cards • Results • Answer Keys">
+    <meta name="twitter:image" content="https://latestjob.tech/twitter-image.jpg">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* ========== CSS VARIABLES ========== */
+        :root {
+            /* Primary Colors */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --secondary-dark: #db2777;
+            
+            /* Background Colors */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            
+            /* Text Colors */
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #94a3b8;
+            --text-inverse: #ffffff;
+            
+            /* Status Colors */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --purple: #8b5cf6;
+            
+            /* Effects */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+            
+            --blur: blur(12px);
+            --blur-lg: blur(24px);
+            
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-dark: linear-gradient(135deg, #1e293b, #0f172a);
+            --gradient-glow: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(236,72,153,0.2));
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-glass: rgba(30, 41, 59, 0.85);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #64748b;
+            
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.5);
+        }
+
+        /* ========== BASE STYLES ========== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fb 0%, #eef2ff 100%);
-            color: #0f172a;
+        html { 
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
         
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #1a1a2e, #0f0f23);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(99,102,241,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(236,72,153,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] body::before {
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(99,102,241,0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(236,72,153,0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99,102,241,0.4); }
+            50% { box-shadow: 0 0 40px rgba(99,102,241,0.8); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        .animate-shimmer { 
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        .animate-slide-up { animation: slideInUp 0.5s ease-out forwards; }
+        .animate-slide-left { animation: slideInLeft 0.5s ease-out forwards; }
+        .animate-slide-right { animation: slideInRight 0.5s ease-out forwards; }
+        .animate-scale { animation: scaleIn 0.4s ease-out forwards; }
+        .animate-fade { animation: fadeIn 0.3s ease-out forwards; }
+        .animate-spin { animation: spin 1s linear infinite; }
+        .animate-bounce { animation: bounce 2s ease-in-out infinite; }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-tertiary); }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--gradient-primary); 
+            border-radius: 10px;
+            border: 2px solid var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb:hover { 
+            background: var(--gradient-primary);
+            filter: brightness(1.1);
+        }
+
+        /* ========== SKIP LINK ========== */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
             color: white;
-            padding: 1rem 2rem;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            z-index: 10000;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+        .skip-link:focus { top: 20px; outline: none; }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background: var(--gradient-dark);
+            color: var(--text-inverse);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .top-bar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: shimmer 3s infinite;
+        }
+        .top-bar a { 
+            color: var(--primary-light); 
+            text-decoration: none; 
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .top-bar a:hover { color: var(--secondary); }
+        .top-bar .alert { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 4px;
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* ========== MAIN HEADER ========== */
+        .main-header {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            padding: 0.8rem 1.5rem;
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        [data-theme="dark"] .main-header {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -48,619 +295,2108 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .logo h1 { font-size: 1.6rem; }
-        .logo span { color: #ff6b35; }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            transition: 0.3s;
-        }
-        .nav a:hover { color: #ff6b35; }
         
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            margin: 1.5rem 2rem;
-            border-radius: 24px;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: white;
-        }
-        .hero h1 { font-size: 2rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1rem; opacity: 0.9; }
-        
-        /* Search & Filter */
-        .search-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        .search-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        .filters {
+        .header-left {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .filter-group {
-            flex: 1;
-            min-width: 150px;
-        }
-        .filter-group input, .filter-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-size: 0.9rem;
-        }
-        .search-btn {
-            background: linear-gradient(135deg, #ff6b35, #f43f5e);
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 1rem;
-            width: 100%;
-        }
-        
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        .stat-card {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .stat-card:hover { transform: translateY(-5px); }
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #ff6b35;
-        }
-        .stat-label { color: #666; font-size: 0.8rem; }
-        
-        /* Jobs Grid */
-        .jobs-header {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .jobs-header h3 {
-            font-size: 1.3rem;
-            padding-left: 15px;
-            border-left: 4px solid #ff6b35;
-        }
-        .jobs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        /* Job Card */
-        .job-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            transition: 0.3s;
-            cursor: pointer;
-            border: 1px solid #e9ecef;
-        }
-        .job-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
-            border-color: #ff6b35;
-        }
-        .job-card.urgent { border-left: 4px solid #dc2626; }
-        .job-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .job-company { color: #ff6b35; margin-bottom: 0.5rem; font-size: 0.9rem; }
-        .job-meta {
-            display: flex;
-            flex-wrap: wrap;
             gap: 1rem;
-            margin: 0.8rem 0;
-            font-size: 0.8rem;
-            color: #666;
-        }
-        .job-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 0.8rem 0;
-        }
-        .job-tag {
-            background: #eef2ff;
-            color: #4f46e5;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-        }
-        .deadline {
-            margin-top: 0.8rem;
-            font-size: 0.75rem;
-            color: #dc2626;
-        }
-        .apply-btn {
-            background: linear-gradient(135deg, #ff6b35, #f43f5e);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.7rem;
-            display: inline-block;
-            margin-top: 0.8rem;
         }
         
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            grid-column: 1 / -1;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid #e2e8f0;
-            border-top-color: #ff6b35;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            background: white;
-            border-radius: 20px;
-            grid-column: 1 / -1;
-        }
-        .reset-btn {
-            background: #ff6b35;
-            color: white;
+        .mobile-menu-btn {
+            display: none;
+            background: var(--bg-tertiary);
             border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-        
-        /* Footer */
-        .footer {
-            background: #1a1a2e;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .modal-container {
-            background: white;
-            border-radius: 28px;
-            max-width: 550px;
-            width: 90%;
-            max-height: 85vh;
-            overflow-y: auto;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
             position: relative;
-            animation: modalPop 0.3s ease;
+            overflow: hidden;
         }
-        @keyframes modalPop {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .modal-header {
-            background: linear-gradient(135deg, #1a1a2e, #0f0f23);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 28px 28px 0 0;
-            position: sticky;
-            top: 0;
-        }
-        .modal-close {
+        .mobile-menu-btn::before {
+            content: '';
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255,255,255,0.2);
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--radius);
+        }
+        .mobile-menu-btn:hover::before { opacity: 0.15; }
+        .mobile-menu-btn:hover { transform: scale(1.05); color: var(--primary); }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .logo h1 i { animation: float 3s ease-in-out infinite; }
+        .logo p { 
+            font-size: 0.6rem; 
+            color: var(--text-tertiary); 
+            margin-top: 2px;
+            font-weight: 500;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .icon-btn {
+            background: var(--bg-tertiary);
             border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .icon-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--radius);
+        }
+        .icon-btn:hover::before { opacity: 0.15; }
+        .icon-btn:hover { transform: translateY(-2px); color: var(--primary); }
+        
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--danger);
             color: white;
+            font-size: 0.65rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            animation: bounce 2s infinite;
+            box-shadow: 0 0 0 3px var(--bg-primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--radius);
+        }
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        .nav-menu a:hover::before, .nav-menu a.active::before { opacity: 0.1; }
+        .nav-menu a:hover, .nav-menu a.active { 
+            color: var(--primary); 
+            transform: translateY(-2px);
+        }
+        .nav-menu a.active { font-weight: 600; }
+        
+        .whatsapp-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+            white-space: nowrap;
+            box-shadow: var(--shadow);
+        }
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            filter: brightness(1.05);
+        }
+        .whatsapp-btn i { animation: float 2s ease-in-out infinite; }
+
+        /* ========== MOBILE MENU ========== */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-overlay.active { display: block; opacity: 1; }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0; left: -320px;
+            width: 320px;
+            height: 100%;
+            background: var(--bg-secondary);
+            z-index: 2000;
+            padding: 1.5rem;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--bg-tertiary);
+        }
+        .mobile-nav.active { left: 0; }
+        
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+            margin-bottom: 1.5rem;
+        }
+        .mobile-nav-close {
+            background: var(--bg-tertiary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        .mobile-nav-close:hover { background: var(--danger); color: white; transform: rotate(90deg); }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            flex: 1;
+        }
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .mobile-nav-links a::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .mobile-nav-links a:hover::before, .mobile-nav-links a.active::before {
+            transform: scaleY(1);
+        }
+        .mobile-nav-links a:hover, .mobile-nav-links a.active {
+            background: var(--bg-tertiary);
+            transform: translateX(8px);
+            color: var(--primary);
+        }
+        .mobile-nav-links a i { width: 20px; text-align: center; font-size: 1.1rem; }
+        
+        .mobile-nav-footer {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--bg-tertiary);
+            margin-top: auto;
+        }
+        .mobile-nav-footer a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+            margin-bottom: 0.5rem;
+        }
+        .mobile-nav-footer a.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+        .mobile-nav-footer a.telegram {
+            background: linear-gradient(135deg, #0088cc, #005f8b);
+            color: white;
+        }
+        .mobile-nav-footer a:hover { transform: translateX(5px); }
+
+        /* ========== STATE SHORTCUTS ========== */
+        .state-section {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+            position: sticky;
+            top: 72px;
+            z-index: 99;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .state-section::-webkit-scrollbar { display: none; }
+        
+        .state-container {
+            display: inline-flex;
+            gap: 0.4rem;
+            padding: 0.2rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .state-btn {
+            background: var(--bg-tertiary);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.75rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .state-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--radius-full);
+        }
+        .state-btn:hover::before, .state-btn.active::before { opacity: 0.15; }
+        .state-btn:hover, .state-btn.active {
+            color: var(--primary);
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+        .state-btn.active { font-weight: 600; }
+
+        /* ========== CATEGORY MENU ========== */
+        .category-section {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .category-section::-webkit-scrollbar { display: none; }
+        
+        .category-container {
+            display: inline-flex;
+            gap: 0.6rem;
+            padding: 0.2rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .category-link {
+            text-decoration: none;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--radius-full);
+            position: relative;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--bg-tertiary);
+        }
+        .category-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 50%;
+            width: 0; height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+        .category-link:hover::after, .category-link.active::after { width: 70%; }
+        .category-link:hover, .category-link.active { 
+            color: var(--primary); 
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ========== TOOLS SECTION ========== */
+        .tools-section {
+            max-width: 1400px;
+            margin: 1.2rem auto;
+            padding: 0 1rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.9rem;
+        }
+        .tool-card {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-radius: var(--radius-lg);
+            padding: 1.2rem 1rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--bg-tertiary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-glow);
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--radius-lg);
+        }
+        .tool-card:hover::before { opacity: 1; }
+        .tool-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+        .tool-icon {
+            font-size: 1.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: float 3s ease-in-out infinite;
+        }
+        .tool-title {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .main-container {
+            max-width: 1400px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 1.8rem;
+        }
+
+        /* ========== CONTENT AREA ========== */
+        .content-area { animation: slideInLeft 0.6s ease-out; }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 4px;
+            height: 24px;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+        .search-container i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            font-size: 1rem;
+            z-index: 2;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 0.9rem 1.2rem 0.9rem 3rem;
+            border: 2px solid var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        #searchInput::placeholder { color: var(--text-tertiary); }
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Update Tabs */
+        .update-tabs {
+            display: flex;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            padding-bottom: 0.5rem;
+        }
+        .update-tab {
+            background: var(--bg-tertiary);
+            border: none;
+            padding: 0.45rem 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .update-tab::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--radius-full);
+        }
+        .update-tab:hover::before, .update-tab.active::before { opacity: 0.15; }
+        .update-tab:hover, .update-tab.active {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .update-tab.active { font-weight: 600; background: var(--bg-secondary); }
+        
+        /* Update Card */
+        .update-card {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-radius: var(--radius-lg);
+            padding: 1.2rem;
+            margin-bottom: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--bg-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .update-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .update-card:hover::before { opacity: 1; }
+        .update-card:hover {
+            transform: translateX(8px) translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+        .update-card.bookmarked::after {
+            content: '⭐';
+            position: absolute;
+            top: 12px; right: 12px;
+            font-size: 1.1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .bookmark-btn {
+            position: absolute;
+            top: 12px; right: 12px;
+            background: var(--bg-tertiary);
+            border: none;
             width: 32px;
             height: 32px;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            z-index: 2;
         }
-        .modal-body { padding: 1.5rem; }
-        .modal-job-title { font-size: 1.3rem; font-weight: 700; }
-        .modal-job-company { color: #ff6b35; margin: 0.5rem 0; }
-        .modal-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-            background: #f8fafc;
-            padding: 1rem;
-            border-radius: 16px;
-        }
-        .modal-apply {
-            display: block;
-            background: linear-gradient(135deg, #ff6b35, #f43f5e);
-            color: white;
-            text-align: center;
-            padding: 0.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 1rem;
+        .bookmark-btn:hover, .bookmark-btn.active {
+            color: var(--warning);
+            background: rgba(245, 158, 11, 0.15);
+            transform: scale(1.15);
         }
         
-        /* WhatsApp Float */
+        .update-info { flex: 1; min-width: 220px; }
+        .update-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .update-meta {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+        }
+        .update-meta i { margin-right: 3px; color: var(--primary); }
+        
+        .update-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .update-badge {
+            padding: 0.2rem 0.7rem;
+            border-radius: var(--radius-full);
+            font-size: 0.65rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .update-badge.urgent { 
+            background: linear-gradient(135deg, #fee2e2, #fecaca); 
+            color: var(--danger);
+            animation: pulse-glow 2s infinite;
+        }
+        .update-badge.admit { 
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe); 
+            color: var(--info); 
+        }
+        .update-badge.result { 
+            background: linear-gradient(135deg, #fef3c7, #fde68a); 
+            color: var(--warning); 
+        }
+        .update-badge.answer { 
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe); 
+            color: var(--purple); 
+        }
+        .update-badge.new { 
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0); 
+            color: var(--success);
+            animation: bounce 2s infinite;
+        }
+        
+        .apply-link {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1.3rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .apply-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .apply-link:hover::after { opacity: 1; }
+        .apply-link:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+        
+        /* ========== SIDEBAR ========== */
+        .sidebar { animation: slideInRight 0.6s ease-out; }
+        
+        .sidebar-card {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-radius: var(--radius-lg);
+            padding: 1.3rem;
+            margin-bottom: 1.3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--bg-tertiary);
+        }
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 2px solid var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sidebar-title i { 
+            color: var(--primary); 
+            font-size: 1.1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .sidebar-list { list-style: none; }
+        .sidebar-list li { margin-bottom: 0.4rem; }
+        .sidebar-list a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0.8rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        .sidebar-list a::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .sidebar-list a:hover::before { transform: scaleY(1); }
+        .sidebar-list a:hover {
+            background: var(--bg-tertiary);
+            color: var(--primary);
+            transform: translateX(6px);
+        }
+        .sidebar-list a i { 
+            margin-right: 8px; 
+            width: 18px; 
+            text-align: center;
+            color: var(--primary);
+        }
+        .sidebar-count {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.15rem 0.6rem;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 600;
+            min-width: 28px;
+            text-align: center;
+        }
+        
+        .app-download {
+            background: var(--gradient-dark);
+            color: white;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            padding: 1.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .app-download::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.3), transparent 50%);
+            pointer-events: none;
+        }
+        .app-download i { 
+            font-size: 2.2rem; 
+            margin-bottom: 0.6rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        .app-download h4 { 
+            margin: 0.4rem 0; 
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .app-download p { 
+            font-size: 0.75rem; 
+            opacity: 0.9; 
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .app-buttons {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .app-btn {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .app-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .app-btn.telegram { background: rgba(0,136,204,0.3); }
+        
+        .trending-jobs { max-height: 280px; overflow-y: auto; padding-right: 4px; }
+        .trending-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed var(--bg-tertiary);
+            font-size: 0.8rem;
+        }
+        .trending-item:last-child { border-bottom: none; }
+        .trending-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .trending-item a::before {
+            content: '▸';
+            color: var(--primary);
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        .trending-item a:hover { 
+            color: var(--primary); 
+            padding-left: 8px;
+        }
+        .trending-item a:hover::before { transform: translateX(4px); }
+        
+        /* ========== MODAL / POPUP ========== */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--bg-tertiary);
+            position: relative;
+        }
+        .modal-backdrop.active .modal {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-header {
+            padding: 1.3rem 1.5rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            z-index: 1;
+        }
+        .modal-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        .modal-close {
+            background: var(--bg-tertiary);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .modal-close:hover { 
+            background: var(--danger); 
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 1.3rem 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .modal-body strong { color: var(--text-primary); font-weight: 600; }
+        .modal-body .detail-row {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+            align-items: flex-start;
+        }
+        .modal-body .detail-row i {
+            color: var(--primary);
+            margin-top: 3px;
+            width: 18px;
+        }
+        
+        .modal-footer {
+            padding: 1rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--bg-tertiary);
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+            position: sticky;
+            bottom: 0;
+            background: var(--bg-secondary);
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        }
+        .modal-btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .modal-btn.secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+        .modal-btn.secondary:hover {
+            background: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+        .modal-btn.primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .modal-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            filter: brightness(1.05);
+        }
+        
+        /* ========== LOADING ========== */
+        .loading-container { 
+            text-align: center; 
+            padding: 3rem 1rem; 
+            color: var(--text-tertiary);
+        }
+        .spinner {
+            width: 50px; height: 50px;
+            border: 3px solid var(--bg-tertiary);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        .spinner::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border: 3px solid transparent;
+            border-top-color: var(--secondary);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+        
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--gradient-dark);
+            color: var(--text-inverse);
+            padding: 2.5rem 1rem 1.5rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-section h4 { 
+            margin-bottom: 1rem; 
+            font-size: 0.95rem; 
+            position: relative; 
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 40px; height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+        }
+        .footer-section a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.2rem 0;
+        }
+        .footer-section a i { width: 18px; text-align: center; }
+        .footer-section a:hover { 
+            color: white; 
+            transform: translateX(6px);
+            background: rgba(255,255,255,0.1);
+            padding-left: 0.5rem;
+            border-radius: var(--radius);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            position: relative;
+            z-index: 1;
+        }
+        .footer-bottom a { 
+            color: var(--primary-light); 
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-bottom a:hover { text-decoration: underline; }
+        
+        /* ========== FLOATING BUTTONS ========== */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            width: 55px;
-            height: 55px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
             z-index: 1000;
+            transition: var(--transition);
             text-decoration: none;
+            animation: pulse-glow 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.7);
+        }
+        .whatsapp-float i { animation: float 2s ease-in-out infinite; }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+        }
+        
+        /* ========== TOAST NOTIFICATION ========== */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-xl);
+            z-index: 4000;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            border: 1px solid var(--bg-tertiary);
+            max-width: 90vw;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.error { border-left: 4px solid var(--danger); }
+        .toast.warning { border-left: 4px solid var(--warning); }
+        .toast i { font-size: 1.1rem; }
+        .toast.success i { color: var(--success); }
+        .toast.error i { color: var(--danger); }
+        .toast.warning i { color: var(--warning); }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .main-container { grid-template-columns: 1fr; }
+            .sidebar { order: 2; }
+            .content-area { order: 1; }
         }
         
         @media (max-width: 768px) {
-            .hero { margin: 0.8rem; padding: 1.5rem; }
-            .hero h1 { font-size: 1.3rem; }
-            .jobs-grid { grid-template-columns: 1fr; }
-            .filters { flex-direction: column; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
-            .nav a { margin-left: 1rem; font-size: 0.8rem; }
+            .mobile-menu-btn { display: flex; }
+            .nav-menu { display: none; }
+            .header-actions { gap: 0.3rem; }
+            .icon-btn { width: 40px; height: 40px; font-size: 0.95rem; }
+            .whatsapp-btn { padding: 0.45rem 0.85rem; font-size: 0.75rem; }
+            .whatsapp-btn .hide-mobile { display: none; }
+            .logo h1 { font-size: 1.35rem; }
+            .logo p { font-size: 0.55rem; }
+            
+            .state-section { top: 68px; }
+            .tools-grid { grid-template-columns: repeat(3, 1fr); }
+            .update-card { flex-direction: column; align-items: flex-start; }
+            .apply-link { align-self: flex-end; margin-top: 0.3rem; }
+            
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .update-tabs { width: 100%; overflow-x: auto; padding-bottom: 0.8rem; }
+            
+            .modal { margin: 0.5rem; max-height: 95vh; }
+            .modal-header, .modal-body, .modal-footer { padding: 1rem 1.2rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .top-bar { font-size: 0.7rem; padding: 0.4rem 0.8rem; }
+            .main-header { padding: 0.6rem 1rem; }
+            .header-container { gap: 0.4rem; }
+            .logo h1 { font-size: 1.2rem; }
+            
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+            .category-container { gap: 0.4rem; }
+            .category-link { font-size: 0.75rem; padding: 0.35rem 0.7rem; }
+            
+            .update-title { font-size: 0.9rem; }
+            .update-meta { font-size: 0.65rem; gap: 0.6rem; }
+            .apply-link { padding: 0.45rem 1.1rem; font-size: 0.7rem; }
+            
+            .sidebar-card { padding: 1rem; }
+            .sidebar-title { font-size: 0.95rem; }
+            .sidebar-list a { font-size: 0.8rem; padding: 0.5rem 0.7rem; }
+            
+            .whatsapp-float { width: 52px; height: 52px; font-size: 26px; bottom: 18px; right: 18px; }
+            .back-to-top { bottom: 80px; width: 46px; height: 46px; }
+        }
+        
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+        
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        
+        /* ========== UTILITY CLASSES ========== */
+        .hidden { display: none !important; }
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0,0,0,0);
+            white-space: nowrap; border: 0;
+        }
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .glass {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--bg-tertiary);
         }
     </style>
 </head>
 <body>
 
-<div class="header">
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobileOverlay" role="presentation"></div>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+        <div class="logo" onclick="window.location.href='/'" style="cursor:pointer">
+            <h1><i class="fas fa-bolt"></i> LatestJob<span class="text-gradient">.Tech</span></h1>
+        </div>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="mobile-nav-links">
+        <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-briefcase"></i> Latest Jobs</a>
+        <a href="#"><i class="fas fa-ticket-alt"></i> Admit Cards</a>
+        <a href="#"><i class="fas fa-chart-line"></i> Results</a>
+        <a href="#"><i class="fas fa-graduation-cap"></i> Admission</a>
+        <a href="#"><i class="fas fa-book"></i> Syllabus</a>
+        <a href="#"><i class="fas fa-key"></i> Answer Key</a>
+        <a href="#"><i class="fas fa-ellipsis-h"></i> More</a>
+    </div>
+    <div class="mobile-nav-footer">
+        <a href="https://wa.me/919876543210" class="whatsapp" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <a href="https://t.me/latestjobtech" class="telegram" target="_blank" rel="noopener">
+            <i class="fab fa-telegram"></i> Join Telegram
+        </a>
+    </div>
+</nav>
+
+<!-- Top Bar -->
+<div class="top-bar" role="status">
+    <span class="alert">⚡</span> 
+    <strong>LatestJob.Tech</strong> Official • Since 2024 • Beware of fake sites! • 
+    <a href="https://wa.me/919876543210" target="_blank" rel="noopener">📱 Join WhatsApp</a>
+</div>
+
+<!-- Main Header -->
+<header class="main-header">
     <div class="header-container">
-        <div class="logo">
-            <h1>🔥 Latest<span>Job</span>.live</h1>
-        </div>
-        <div class="nav">
-            <a href="#">Home</a>
-            <a href="#">Government Jobs</a>
-            <a href="#">Private Jobs</a>
-            <a href="#">Contact</a>
-        </div>
-    </div>
-</div>
-
-<div class="hero">
-    <h1>🇮🇳 Sarkari Naukri ka No.1 Platform</h1>
-    <p>10th, 12th, Graduate, Diploma, ITI - Daily Updates</p>
-</div>
-
-<div class="search-section">
-    <div class="search-card">
-        <div class="filters">
-            <div class="filter-group">
-                <input type="text" id="searchInput" placeholder="🔍 Search jobs...">
-            </div>
-            <div class="filter-group">
-                <select id="stateFilter">
-                    <option value="">All States</option>
-                    <option value="Bihar">Bihar</option>
-                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Maharashtra">Maharashtra</option>
-                    <option value="Karnataka">Karnataka</option>
-                    <option value="Gujarat">Gujarat</option>
-                    <option value="Tamil Nadu">Tamil Nadu</option>
-                    <option value="Rajasthan">Rajasthan</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <select id="categoryFilter">
-                    <option value="">All Categories</option>
-                    <option value="Government">Government</option>
-                    <option value="Private">Private</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <select id="educationFilter">
-                    <option value="">All Qualifications</option>
-                    <option value="10th">10th Pass</option>
-                    <option value="12th">12th Pass</option>
-                    <option value="Graduate">Graduate</option>
-                    <option value="Diploma">Diploma</option>
-                    <option value="ITI">ITI</option>
-                </select>
+        <div class="header-left">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo" onclick="window.location.href='/'" style="cursor:pointer">
+                <h1><i class="fas fa-bolt"></i> LatestJob<span class="text-gradient">.Tech</span></h1>
+                <p>⚡ Instant Alerts • Verified Jobs • 100% Free</p>
             </div>
         </div>
-        <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i> Search Jobs</button>
+        
+        <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+            <a href="#" class="active">Home</a>
+            <a href="#">Latest Jobs</a>
+            <a href="#">Admit Card</a>
+            <a href="#">Results</a>
+            <a href="#">Admission</a>
+            <a href="#">Syllabus</a>
+            <a href="#">Answer Key</a>
+            <a href="#">More</a>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="notificationBtn" aria-label="View notifications" title="Notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+            </button>
+            <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> <span class="hide-mobile">Join</span> WhatsApp
+            </a>
+        </div>
     </div>
+</header>
 
-    <div class="stats" id="stats">
-        <div class="stat-card"><div class="stat-number" id="totalJobs">0</div><div class="stat-label">Total Jobs</div></div>
-        <div class="stat-card"><div class="stat-number" id="govtJobs">0</div><div class="stat-label">Government</div></div>
-        <div class="stat-card"><div class="stat-number" id="privateJobs">0</div><div class="stat-label">Private</div></div>
-        <div class="stat-card"><div class="stat-number" id="urgentJobs">0</div><div class="stat-label">Urgent</div></div>
-    </div>
-
-    <div class="jobs-header">
-        <h3><i class="fas fa-fire" style="color:#ff6b35"></i> Latest Job Notifications</h3>
-        <div id="resultCount"></div>
-    </div>
-
-    <div id="jobsGrid" class="jobs-grid">
-        <div class="loading"><div class="spinner"></div><p>Loading jobs...</p></div>
+<!-- State Shortcuts -->
+<div class="state-section" role="navigation" aria-label="State filters">
+    <div class="state-container">
+        <a href="#" class="state-btn active" data-state="All India">🇮🇳 All India</a>
+        <a href="#" class="state-btn" data-state="Bihar">BR</a>
+        <a href="#" class="state-btn" data-state="Uttar Pradesh">UP</a>
+        <a href="#" class="state-btn" data-state="Delhi">DL</a>
+        <a href="#" class="state-btn" data-state="Maharashtra">MH</a>
+        <a href="#" class="state-btn" data-state="Karnataka">KA</a>
+        <a href="#" class="state-btn" data-state="Gujarat">GJ</a>
+        <a href="#" class="state-btn" data-state="Tamil Nadu">TN</a>
+        <a href="#" class="state-btn" data-state="Rajasthan">RJ</a>
+        <a href="#" class="state-btn" data-state="Madhya Pradesh">MP</a>
+        <a href="#" class="state-btn" data-state="West Bengal">WB</a>
+        <a href="#" class="state-btn" data-state="Punjab">PB</a>
+        <a href="#" class="state-btn" data-state="Haryana">HR</a>
+        <a href="#" class="state-btn" data-state="Jharkhand">JH</a>
     </div>
 </div>
 
-<div class="footer">
-    <p>© 2026 LatestJob.live | All Rights Reserved</p>
-    <p style="margin-top: 0.5rem;">📱 Join WhatsApp for Daily Job Alerts</p>
+<!-- Category Menu -->
+<div class="category-section" role="navigation" aria-label="Category filters">
+    <div class="category-container">
+        <a href="#" class="category-link active" data-category="all">🔥 All</a>
+        <a href="#" class="category-link" data-category="Government">🏛️ Govt Jobs</a>
+        <a href="#" class="category-link" data-category="Private">💼 Private Jobs</a>
+        <a href="#" class="category-link" data-category="Admit">🎫 Admit Card</a>
+        <a href="#" class="category-link" data-category="Result">📊 Results</a>
+        <a href="#" class="category-link" data-category="Answer Key">🔑 Answer Key</a>
+        <a href="#" class="category-link" data-category="Syllabus">📚 Syllabus</a>
+        <a href="#" class="category-link" data-category="Admission">🎓 Admission</a>
+        <a href="#" class="category-link" data-category="Certificate">📜 Certificates</a>
+    </div>
 </div>
 
-<a href="https://wa.me/919876543210?text=Hi! I want daily job alerts" class="whatsapp-float" target="_blank">
+<!-- Tools Section -->
+<section class="tools-section" aria-label="Quick tools">
+    <div class="tools-grid">
+        <div class="tool-card animate-slide-up delay-100" onclick="window.open('https://wa.me/919876543210', '_blank')" role="button" tabindex="0">
+            <div class="tool-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="tool-title">WhatsApp Alerts</div>
+        </div>
+        <div class="tool-card animate-slide-up delay-200" onclick="window.open('https://t.me/latestjobtech', '_blank')" role="button" tabindex="0">
+            <div class="tool-icon"><i class="fab fa-telegram"></i></div>
+            <div class="tool-title">Telegram Channel</div>
+        </div>
+        <div class="tool-card animate-slide-up delay-300" onclick="showTipModal('exam')" role="button" tabindex="0">
+            <div class="tool-icon"><i class="fas fa-brain"></i></div>
+            <div class="tool-title">Exam Tips</div>
+        </div>
+        <div class="tool-card animate-slide-up delay-400" onclick="showAppModal()" role="button" tabindex="0">
+            <div class="tool-icon"><i class="fas fa-mobile-screen-button"></i></div>
+            <div class="tool-title">Download App</div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Container -->
+<div class="main-container" id="main-content">
+    <!-- Content Area -->
+    <main class="content-area">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="search" id="searchInput" placeholder="🔍 Search jobs, admit cards, results, organizations..." aria-label="Search updates">
+        </div>
+
+        <!-- Update Tabs -->
+        <div class="update-tabs" role="tablist">
+            <button class="update-tab active" data-type="all" role="tab" aria-selected="true">🔥 Latest</button>
+            <button class="update-tab" data-type="Government" role="tab">🏛️ Jobs</button>
+            <button class="update-tab" data-type="Admit" role="tab">🎫 Admit Cards</button>
+            <button class="update-tab" data-type="Result" role="tab">📊 Results</button>
+            <button class="update-tab" data-type="Answer Key" role="tab">🔑 Answer Keys</button>
+            <button class="update-tab" data-type="Syllabus" role="tab">📚 Syllabus</button>
+        </div>
+
+        <!-- Updates Grid -->
+        <div id="updatesGrid" aria-live="polite">
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Fetching latest updates from official sources...</p>
+                <p style="font-size:0.75rem; margin-top:0.5rem; color:var(--text-tertiary)">Powered by LatestJob.Tech API</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-graduation-cap"></i> Jobs by Education</div>
+            <ul class="sidebar-list">
+                <li><a href="#" data-education="10th"><i class="fas fa-book"></i> 10th Pass <span class="sidebar-count" id="count10th">0</span></a></li>
+                <li><a href="#" data-education="12th"><i class="fas fa-book-open"></i> 12th Pass <span class="sidebar-count" id="count12th">0</span></a></li>
+                <li><a href="#" data-education="Graduate"><i class="fas fa-user-graduate"></i> Graduate <span class="sidebar-count" id="countGraduate">0</span></a></li>
+                <li><a href="#" data-education="Diploma"><i class="fas fa-certificate"></i> Diploma <span class="sidebar-count" id="countDiploma">0</span></a></li>
+                <li><a href="#" data-education="ITI"><i class="fas fa-tools"></i> ITI <span class="sidebar-count" id="countITI">0</span></a></li>
+                <li><a href="#" data-education="B.Tech"><i class="fas fa-laptop-code"></i> B.Tech <span class="sidebar-count" id="countBtech">0</span></a></li>
+                <li><a href="#" data-education="Any"><i class="fas fa-check-circle"></i> Any Qualification <span class="sidebar-count" id="countAny">0</span></a></li>
+            </ul>
+        </div>
+        
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-bolt"></i> Quick Links</div>
+            <ul class="sidebar-list">
+                <li><a href="#"><i class="fas fa-ticket-alt"></i> Admit Cards 2026</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Latest Results</a></li>
+                <li><a href="#"><i class="fas fa-key"></i> Answer Keys PDF</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Syllabus Download</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Previous Year Papers</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Exam Calendar</a></li>
+                <li><a href="#"><i class="fas fa-calculator"></i> Salary Calculator</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-title"><i class="fas fa-fire"></i> Trending Now</div>
+            <div class="trending-jobs">
+                <div class="trending-item"><a href="#">🚀 UP Police Constable 2026 - 60,000 Posts</a></div>
+                <div class="trending-item"><a href="#">🎫 SSC CGL 2026 Admit Card Out - Download Now</a></div>
+                <div class="trending-item"><a href="#">📊 Railway NTPC CBT-2 Result Declared</a></div>
+                <div class="trending-item"><a href="#">🏛️ Bihar Sarkari Naukri - 10th/12th/Graduate</a></div>
+                <div class="trending-item"><a href="#">🔑 UPSC CSE Prelims Answer Key Released</a></div>
+                <div class="trending-item"><a href="#">💼 Bank of India PO Recruitment 2026</a></div>
+                <div class="trending-item"><a href="#">📚 CTET 2026 Syllabus & Exam Pattern</a></div>
+            </div>
+        </div>
+
+        <div class="app-download">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h4>LatestJob.Tech App</h4>
+            <p>Get instant push notifications for new jobs, admit cards & results</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn"><i class="fab fa-android"></i> Android</a>
+                <a href="#" class="app-btn telegram"><i class="fab fa-apple"></i> iOS</a>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>⚡ LatestJob.Tech</h4>
+            <p style="color:rgba(255,255,255,0.8); margin-top:0.8rem; font-size:0.8rem; line-height:1.7;">
+                India's fastest growing job portal for government & private jobs. 
+                Instant alerts • Verified information • 100% free service.
+            </p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="#">🔥 Latest Jobs</a>
+            <a href="#">🏛️ Government Jobs</a>
+            <a href="#">💼 Private Jobs</a>
+            <a href="#">🎫 Admit Cards</a>
+            <a href="#">📊 Results</a>
+            <a href="#">🔑 Answer Keys</a>
+            <a href="#">📚 Syllabus</a>
+        </div>
+        <div class="footer-section">
+            <h4>Resources</h4>
+            <a href="#">📄 Previous Papers</a>
+            <a href="#">📋 Exam Pattern</a>
+            <a href="#">✅ Selection Process</a>
+            <a href="#">📝 Eligibility Criteria</a>
+            <a href="#">💰 Salary Structure</a>
+            <a href="#">🗓️ Exam Calendar</a>
+        </div>
+        <div class="footer-section">
+            <h4>Connect With Us</h4>
+            <a href="https://wa.me/919876543210"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+            <a href="https://t.me/latestjobtech"><i class="fab fa-telegram"></i> Telegram Group</a>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook Page</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-youtube"></i> YouTube Channel</a>
+            <a href="#"><i class="fas fa-rss"></i> RSS Feed</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 <strong>LatestJob.Tech</strong> | All Rights Reserved | Always type <strong>.tech</strong> after LatestJob</p>
+        <p style="margin-top:0.6rem; color:rgba(255,255,255,0.5);">
+            Disclaimer: This is not an official government website. We aggregate information from official sources only. 
+            Always verify details on the official website before applying.
+        </p>
+        <p style="margin-top:0.6rem;">
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a> | <a href="#">Advertise</a>
+        </p>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919876543210?text=Hi! I want instant job alerts from LatestJob.Tech" 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Chat on WhatsApp for job alerts">
     <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- Back to Top -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast" role="alert" aria-live="assertive">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Notification</span>
+</div>
+
+<!-- Modal Popup -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal animate-scale">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modalTitle">Details</h3>
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" id="modalCancel">Close</button>
+            <a href="#" class="modal-btn primary" id="modalApply" target="_blank" rel="noopener">
+                Apply Now <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "LatestJob.Tech",
+  "url": "https://latestjob.tech/",
+  "description": "India's Fastest Growing Job Portal - Latest Sarkari Naukri, Admit Cards, Results, Answer Keys",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://latestjob.tech/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 <script>
-    // 🔴 GOOGLE SHEETS CSV URL - YE BANANA HAI 🔴
-    // Step 1: Google Sheet kholo
-    // Step 2: File → Share → Publish to web
-    // Step 3: CSV select karo
-    // Step 4: Link copy karo aur yahan paste karo
-    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAIWlX472Z32hmwQ8cgKFpOMtSG8s58_BO_NUwzOt-NQqy8BlrPehWyTMBBE67hg0omh-zqSUkYLNV/pub?gid=0&single=true&output=csv";
+    // 🔴 CONFIGURATION
+    const CONFIG = {
+        CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAIWlX472Z32hmwQ8cgKFpOMtSG8s58_BO_NUwzOt-NQqy8BlrPehWyTMBBE67hg0omh-zqSUkYLNV/pub?gid=0&single=true&output=csv",
+        WHATSAPP: "919876543210",
+        TELEGRAM: "latestjobtech",
+        SITE_NAME: "LatestJob.Tech"
+    };
+
+    // State Management
+    const state = {
+        allUpdates: [],
+        currentType: 'all',
+        currentSearch: '',
+        currentState: 'All India',
+        bookmarks: JSON.parse(localStorage.getItem('ljt_bookmarks') || '[]'),
+        darkMode: localStorage.getItem('ljt_theme') === 'dark',
+        notifications: 5
+    };
+
+    // DOM Elements Cache
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => document.querySelectorAll(sel);
     
-    let allJobs = [];
-    let currentFilters = { search: '', state: '', category: '', education: '' };
+    const elements = {
+        updatesGrid: $('#updatesGrid'),
+        searchInput: $('#searchInput'),
+        themeToggle: $('#themeToggle'),
+        mobileMenuBtn: $('#mobileMenuBtn'),
+        mobileNav: $('#mobileNav'),
+        mobileOverlay: $('#mobileOverlay'),
+        mobileNavClose: $('#mobileNavClose'),
+        backToTop: $('#backToTop'),
+        toast: $('#toast'),
+        toastMessage: $('#toastMessage'),
+        modalBackdrop: $('#modalBackdrop'),
+        modalTitle: $('#modalTitle'),
+        modalBody: $('#modalBody'),
+        modalClose: $('#modalClose'),
+        modalCancel: $('#modalCancel'),
+        modalApply: $('#modalApply'),
+        notificationBtn: $('#notificationBtn'),
+        notificationBadge: $('.notification-badge')
+    };
+
+    // ========== UTILITY FUNCTIONS ==========
     
-    // Format date
+    function parseCSVLine(line) {
+        const result = [], regex = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
+        let match;
+        while((match = regex.exec(line)) !== null) {
+            result.push(match[1].replace(/^"|"$/g, '').trim());
+        }
+        return result.length > 1 ? result : line.split(',').map(f => f.trim().replace(/^"|"$/g, ''));
+    }
+    
+    function parseCSV(csvText) {
+        const lines = csvText.trim().split('\n').filter(l => l.trim());
+        if(lines.length < 2) return [];
+        const headers = parseCSVLine(lines[0]);
+        return lines.slice(1).map(line => {
+            const values = parseCSVLine(line);
+            if(values.length !== headers.length) return null;
+            const obj = {};
+            headers.forEach((h, i) => obj[h.trim()] = values[i]?.trim() || '');
+            return obj;
+        }).filter(Boolean);
+    }
+    
     function formatDate(dateStr) {
         if(!dateStr) return 'N/A';
         try {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-        } catch(e) { return dateStr; }
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+        } catch { return dateStr; }
     }
     
-    // Check if urgent (within 7 days)
     function isUrgent(lastDate) {
         if(!lastDate) return false;
-        const today = new Date();
-        const deadline = new Date(lastDate);
-        const diffDays = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
-        return diffDays <= 7 && diffDays >= 0;
+        const diff = Math.ceil((new Date(lastDate) - new Date()) / (1000*60*60*24));
+        return diff >= 0 && diff <= 7;
     }
     
-    // Parse CSV to JSON
-    function parseCSV(csvText) {
-        const lines = csvText.split('\n');
-        const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
-        const jobs = [];
-        
-        for(let i = 1; i < lines.length; i++) {
-            if(!lines[i].trim()) continue;
-            
-            // Parse CSV line (handling commas inside quotes)
-            let row = [];
-            let inQuote = false;
-            let current = '';
-            
-            for(let ch of lines[i]) {
-                if(ch === '"') {
-                    inQuote = !inQuote;
-                } else if(ch === ',' && !inQuote) {
-                    row.push(current.trim());
-                    current = '';
-                } else {
-                    current += ch;
-                }
-            }
-            row.push(current.trim());
-            
-            if(row.length !== headers.length) continue;
-            
-            let obj = {};
-            for(let j = 0; j < headers.length; j++) {
-                obj[headers[j]] = row[j].replace(/^"|"$/g, '');
-            }
-            jobs.push(obj);
-        }
-        return jobs;
+    function showToast(message, type = 'success', icon = 'check-circle') {
+        elements.toastMessage.textContent = message;
+        elements.toast.querySelector('i').className = `fas fa-${icon}`;
+        elements.toast.className = `toast ${type} show`;
+        setTimeout(() => elements.toast.classList.remove('show'), 3500);
     }
     
-    // Load jobs from Google Sheets CSV
-    async function loadJobs() {
-        const container = document.getElementById('jobsGrid');
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => { clearTimeout(timeout); func(...args); };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // ========== MODAL FUNCTIONS ==========
+    
+    function openModal(title, content, applyLink = '#') {
+        elements.modalTitle.textContent = title;
+        elements.modalBody.innerHTML = content;
+        elements.modalApply.href = applyLink;
+        elements.modalApply.style.display = applyLink && applyLink !== '#' ? 'inline-flex' : 'none';
+        elements.modalBackdrop.classList.add('active');
+        elements.modalBackdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        elements.modalClose.focus();
+    }
+    
+    function closeModal() {
+        elements.modalBackdrop.classList.remove('active');
+        elements.modalBackdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    function showDetails(update) {
+        const urgent = isUrgent(update.last_date);
+        const content = `
+            <div class="detail-row"><i class="fas fa-building"></i> <strong>Organization:</strong> ${update.company || 'N/A'}</div>
+            <div class="detail-row"><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> ${update.state || 'N/A'}${update.city ? ' • ' + update.city : ''}</div>
+            <div class="detail-row"><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> ${update.education || 'Any'}</div>
+            <div class="detail-row"><i class="fas fa-coins"></i> <strong>Salary:</strong> ${update.salary || 'As per rules'}</div>
+            <div class="detail-row"><i class="fas fa-calendar-check"></i> <strong>Last Date:</strong> ${formatDate(update.last_date)}${urgent ? ' <span style="color:var(--danger);font-weight:600">⚠️ URGENT</span>' : ''}</div>
+            <div class="detail-row"><i class="fas fa-calendar-plus"></i> <strong>Posted:</strong> ${formatDate(update.posted_date)}</div>
+            ${update.description ? `<div style="margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--bg-tertiary)"><strong>📝 Description:</strong><p style="margin-top:0.5rem;line-height:1.7">${update.description}</p></div>` : ''}
+        `;
+        openModal(update.title || 'Job Details', content, update.apply_link || '#');
+    }
+    
+    function showTipModal(type) {
+        const tips = {
+            exam: `
+                <strong>🎯 5 Pro Tips to Crack Govt Exams:</strong>
+                <div style="margin-top:0.8rem">
+                    <div style="margin-bottom:0.6rem">1️⃣ <strong>Study Smart:</strong> Focus on high-weightage topics first</div>
+                    <div style="margin-bottom:0.6rem">2️⃣ <strong>Mock Tests:</strong> Take 2-3 tests weekly to improve speed</div>
+                    <div style="margin-bottom:0.6rem">3️⃣ <strong>Revision:</strong> Revise notes every Sunday</div>
+                    <div style="margin-bottom:0.6rem">4️⃣ <strong>Health:</strong> Sleep 7-8 hours, stay hydrated</div>
+                    <div>5️⃣ <strong>Consistency:</strong> 4 hours daily > 12 hours once a week</div>
+                </div>
+            `,
+            apply: `
+                <strong>📋 Application Checklist:</strong>
+                <div style="margin-top:0.8rem">
+                    <div style="margin-bottom:0.5rem">✓ Valid email & mobile number</div>
+                    <div style="margin-bottom:0.5rem">✓ Scanned photo & signature (JPG, 20-50KB)</div>
+                    <div style="margin-bottom:0.5rem">✓ Educational certificates (PDF)</div>
+                    <div style="margin-bottom:0.5rem">✓ Caste/EWS certificate if applicable</div>
+                    <div>✓ Application fee payment method ready</div>
+                </div>
+            `
+        };
+        openModal('💡 Exam Preparation Tips', tips[type] || tips.exam);
+    }
+    
+    function showAppModal() {
+        const content = `
+            <div style="text-align:center">
+                <i class="fas fa-mobile-screen-button" style="font-size:3rem;color:var(--primary);margin-bottom:1rem"></i>
+                <p><strong>LatestJob.Tech App</strong> is coming soon!</p>
+                <p style="margin:0.8rem 0;color:var(--text-tertiary)">Get instant push notifications, offline access, and personalized job recommendations.</p>
+                <div style="display:flex;gap:0.6rem;justify-content:center;margin-top:1rem;flex-wrap:wrap">
+                    <span style="background:var(--bg-tertiary);padding:0.4rem 0.9rem;border-radius:var(--radius-full);font-size:0.8rem">🔔 Instant Alerts</span>
+                    <span style="background:var(--bg-tertiary);padding:0.4rem 0.9rem;border-radius:var(--radius-full);font-size:0.8rem">📱 Offline Access</span>
+                    <span style="background:var(--bg-tertiary);padding:0.4rem 0.9rem;border-radius:var(--radius-full);font-size:0.8rem">🎯 Personalized</span>
+                </div>
+                <p style="margin-top:1.2rem;font-size:0.85rem">Join our WhatsApp channel to get notified when the app launches!</p>
+            </div>
+        `;
+        openModal('📱 Download App', content, `https://wa.me/${CONFIG.WHATSAPP}?text=Notify me when LatestJob.Tech app launches`);
+    }
+
+    // ========== DATA FUNCTIONS ==========
+    
+    async function loadUpdates() {
         try {
-            const response = await fetch(CSV_URL);
+            const response = await fetch(CONFIG.CSV_URL);
+            if(!response.ok) throw new Error(`HTTP ${response.status}`);
+            
             const csvText = await response.text();
-            allJobs = parseCSV(csvText);
+            state.allUpdates = parseCSV(csvText)
+                .map((item, idx) => ({ ...item, id: idx + 1 }))
+                .filter(u => !u.last_date || u.last_date >= new Date().toISOString().split('T')[0])
+                .sort((a,b) => new Date(b.posted_date||0) - new Date(a.posted_date||0));
             
-            // Add unique IDs
-            allJobs = allJobs.map((job, index) => ({ ...job, id: index + 1 }));
-            
-            // Filter expired jobs
-            const today = new Date().toISOString().split('T')[0];
-            allJobs = allJobs.filter(job => !job.last_date || job.last_date >= today);
-            
-            updateStats();
-            filterAndDisplayJobs();
+            updateCounts();
+            applyFilters();
+            showToast('✅ Updates loaded successfully', 'success', 'check');
             
         } catch(error) {
-            console.error('Error:', error);
-            container.innerHTML = '<div class="no-results"><i class="fas fa-exclamation-triangle"></i><h3>Unable to load jobs</h3><p>Please check your Google Sheets publish settings.</p><button class="reset-btn" onclick="loadJobs()">Retry</button></div>';
+            console.error('Load error:', error);
+            elements.updatesGrid.innerHTML = `
+                <div class="loading-container">
+                    <i class="fas fa-exclamation-triangle" style="font-size:2.5rem;color:var(--warning);margin-bottom:1rem"></i>
+                    <p>Could not load updates</p>
+                    <p style="font-size:0.8rem;color:var(--text-tertiary);margin:0.5rem 0">Please check your connection or try again</p>
+                    <button onclick="loadUpdates()" style="margin-top:1rem;padding:0.6rem 1.5rem;background:var(--gradient-primary);color:white;border:none;border-radius:var(--radius-full);cursor:pointer;font-weight:600">🔄 Retry</button>
+                </div>
+            `;
+            showToast('⚠️ Failed to load updates', 'error', 'exclamation-triangle');
         }
     }
     
-    // Update statistics
-    function updateStats() {
-        const total = allJobs.length;
-        const govt = allJobs.filter(j => j.category === 'Government').length;
-        const priv = allJobs.filter(j => j.category === 'Private').length;
-        const urgent = allJobs.filter(j => isUrgent(j.last_date)).length;
-        
-        document.getElementById('totalJobs').innerText = total;
-        document.getElementById('govtJobs').innerText = govt;
-        document.getElementById('privateJobs').innerText = priv;
-        document.getElementById('urgentJobs').innerText = urgent;
+    function updateCounts() {
+        const counts = {
+            '10th': state.allUpdates.filter(u => u.education?.toLowerCase().includes('10th')).length,
+            '12th': state.allUpdates.filter(u => u.education?.toLowerCase().includes('12th')).length,
+            'Graduate': state.allUpdates.filter(u => /graduate|graduation|degree|ba|bcom|bsc/i.test(u.education||'')).length,
+            'Diploma': state.allUpdates.filter(u => u.education?.toLowerCase().includes('diploma')).length,
+            'ITI': state.allUpdates.filter(u => u.education?.toLowerCase().includes('iti')).length,
+            'B.Tech': state.allUpdates.filter(u => /b\.?tech|b\.?e|engineering/i.test(u.education||'')).length,
+            'Any': state.allUpdates.filter(u => !u.education || u.education.toLowerCase() === 'any').length
+        };
+        Object.entries(counts).forEach(([key, count]) => {
+            const el = $(`#count${key === 'B.Tech' ? 'Btech' : key}`);
+            if(el) el.textContent = count;
+        });
     }
     
-    // Filter and display jobs
-    function filterAndDisplayJobs() {
-        let filtered = [...allJobs];
+    function applyFilters() {
+        let filtered = [...state.allUpdates];
         
-        if(currentFilters.search) {
-            const s = currentFilters.search.toLowerCase();
-            filtered = filtered.filter(job => 
-                (job.title && job.title.toLowerCase().includes(s)) ||
-                (job.company && job.company.toLowerCase().includes(s)) ||
-                (job.state && job.state.toLowerCase().includes(s))
+        if(state.currentType !== 'all') {
+            filtered = filtered.filter(u => 
+                [u.type, u.category].some(v => v?.toLowerCase() === state.currentType.toLowerCase())
             );
         }
-        if(currentFilters.state) {
-            filtered = filtered.filter(job => job.state === currentFilters.state);
+        if(state.currentSearch) {
+            const s = state.currentSearch.toLowerCase();
+            filtered = filtered.filter(u => 
+                [u.title, u.company, u.state, u.city, u.education]
+                    .some(v => v?.toLowerCase().includes(s))
+            );
         }
-        if(currentFilters.category) {
-            filtered = filtered.filter(job => job.category === currentFilters.category);
-        }
-        if(currentFilters.education) {
-            filtered = filtered.filter(job => job.education === currentFilters.education);
+        if(state.currentState !== 'All India') {
+            filtered = filtered.filter(u => u.state === state.currentState);
         }
         
-        displayJobs(filtered);
-        document.getElementById('resultCount').innerHTML = `${filtered.length} jobs found`;
+        displayUpdates(filtered);
     }
     
-    // Display jobs in grid
-    function displayJobs(jobs) {
-        const container = document.getElementById('jobsGrid');
-        
-        if(!jobs || jobs.length === 0) {
-            container.innerHTML = '<div class="no-results"><i class="fas fa-search"></i><h3>No jobs found</h3><p>Try adjusting your filters</p><button class="reset-btn" onclick="resetFilters()">Reset Filters</button></div>';
+    function displayUpdates(updates) {
+        if(!updates.length) {
+            elements.updatesGrid.innerHTML = `
+                <div class="loading-container">
+                    <i class="fas fa-search" style="font-size:2.5rem;color:var(--text-tertiary);margin-bottom:1rem"></i>
+                    <p>No updates found</p>
+                    <p style="font-size:0.8rem;color:var(--text-tertiary)">Try adjusting your filters</p>
+                </div>
+            `;
             return;
         }
         
-        container.innerHTML = jobs.map(job => {
-            const urgent = isUrgent(job.last_date);
+        elements.updatesGrid.innerHTML = updates.map((update, idx) => {
+            const urgent = isUrgent(update.last_date);
+            const isNew = update.posted_date && (Date.now() - new Date(update.posted_date)) / 86400000 <= 2;
+            
+            let badge = { class: '', text: 'Update', icon: '📋' };
+            if(/admit/i.test(update.type+update.category)) badge = { class: 'admit', text: 'Admit Card', icon: '🎫' };
+            else if(/result/i.test(update.type+update.category)) badge = { class: 'result', text: 'Result', icon: '📊' };
+            else if(/answer/i.test(update.type+update.category)) badge = { class: 'answer', text: 'Answer Key', icon: '🔑' };
+            else if(urgent) badge = { class: 'urgent', text: 'Urgent', icon: '⚠️' };
+            else if(isNew) badge = { class: 'new', text: 'New', icon: '✨' };
+            
+            const bookmarked = state.bookmarks.includes(update.id);
+            
             return `
-                <div class="job-card ${urgent ? 'urgent' : ''}" onclick='openModal(${JSON.stringify(job).replace(/'/g, "&#39;")})'>
-                    <div class="job-title">${job.title || 'N/A'}</div>
-                    <div class="job-company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</div>
-                    <div class="job-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> ${job.state || 'N/A'}${job.city ? ' - ' + job.city : ''}</span>
-                        <span><i class="fas fa-rupee-sign"></i> ${job.salary || 'Not Disclosed'}</span>
+                <article class="update-card ${bookmarked ? 'bookmarked' : ''} animate-slide-up" 
+                         style="animation-delay:${idx * 0.05}s"
+                         onclick="showDetails(${JSON.stringify(update).replace(/"/g,'&quot;')})"
+                         role="article" tabindex="0"
+                         onkeydown="if(event.key==='Enter')showDetails(${JSON.stringify(update).replace(/"/g,'&quot;')})">
+                    
+                    <button class="bookmark-btn ${bookmarked ? 'active' : ''}" 
+                            onclick="event.stopPropagation();toggleBookmark(${update.id})"
+                            aria-label="${bookmarked?'Remove from':'Add to'} bookmarks">
+                        <i class="${bookmarked?'fas':'far'} fa-star"></i>
+                    </button>
+                    
+                    <div class="update-info">
+                        <h3 class="update-title">${update.title || 'No title'}</h3>
+                        <div class="update-meta">
+                            <span><i class="fas fa-building"></i>${update.company || 'N/A'}</span>
+                            <span><i class="fas fa-map-marker-alt"></i>${update.state || 'N/A'}${update.city?' • '+update.city:''}</span>
+                        </div>
+                        <div class="update-badges">
+                            <span class="update-badge ${badge.class}">${badge.icon} ${badge.text}</span>
+                            <span class="update-badge"><i class="fas fa-graduation-cap"></i>${update.education||'Any'}</span>
+                            ${update.last_date ? `<span class="update-badge"><i class="fas fa-calendar"></i>${formatDate(update.last_date)}</span>`:''}
+                        </div>
                     </div>
-                    <div class="job-tags">
-                        <span class="job-tag"><i class="fas fa-graduation-cap"></i> ${job.education || 'Any'}</span>
-                        <span class="job-tag"><i class="fas fa-briefcase"></i> ${job.category || 'N/A'}</span>
-                    </div>
-                    <div class="deadline">
-                        <i class="fas fa-calendar-alt"></i> Apply by: ${formatDate(job.last_date)} ${urgent ? '⚠️ Hurry!' : ''}
-                    </div>
-                    <a href="${job.apply_link || '#'}" target="_blank" class="apply-btn" onclick="event.stopPropagation()">Apply Now →</a>
-                </div>
+                    
+                    <a href="${update.apply_link||'#'}" target="_blank" rel="noopener"
+                       class="apply-link" onclick="event.stopPropagation()">
+                        View <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
             `;
         }).join('');
     }
     
-    // Modal popup
-    function openModal(job) {
-        const urgent = isUrgent(job.last_date);
-        const modal = document.createElement('div');
-        modal.className = 'modal-overlay';
-        modal.onclick = (e) => { if(e.target === modal) modal.remove(); };
-        modal.innerHTML = `
-            <div class="modal-container">
-                <div class="modal-header">
-                    <h2><i class="fas fa-briefcase"></i> Job Details</h2>
-                    <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-job-title">${job.title || 'N/A'}</div>
-                    <div class="modal-job-company"><i class="fas fa-building"></i> ${job.company || 'N/A'}</div>
-                    <div class="modal-info">
-                        <div><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong><br>${job.state || 'N/A'} ${job.city ? ' - ' + job.city : ''}</div>
-                        <div><i class="fas fa-rupee-sign"></i> <strong>Salary:</strong><br>${job.salary || 'Not Disclosed'}</div>
-                        <div><i class="fas fa-graduation-cap"></i> <strong>Qualification:</strong><br>${job.education || 'Any'}</div>
-                        <div><i class="fas fa-briefcase"></i> <strong>Job Type:</strong><br>${job.category || 'N/A'}</div>
-                        <div><i class="fas fa-calendar-alt"></i> <strong>Posted:</strong><br>${formatDate(job.posted_date)}</div>
-                        <div><i class="fas fa-hourglass-half"></i> <strong>Last Date:</strong><br>${formatDate(job.last_date)} ${urgent ? '(Urgent!)' : ''}</div>
-                    </div>
-                    <div><strong>📝 Description:</strong><br>${job.description || 'No description available.'}</div>
-                    <a href="${job.apply_link || '#'}" target="_blank" class="modal-apply"><i class="fas fa-arrow-right"></i> Apply Now</a>
-                    <p style="text-align:center; font-size:0.7rem; color:#999; margin-top:1rem;">⚠️ Always verify on official website</p>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
+    function toggleBookmark(id) {
+        const idx = state.bookmarks.indexOf(id);
+        if(idx === -1) {
+            state.bookmarks.push(id);
+            showToast('⭐ Added to bookmarks', 'success', 'star');
+        } else {
+            state.bookmarks.splice(idx, 1);
+            showToast('🗑️ Removed from bookmarks', 'warning', 'star-half');
+        }
+        localStorage.setItem('ljt_bookmarks', JSON.stringify(state.bookmarks));
+        applyFilters();
     }
+
+    // ========== EVENT LISTENERS ==========
     
-    // Reset filters
-    function resetFilters() {
-        currentFilters = { search: '', state: '', category: '', education: '' };
-        document.getElementById('searchInput').value = '';
-        document.getElementById('stateFilter').value = '';
-        document.getElementById('categoryFilter').value = '';
-        document.getElementById('educationFilter').value = '';
-        filterAndDisplayJobs();
+    // Search with debounce
+    elements.searchInput.addEventListener('input', debounce((e) => {
+        state.currentSearch = e.target.value;
+        applyFilters();
+    }, 300));
+    
+    // Update tabs
+    $$('.update-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            $$('.update-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+            tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+            state.currentType = tab.dataset.type;
+            applyFilters();
+        });
+    });
+    
+    // State buttons
+    $$('.state-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            $$('.state-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.currentState = btn.dataset.state;
+            applyFilters();
+            showToast(`📍 Showing ${btn.dataset.state} jobs`, 'success', 'map-pin');
+        });
+    });
+    
+    // Category links
+    $$('.category-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            $$('.category-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            const cat = link.dataset.category;
+            if(cat === 'all') {
+                state.currentType = 'all';
+                $('.update-tab[data-type="all"]').click();
+            } else {
+                state.currentType = cat;
+                $$('.update-tab').forEach(t => t.classList.remove('active'));
+                $(`.update-tab[data-type="${cat}"]`)?.classList.add('active');
+                applyFilters();
+            }
+            showToast(`📂 Filtered: ${link.textContent.trim()}`, 'success', 'filter');
+        });
+    });
+    
+    // Education filters
+    $$('.sidebar-list a[data-education]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const edu = link.dataset.education;
+            elements.searchInput.value = edu;
+            state.currentSearch = edu;
+            applyFilters();
+            showToast(`🎓 Showing ${edu} Pass Jobs`, 'success', 'graduation-cap');
+        });
+    });
+    
+    // Mobile menu
+    function toggleMobileMenu() {
+        const active = elements.mobileNav.classList.contains('active');
+        elements.mobileNav.classList.toggle('active');
+        elements.mobileOverlay.classList.toggle('active');
+        elements.mobileMenuBtn.setAttribute('aria-expanded', !active);
+        document.body.style.overflow = active ? '' : 'hidden';
     }
+    elements.mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    elements.mobileNavClose.addEventListener('click', toggleMobileMenu);
+    elements.mobileOverlay.addEventListener('click', toggleMobileMenu);
+    $$('.mobile-nav-links a').forEach(a => a.addEventListener('click', () => { if(elements.mobileNav.classList.contains('active')) toggleMobileMenu(); }));
     
-    // Event listeners
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-        currentFilters.search = e.target.value;
-        filterAndDisplayJobs();
+    // Theme toggle
+    elements.themeToggle.addEventListener('click', () => {
+        state.darkMode = !state.darkMode;
+        document.documentElement.setAttribute('data-theme', state.darkMode ? 'dark' : 'light');
+        elements.themeToggle.innerHTML = `<i class="fas fa-${state.darkMode?'sun':'moon'}"></i>`;
+        localStorage.setItem('ljt_theme', state.darkMode ? 'dark' : 'light');
+        showToast(`${state.darkMode?'🌙 Dark':'☀️ Light'} mode activated`, 'success', state.darkMode?'moon':'sun');
     });
-    document.getElementById('stateFilter').addEventListener('change', (e) => {
-        currentFilters.state = e.target.value;
-        filterAndDisplayJobs();
-    });
-    document.getElementById('categoryFilter').addEventListener('change', (e) => {
-        currentFilters.category = e.target.value;
-        filterAndDisplayJobs();
-    });
-    document.getElementById('educationFilter').addEventListener('change', (e) => {
-        currentFilters.education = e.target.value;
-        filterAndDisplayJobs();
-    });
-    document.getElementById('searchBtn').addEventListener('click', () => filterAndDisplayJobs());
     
-    // Load jobs on page load
-    loadJobs();
+    // Modal controls
+    elements.modalClose.addEventListener('click', closeModal);
+    elements.modalCancel.addEventListener('click', closeModal);
+    elements.modalBackdrop.addEventListener('click', (e) => { if(e.target === elements.modalBackdrop) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && elements.modalBackdrop.classList.contains('active')) closeModal(); });
+    
+    // Back to top
+    window.addEventListener('scroll', () => {
+        elements.backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    elements.backToTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+    
+    // Notifications demo
+    elements.notificationBtn?.addEventListener('click', () => {
+        showToast(`🔔 ${state.notifications} new updates: UP Police, SSC CGL, Railway, Bank, CTET`, 'success', 'bell');
+        state.notifications = 0;
+        elements.notificationBadge.style.display = 'none';
+    });
+    
+    // Keyboard support for tool cards
+    $$('.tool-card').forEach(card => {
+        card.addEventListener('keydown', (e) => { if(['Enter',' '].includes(e.key)) { e.preventDefault(); card.click(); }});
+    });
+    
+    // Prevent zoom on double-tap (mobile UX)
+    let lastTouch = 0;
+    document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if(now - lastTouch <= 300) e.preventDefault();
+        lastTouch = now;
+    }, {passive:false});
+
+    // ========== INITIALIZATION ==========
+    document.addEventListener('DOMContentLoaded', () => {
+        // Apply saved theme
+        if(state.darkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            elements.themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Load data
+        loadUpdates();
+        
+        // PWA registration placeholder
+        if('serviceWorker' in navigator) {
+            // navigator.serviceWorker.register('/sw.js').catch(console.log);
+        }
+        
+        // Welcome toast
+        setTimeout(() => showToast(`🎉 Welcome to ${CONFIG.SITE_NAME}!`, 'success', 'sparkles'), 1000);
+    });
+    
+    // Online/Offline handling
+    window.addEventListener('online', () => showToast('🌐 Back online', 'success', 'wifi'));
+    window.addEventListener('offline', () => showToast('📴 You are offline', 'warning', 'wifi-slash'));
 </script>
 </body>
 </html>
