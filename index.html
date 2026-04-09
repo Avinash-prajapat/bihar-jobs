@@ -1050,7 +1050,10 @@
         <a href="#" data-type="Syllabus"><i class="fas fa-book"></i> Syllabus</a>
         <a href="#" data-type="Admission"><i class="fas fa-graduation-cap"></i> Admission</a>
     </div>
-    
+    <div class="drawer-footer">
+        <a href="#" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Join WhatsApp</a>
+        <a href="#" class="telegram" target="_blank"><i class="fab fa-telegram"></i> Join Telegram</a>
+    </div>
 </div>
 
 <!-- State Shortcuts -->
@@ -1144,6 +1147,7 @@
             </div>
             <div class="founder-socials">
                 <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
 
@@ -1268,6 +1272,14 @@
         } catch { return null; }
     };
 
+    // ✅ NEW: Escape HTML to prevent XSS & JSON errors
+    const escapeHtml = (str) => {
+        if(!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    };
+
     const showToast = (msg, type = 'success') => {
         const toast = document.getElementById('toast');
         document.getElementById('toastMsg').textContent = msg;
@@ -1318,7 +1330,6 @@
             const csv = await res.text();
             allJobs = parseCSV(csv);
             
-            // Filter expired jobs
             const today = new Date().toISOString().split('T')[0];
             allJobs = allJobs.filter(job => !job.last_date || job.last_date >= today);
             
@@ -1381,8 +1392,8 @@
         displayJobs(filtered);
     };
 
-    // ===== DISPLAY =====
-    const displayJobs = (jobs) => {
+    // ✅ FIXED: Changed from 'const' to 'let' so it can be used with animations
+    let displayJobs = (jobs) => {
         const container = document.getElementById('jobsGrid');
         
         if(!jobs.length) {
@@ -1407,54 +1418,78 @@
             
             const postDate = formatDate(job.posted_date);
             const shortDesc = job.short_desc || (job.full_desc?.substring(0, 100) + '...') || '';
-            const jobData = JSON.stringify(job).replace(/'/g, "&#39;");
+            
+            // ✅ FIXED: Use escapeHtml + encodeURIComponent for safe inline JS
+            const safeJob = encodeURIComponent(JSON.stringify({
+                title: job.title, company: job.company, state: job.state,
+                posted_date: job.posted_date, short_desc: job.short_desc,
+                full_desc: job.full_desc, education: job.education,
+                important_dates: job.important_dates, application_fee: job.application_fee,
+                eligibility: job.eligibility, age_limit: job.age_limit,
+                vacancy: job.vacancy, how_to_apply: job.how_to_apply,
+                important_links: job.important_links, notification_link: job.notification_link,
+                apply_link: job.apply_link, type: job.type, category: job.category
+            }));
             
             return `
-                <article class="job-card animate-up delay-${(idx % 4) + 1}" 
-                         onclick="showDetails(${jobData})"
+                <article class="job-card animate-up" 
+                         style="animation-delay:${(idx % 4) * 0.05}s"
+                         onclick="showDetailsSafe('${safeJob}')"
                          tabindex="0"
                          role="button"
-                         aria-label="View details for ${job.title || 'job'}"
-                         onkeypress="if(event.key==='Enter')showDetails(${jobData})">
+                         onkeypress="if(event.key==='Enter')showDetailsSafe('${safeJob}')">
                     <div class="job-content">
-                        <h3 class="job-title">${job.title || 'No title'}</h3>
+                        <h3 class="job-title">${escapeHtml(job.title || 'No title')}</h3>
                         <div class="job-meta">
-                            <span><i class="fas fa-building"></i> ${job.company || 'N/A'}</span>
-                            <span><i class="fas fa-map-marker-alt"></i> ${job.state || 'N/A'}</span>
+                            <span><i class="fas fa-building"></i> ${escapeHtml(job.company || 'N/A')}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${escapeHtml(job.state || 'N/A')}</span>
                             ${postDate ? `<span><i class="fas fa-calendar"></i> ${postDate}</span>` : ''}
                         </div>
                         <div class="job-badges">
                             <span class="job-badge ${badge.class}">${badge.icon} ${badge.text}</span>
-                            ${job.education ? `<span class="job-badge"><i class="fas fa-graduation-cap"></i> ${job.education}</span>` : ''}
+                            ${job.education ? `<span class="job-badge"><i class="fas fa-graduation-cap"></i> ${escapeHtml(job.education)}</span>` : ''}
                         </div>
-                        ${shortDesc ? `<p class="job-desc">${shortDesc}</p>` : ''}
+                        ${shortDesc ? `<p class="job-desc">${escapeHtml(shortDesc)}</p>` : ''}
                     </div>
-                    <button class="view-btn" onclick="event.stopPropagation();showDetails(${jobData})" aria-label="View details">
+                    <button class="view-btn" onclick="event.stopPropagation();showDetailsSafe('${safeJob}')" aria-label="View details">
                         View <i class="fas fa-arrow-right"></i>
                     </button>
                 </article>
             `;
         }).join('');
         
-        // Trigger animations for new elements
+        // Trigger CSS animations
         setTimeout(() => {
-            container.querySelectorAll('.animate-up').forEach(el => {
-                el.classList.add('visible');
+            container.querySelectorAll('.animate-up').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 50);
             });
-        }, 50);
+        }, 10);
+    };
+
+    // ✅ NEW: Safe wrapper for showDetails with decoded JSON
+    window.showDetailsSafe = (encodedJob) => {
+        try {
+            const job = JSON.parse(decodeURIComponent(encodedJob));
+            showDetails(job);
+        } catch(e) {
+            console.error('Error parsing job data:', e);
+            showToast('⚠️ Could not load details', 'error');
+        }
     };
 
     // ===== MODAL CONTENT =====
     const renderSteps = (str) => {
         if(!str) return '';
-        return `<div class="steps-list">${str.split(',').map(s => `<div class="step-item">${s.trim()}</div>`).join('')}</div>`;
+        return `<div class="steps-list">${str.split(',').map(s => `<div class="step-item">${escapeHtml(s.trim())}</div>`).join('')}</div>`;
     };
     
     const renderLinks = (str) => {
         if(!str) return '';
         return `<div class="links-list">${str.split(',').map(l => {
-            const [name, url] = l.trim().split(':');
-            return `<a href="${(url||name).trim()}" target="_blank" rel="noopener">${name?.trim()||'Link'} ↗</a>`;
+            const parts = l.trim().split(':');
+            const name = escapeHtml(parts[0] || 'Link');
+            const url = parts[1] || parts[0] || '#';
+            return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${name} ↗</a>`;
         }).join('')}</div>`;
     };
 
@@ -1463,36 +1498,51 @@
         const addSection = (title, content) => {
             if(content && content !== 'N/A') {
                 html += `<div class="info-section">
-                    <div class="info-section-title">${title}</div>
+                    <div class="info-section-title">${escapeHtml(title)}</div>
                     <div class="info-grid"><div class="info-item"><div class="info-value">${content}</div></div></div>
                 </div>`;
             }
         };
         
-        addSection('📌 Post Name', job.title);
+        addSection('📌 Post Name', escapeHtml(job.title));
         const postDate = formatDate(job.posted_date);
         if(postDate) addSection('📅 Posted', postDate);
-        addSection('🏢 Organization', job.company);
-        addSection('📍 Location', job.state);
-        addSection('📝 Short Info', job.short_desc);
-        if(job.important_dates) addSection('📅 Important Dates', 
-            job.important_dates.split(',').map(d => `• ${d.trim()}`).join('<br>'));
-        if(job.application_fee) addSection('💰 Fee', 
-            job.application_fee.split(',').map(f => `• ${f.trim()}`).join('<br>'));
-        addSection('🎓 Eligibility', job.eligibility);
-        addSection('👤 Age Limit', job.age_limit);
-        addSection('📊 Vacancy', job.vacancy);
-        if(job.how_to_apply) addSection('📝 How to Apply', renderSteps(job.how_to_apply));
-        if(job.full_desc) addSection('📋 Details', job.full_desc);
-        if(job.important_links) addSection('🔗 Links', renderLinks(job.important_links));
-        if(job.notification_link) addSection('📢 Notification', 
-            `<a href="${job.notification_link}" target="_blank" style="color:var(--primary)">Download PDF ↗</a>`);
+        addSection('🏢 Organization', escapeHtml(job.company));
+        addSection('📍 Location', escapeHtml(job.state));
+        addSection('📝 Short Info', escapeHtml(job.short_desc));
+        
+        if(job.important_dates && job.important_dates !== 'N/A') {
+            addSection('📅 Important Dates', 
+                job.important_dates.split(',').map(d => `• ${escapeHtml(d.trim())}`).join('<br>'));
+        }
+        if(job.application_fee && job.application_fee !== 'N/A') {
+            addSection('💰 Fee', 
+                job.application_fee.split(',').map(f => `• ${escapeHtml(f.trim())}`).join('<br>'));
+        }
+        addSection('🎓 Eligibility', escapeHtml(job.eligibility));
+        addSection('👤 Age Limit', escapeHtml(job.age_limit));
+        addSection('📊 Vacancy', escapeHtml(job.vacancy));
+        
+        if(job.how_to_apply && job.how_to_apply !== 'N/A') {
+            addSection('📝 How to Apply', renderSteps(job.how_to_apply));
+        }
+        if(job.full_desc && job.full_desc !== 'N/A') {
+            addSection('📋 Details', escapeHtml(job.full_desc));
+        }
+        if(job.important_links && job.important_links !== 'N/A') {
+            addSection('🔗 Links', renderLinks(job.important_links));
+        }
+        if(job.notification_link && job.notification_link !== 'N/A') {
+            addSection('📢 Notification', 
+                `<a href="${escapeHtml(job.notification_link)}" target="_blank" style="color:var(--primary)">Download PDF ↗</a>`);
+        }
         
         const applyLink = job.apply_link || '#';
         document.getElementById('modalTitle').textContent = job.title || 'Details';
         document.getElementById('modalBody').innerHTML = html || '<p>No additional details available.</p>';
-        document.getElementById('modalApply').href = applyLink;
-        document.getElementById('modalApply').style.display = (applyLink !== '#') ? 'inline-flex' : 'none';
+        const applyBtn = document.getElementById('modalApply');
+        applyBtn.href = applyLink;
+        applyBtn.style.display = (applyLink !== '#' && applyLink !== 'N/A') ? 'inline-flex' : 'none';
         document.getElementById('modalOverlay').classList.add('active');
         document.body.style.overflow = 'hidden';
     };
@@ -1505,13 +1555,13 @@
     // ===== CATEGORY CHANGE (Unified) =====
     const changeCategory = (type) => {
         currentType = type;
-        
-        // Update all UI elements
         document.querySelectorAll('.tab, .nav-menu a, .drawer-links a').forEach(el => {
-            el.classList.toggle('active', el.dataset.type === type);
-            if(el.tagName === 'BUTTON') el.setAttribute('aria-selected', el.dataset.type === type ? 'true' : 'false');
+            const isActive = el.dataset.type === type;
+            el.classList.toggle('active', isActive);
+            if(el.tagName === 'BUTTON') {
+                el.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            }
         });
-        
         filterAndDisplay();
     };
 
@@ -1527,12 +1577,13 @@
 
     // ===== EVENT LISTENERS =====
     document.addEventListener('DOMContentLoaded', () => {
-        // Modal
+        // Modal events
         document.getElementById('modalClose').onclick = closeModal;
         document.getElementById('modalCancel').onclick = closeModal;
         document.getElementById('modalOverlay').onclick = (e) => {
             if(e.target === e.currentTarget) closeModal();
         };
+        document.onkeydown = (e) => { if(e.key === 'Escape') closeModal(); };
         
         // Search with debounce
         document.getElementById('searchInput').addEventListener('input', debounce((e) => {
@@ -1560,7 +1611,8 @@
                 });
                 link.classList.add('active');
                 link.setAttribute('aria-pressed', 'true');
-                changeCategory(link.dataset.category === 'all' ? 'all' : link.dataset.category);
+                const cat = link.dataset.category;
+                changeCategory(cat === 'all' ? 'all' : cat);
             };
         });
         
@@ -1592,24 +1644,26 @@
         // Drawer Menu
         const drawer = document.getElementById('drawerMenu');
         const overlay = document.getElementById('drawerOverlay');
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        
         const openDrawer = () => {
             drawer.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', 'true');
+            menuBtn.setAttribute('aria-expanded', 'true');
         };
         const closeDrawer = () => {
             drawer.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
-            document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', 'false');
+            menuBtn.setAttribute('aria-expanded', 'false');
         };
         
-        document.getElementById('mobileMenuBtn').onclick = openDrawer;
+        menuBtn.onclick = openDrawer;
         document.getElementById('drawerClose').onclick = closeDrawer;
         overlay.onclick = closeDrawer;
         
-        // Drawer links - FIXED: Proper filtering + close
+        // ✅ FIXED: Drawer links now properly filter content
         document.querySelectorAll('.drawer-links a').forEach(link => {
             link.onclick = (e) => {
                 e.preventDefault();
@@ -1647,7 +1701,7 @@
             document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 10);
         });
         
-        // Keyboard navigation for logo
+        // Logo keyboard nav
         document.querySelector('.logo').onkeypress = (e) => {
             if(e.key === 'Enter') changeCategory('all');
         };
@@ -1655,31 +1709,6 @@
         // Load data
         loadData();
     });
-
-    // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
-    if('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        // Observe job cards as they're added dynamically
-        const observeJobs = () => {
-            document.querySelectorAll('.job-card.animate-up').forEach(card => {
-                observer.observe(card);
-            });
-        };
-        // Override displayJobs to add observer
-        const originalDisplayJobs = displayJobs;
-        displayJobs = function(jobs) {
-            originalDisplayJobs(jobs);
-            setTimeout(observeJobs, 100);
-        };
-    }
 </script>
 </body>
 </html>
