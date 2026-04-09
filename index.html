@@ -965,6 +965,16 @@
             }
             html { scroll-behavior: auto; }
         }
+        /* Add this before @media queries */
+        .animate-up { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.4s ease, transform 0.4s ease; 
+        }
+        .animate-up.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
     </style>
 </head>
 <body>
